@@ -1,2 +1,2 @@
 # fakerator
-Fake data generator for Javascript
+> Random data generator with localization
