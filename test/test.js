@@ -24,3 +24,8 @@ for(var i = 0; i < 10; i++) {
 	console.log(fakerator.get("#{phone.number}"));
 }
 console.log("----------------\r\n");
+
+for(var i = 0; i < 10; i++) {
+	console.log(fakerator.get("#{internet.avatar}"));
+}
+console.log("----------------\r\n");
