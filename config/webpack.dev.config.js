@@ -3,18 +3,24 @@ var webpack = require('webpack');
 
 module.exports = {
   entry: {
-    fakerator: path.resolve('demo', 'index.js')
+    fakerator: path.resolve('lib', 'index.js')
   },
 
-  target: 'node',
+  //target: 'node',
   
   output: {
     path: path.resolve('demo'),
-    filename: '[name].js'
+    filename: '[name].js',
+    library: "Fakerator",
+    libraryTarget: "umd"    
   },
 
   plugins: [
   ],
+
+  /*resolve: {
+    packageAlias: 'browser'
+  }, */ 
 
   module: {
     loaders: [

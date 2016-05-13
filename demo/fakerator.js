@@ -1,4 +1,14 @@
-/******/ (function(modules) { // webpackBootstrap
+(function webpackUniversalModuleDefinition(root, factory) {
+	if(typeof exports === 'object' && typeof module === 'object')
+		module.exports = factory();
+	else if(typeof define === 'function' && define.amd)
+		define([], factory);
+	else if(typeof exports === 'object')
+		exports["Fakerator"] = factory();
+	else
+		root["Fakerator"] = factory();
+})(this, function() {
+return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
 
@@ -46,35 +56,10 @@
 
 	"use strict";
 
-	var Fakerator = __webpack_require__(1);
+	var _ = __webpack_require__(1);
+	var mersenne = __webpack_require__(3);
 
-	var fakerator = new Fakerator("hu-HU");
-
-	for (var i = 0; i < 10; i++) {
-		console.log(fakerator.get("#{names.name}"));
-	}
-	console.log("----------------\r\n");
-
-	for (var i = 0; i < 10; i++) {
-		console.log(fakerator.get("#{company.name}"));
-	}
-	console.log("----------------\r\n");
-
-	for (var i = 0; i < 10; i++) {
-		console.log(fakerator.get("#{phone.number}"));
-	}
-	console.log("----------------\r\n");
-
-/***/ },
-/* 1 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-
-	var _ = __webpack_require__(2);
-	var mersenne = __webpack_require__(4);
-
-	var alpha = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
+	var letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
 
 	module.exports = function (localeID, seed) {
 		var self = this;
@@ -82,12 +67,12 @@
 
 		console.log("Load " + localeID + " locale");
 
-		var locale = __webpack_require__(5)("./" + localeID);
+		var locale = __webpack_require__(4)("./" + localeID);
 
 		if (locale) {
 			if (locale._meta.id != "default") {
 				var fallbackID = locale._meta.fallback || "default";
-				var fbLocale = __webpack_require__(5)("./" + fallbackID);
+				var fbLocale = __webpack_require__(4)("./" + fallbackID);
 				if (fbLocale) {
 					console.log("Fallback " + fallbackID + " loaded.");
 
@@ -95,7 +80,7 @@
 				}
 			}
 		} else {
-			locale = __webpack_require__(9);
+			locale = __webpack_require__(8);
 		}
 
 		self.locale = locale;
@@ -113,6 +98,14 @@
 				return precision * Math.floor(mersenne.rand(max / precision, min / precision));
 			},
 
+			digit: function digit() {
+				return self.random.number(0, 9);
+			},
+
+			letter: function letter() {
+				return self.random.arrayElement(letters);
+			},
+
 			arrayElement: function arrayElement(array) {
 				return array[self.random.number(0, array.length - 1)];
 			},
@@ -128,17 +121,8 @@
 			if (str) return str.replace(/ /g, '-').replace(/[^\w\.\-]+/g, '');
 		};
 
-		self.replaceSymbol = function (format, numberSymbol, alphaSymbol) {
-			if (!format) return;
-			debugger;
-			numberSymbol = numberSymbol || "#";
-			alphaSymbol = alphaSymbol || "?";
-
-			var str = '';
-			for (var i = 0; i < format.length; i++) {
-				if (format.charAt(i) == numberSymbol) str += self.random.number(0, 9);else if (format.charAt(i) == alphaSymbol) str += self.random.arrayElement(alpha);else str += format.charAt(i);
-			}
-			return str;
+		self.replaceSymbols = function (format, numberSymbol, alphaSymbol) {
+			if (format) return format.replace(new RegExp(numberSymbol || "#", "g"), self.random.digit).replace(new RegExp(alphaSymbol || "\\?", "g"), self.random.letter);
 		};
 
 		self.shuffle = function (o) {
@@ -159,16 +143,14 @@
 				});
 			}
 
-			res = self.replaceSymbol(res);
-
-			return res;
+			return self.replaceSymbols(res);
 		};
 
 		return self;
 	};
 
 /***/ },
-/* 2 */
+/* 1 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/* WEBPACK VAR INJECTION */(function(module, global) {/**
@@ -16414,10 +16396,10 @@
 	  }
 	}.call(this));
 
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)(module), (function() { return this; }())))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)(module), (function() { return this; }())))
 
 /***/ },
-/* 3 */
+/* 2 */
 /***/ function(module, exports) {
 
 	module.exports = function(module) {
@@ -16433,7 +16415,7 @@
 
 
 /***/ },
-/* 4 */
+/* 3 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -16591,31 +16573,31 @@
 	};
 
 /***/ },
-/* 5 */
+/* 4 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var map = {
-		"./default/address/index": 6,
-		"./default/address/index.js": 6,
-		"./default/company/index": 7,
-		"./default/company/index.js": 7,
-		"./default/date/index": 8,
-		"./default/date/index.js": 8,
-		"./default/index": 9,
-		"./default/index.js": 9,
-		"./default/internet/index": 14,
-		"./default/internet/index.js": 14,
-		"./default/lorem/index": 15,
-		"./default/lorem/index.js": 15,
-		"./default/names/firstName": 11,
-		"./default/names/index": 10,
-		"./default/names/index.js": 10,
-		"./default/names/lastName": 12,
-		"./default/names/lastName.js": 12,
-		"./default/phone/index": 13,
-		"./default/phone/index.js": 13,
-		"./hu-HU/index": 16,
-		"./hu-HU/index.js": 16
+		"./default/address/index": 5,
+		"./default/address/index.js": 5,
+		"./default/company/index": 6,
+		"./default/company/index.js": 6,
+		"./default/date/index": 7,
+		"./default/date/index.js": 7,
+		"./default/index": 8,
+		"./default/index.js": 8,
+		"./default/internet/index": 13,
+		"./default/internet/index.js": 13,
+		"./default/lorem/index": 14,
+		"./default/lorem/index.js": 14,
+		"./default/names/firstName": 10,
+		"./default/names/index": 9,
+		"./default/names/index.js": 9,
+		"./default/names/lastName": 11,
+		"./default/names/lastName.js": 11,
+		"./default/phone/index": 12,
+		"./default/phone/index.js": 12,
+		"./hu-HU/index": 15,
+		"./hu-HU/index.js": 15
 	};
 	function webpackContext(req) {
 		return __webpack_require__(webpackContextResolve(req));
@@ -16628,11 +16610,11 @@
 	};
 	webpackContext.resolve = webpackContextResolve;
 	module.exports = webpackContext;
-	webpackContext.id = 5;
+	webpackContext.id = 4;
 
 
 /***/ },
-/* 6 */
+/* 5 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -16644,7 +16626,7 @@
 	};
 
 /***/ },
-/* 7 */
+/* 6 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -16656,7 +16638,7 @@
 	};
 
 /***/ },
-/* 8 */
+/* 7 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -16667,7 +16649,7 @@
 	};
 
 /***/ },
-/* 9 */
+/* 8 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -16680,31 +16662,31 @@
 			country: "Great Britain"
 		},
 
-		names: __webpack_require__(10),
-		phone: __webpack_require__(13),
-		address: __webpack_require__(6),
-		company: __webpack_require__(7),
-		internet: __webpack_require__(14),
-		lorem: __webpack_require__(15),
-		date: __webpack_require__(8)
+		names: __webpack_require__(9),
+		phone: __webpack_require__(12),
+		address: __webpack_require__(5),
+		company: __webpack_require__(6),
+		internet: __webpack_require__(13),
+		lorem: __webpack_require__(14),
+		date: __webpack_require__(7)
 	};
 
 /***/ },
-/* 10 */
+/* 9 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 
 	module.exports = {
-		firstNameM: __webpack_require__(11),
+		firstNameM: __webpack_require__(10),
 
-		firstNameF: __webpack_require__(11),
+		firstNameF: __webpack_require__(10),
 
 		firstName: ["#{names.firstNameM}", "#{names.firstNameF}"],
 
-		lastNameM: __webpack_require__(12),
+		lastNameM: __webpack_require__(11),
 
-		lastNameF: __webpack_require__(12),
+		lastNameF: __webpack_require__(11),
 
 		lastName: ["#{names.lastNameM}", "#{names.lastNameF}"],
 
@@ -16720,7 +16702,7 @@
 	};
 
 /***/ },
-/* 11 */
+/* 10 */
 /***/ function(module, exports) {
 
 	module.exports = [
@@ -19735,7 +19717,7 @@
 
 
 /***/ },
-/* 12 */
+/* 11 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -19743,7 +19725,7 @@
 	module.exports = ["Abbott", "Abernathy", "Abshire", "Adams", "Altenwerth", "Anderson", "Ankunding", "Armstrong", "Auer", "Aufderhar", "Bahringer", "Bailey", "Balistreri", "Barrows", "Bartell", "Bartoletti", "Barton", "Bashirian", "Batz", "Bauch", "Baumbach", "Bayer", "Beahan", "Beatty", "Bechtelar", "Becker", "Bednar", "Beer", "Beier", "Berge", "Bergnaum", "Bergstrom", "Bernhard", "Bernier", "Bins", "Blanda", "Blick", "Block", "Bode", "Boehm", "Bogan", "Bogisich", "Borer", "Bosco", "Botsford", "Boyer", "Boyle", "Bradtke", "Brakus", "Braun", "Breitenberg", "Brekke", "Brown", "Bruen", "Buckridge", "Carroll", "Carter", "Cartwright", "Casper", "Cassin", "Champlin", "Christiansen", "Cole", "Collier", "Collins", "Conn", "Connelly", "Conroy", "Considine", "Corkery", "Cormier", "Corwin", "Cremin", "Crist", "Crona", "Cronin", "Crooks", "Cruickshank", "Cummerata", "Cummings", "Dach", "D'Amore", "Daniel", "Dare", "Daugherty", "Davis", "Deckow", "Denesik", "Dibbert", "Dickens", "Dicki", "Dickinson", "Dietrich", "Donnelly", "Dooley", "Douglas", "Doyle", "DuBuque", "Durgan", "Ebert", "Effertz", "Eichmann", "Emard", "Emmerich", "Erdman", "Ernser", "Fadel", "Fahey", "Farrell", "Fay", "Feeney", "Feest", "Feil", "Ferry", "Fisher", "Flatley", "Frami", "Franecki", "Friesen", "Fritsch", "Funk", "Gaylord", "Gerhold", "Gerlach", "Gibson", "Gislason", "Gleason", "Gleichner", "Glover", "Goldner", "Goodwin", "Gorczany", "Gottlieb", "Goyette", "Grady", "Graham", "Grant", "Green", "Greenfelder", "Greenholt", "Grimes", "Gulgowski", "Gusikowski", "Gutkowski", "Gutmann", "Haag", "Hackett", "Hagenes", "Hahn", "Haley", "Halvorson", "Hamill", "Hammes", "Hand", "Hane", "Hansen", "Harber", "Harris", "Hartmann", "Harvey", "Hauck", "Hayes", "Heaney", "Heathcote", "Hegmann", "Heidenreich", "Heller", "Herman", "Hermann", "Hermiston", "Herzog", "Hessel", "Hettinger", "Hickle", "Hilll", "Hills", "Hilpert", "Hintz", "Hirthe", "Hodkiewicz", "Hoeger", "Homenick", "Hoppe", "Howe", "Howell", "Hudson", "Huel", "Huels", "Hyatt", "Jacobi", "Jacobs", "Jacobson", "Jakubowski", "Jaskolski", "Jast", "Jenkins", "Jerde", "Johns", "Johnson", "Johnston", "Jones", "Kassulke", "Kautzer", "Keebler", "Keeling", "Kemmer", "Kerluke", "Kertzmann", "Kessler", "Kiehn", "Kihn", "Kilback", "King", "Kirlin", "Klein", "Kling", "Klocko", "Koch", "Koelpin", "Koepp", "Kohler", "Konopelski", "Koss", "Kovacek", "Kozey", "Krajcik", "Kreiger", "Kris", "Kshlerin", "Kub", "Kuhic", "Kuhlman", "Kuhn", "Kulas", "Kunde", "Kunze", "Kuphal", "Kutch", "Kuvalis", "Labadie", "Lakin", "Lang", "Langosh", "Langworth", "Larkin", "Larson", "Leannon", "Lebsack", "Ledner", "Leffler", "Legros", "Lehner", "Lemke", "Lesch", "Leuschke", "Lind", "Lindgren", "Littel", "Little", "Lockman", "Lowe", "Lubowitz", "Lueilwitz", "Luettgen", "Lynch", "Macejkovic", "MacGyver", "Maggio", "Mann", "Mante", "Marks", "Marquardt", "Marvin", "Mayer", "Mayert", "McClure", "McCullough", "McDermott", "McGlynn", "McKenzie", "McLaughlin", "Medhurst", "Mertz", "Metz", "Miller", "Mills", "Mitchell", "Moen", "Mohr", "Monahan", "Moore", "Morar", "Morissette", "Mosciski", "Mraz", "Mueller", "Muller", "Murazik", "Murphy", "Murray", "Nader", "Nicolas", "Nienow", "Nikolaus", "Nitzsche", "Nolan", "Oberbrunner", "O'Connell", "O'Conner", "O'Hara", "O'Keefe", "O'Kon", "Okuneva", "Olson", "Ondricka", "O'Reilly", "Orn", "Ortiz", "Osinski", "Pacocha", "Padberg", "Pagac", "Parisian", "Parker", "Paucek", "Pfannerstill", "Pfeffer", "Pollich", "Pouros", "Powlowski", "Predovic", "Price", "Prohaska", "Prosacco", "Purdy", "Quigley", "Quitzon", "Rath", "Ratke", "Rau", "Raynor", "Reichel", "Reichert", "Reilly", "Reinger", "Rempel", "Renner", "Reynolds", "Rice", "Rippin", "Ritchie", "Robel", "Roberts", "Rodriguez", "Rogahn", "Rohan", "Rolfson", "Romaguera", "Roob", "Rosenbaum", "Rowe", "Ruecker", "Runolfsdottir", "Runolfsson", "Runte", "Russel", "Rutherford", "Ryan", "Sanford", "Satterfield", "Sauer", "Sawayn", "Schaden", "Schaefer", "Schamberger", "Schiller", "Schimmel", "Schinner", "Schmeler", "Schmidt", "Schmitt", "Schneider", "Schoen", "Schowalter", "Schroeder", "Schulist", "Schultz", "Schumm", "Schuppe", "Schuster", "Senger", "Shanahan", "Shields", "Simonis", "Sipes", "Skiles", "Smith", "Smitham", "Spencer", "Spinka", "Sporer", "Stamm", "Stanton", "Stark", "Stehr", "Steuber", "Stiedemann", "Stokes", "Stoltenberg", "Stracke", "Streich", "Stroman", "Strosin", "Swaniawski", "Swift", "Terry", "Thiel", "Thompson", "Tillman", "Torp", "Torphy", "Towne", "Toy", "Trantow", "Tremblay", "Treutel", "Tromp", "Turcotte", "Turner", "Ullrich", "Upton", "Vandervort", "Veum", "Volkman", "Von", "VonRueden", "Waelchi", "Walker", "Walsh", "Walter", "Ward", "Waters", "Watsica", "Weber", "Wehner", "Weimann", "Weissnat", "Welch", "West", "White", "Wiegand", "Wilderman", "Wilkinson", "Will", "Williamson", "Willms", "Windler", "Wintheiser", "Wisoky", "Wisozk", "Witting", "Wiza", "Wolf", "Wolff", "Wuckert", "Wunsch", "Wyman", "Yost", "Yundt", "Zboncak", "Zemlak", "Ziemann", "Zieme", "Zulauf"];
 
 /***/ },
-/* 13 */
+/* 12 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -19751,6 +19733,14 @@
 	module.exports = {
 		number: ["###-###-####", "(###) ###-####", "1-###-###-####", "###.###.####", "###-###-####", "(###) ###-####", "1-###-###-####", "###.###.####", "###-###-#### x###", "(###) ###-#### x###", "1-###-###-#### x###", "###.###.#### x###", "###-###-#### x####", "(###) ###-#### x####", "1-###-###-#### x####", "###.###.#### x####", "###-###-#### x#####", "(###) ###-#### x#####", "1-###-###-#### x#####", "###.###.#### x#####"]
 	};
+
+/***/ },
+/* 13 */
+/***/ function(module, exports) {
+
+	"use strict";
+
+	module.exports = {};
 
 /***/ },
 /* 14 */
@@ -19762,14 +19752,6 @@
 
 /***/ },
 /* 15 */
-/***/ function(module, exports) {
-
-	"use strict";
-
-	module.exports = {};
-
-/***/ },
-/* 16 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -19788,4 +19770,6 @@
 	};
 
 /***/ }
-/******/ ]);
+/******/ ])
+});
+;

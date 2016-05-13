@@ -1,6 +1,6 @@
-var Fakerator = require("../lib");
+var Fakerator = require("./fakerator");
 
-var fakerator = new Fakerator("hu-HU");
+var fakerator = new Fakerator();
 
 /*console.log(fakerator);
 
