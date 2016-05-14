@@ -1,6 +1,8 @@
 var path = require('path');
 var webpack = require('webpack');
 
+var sourceDir = path.resolve("lib");
+
 module.exports = {
   entry: {
     fakerator: path.resolve('lib', 'index.js')
@@ -21,6 +23,15 @@ module.exports = {
   /*resolve: {
     packageAlias: 'browser'
   }, */ 
+
+  resolve: {
+    packageAlias: 'browser',   
+    alias: {
+      'lib': sourceDir,
+      'vendor': path.resolve("vendor"),
+      'locales': path.join(sourceDir, "locales")
+    }
+  },  
 
   module: {
     loaders: [
