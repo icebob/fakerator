@@ -2,7 +2,7 @@ import { expect } from "chai";
 
 import Fakerator from "lib/fakerator";
 
-describe("Fakerator.seed", () => {
+describe("Fakerator.random", () => {
 
 	let fakerator;
 
