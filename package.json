@@ -9,7 +9,6 @@
   "scripts": {
     "prebuild": "npm run test",
     "build": "webpack --config config/webpack.build.config.js",
-    "demo": "webpack --config config/webpack.demo.config.js --watch",
     "lint": "eslint --ext=.js lib",
     "coverall": "cat ./test/coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
     "coverage": "npm run test && npm run coverall",
