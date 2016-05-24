@@ -78,6 +78,10 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _capitalize2 = _interopRequireDefault(_capitalize);
 
+	var _isNil = __webpack_require__(165);
+
+	var _isNil2 = _interopRequireDefault(_isNil);
+
 	var _isArray = __webpack_require__(4);
 
 	var _isArray2 = _interopRequireDefault(_isArray);
@@ -90,7 +94,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _isFunction2 = _interopRequireDefault(_isFunction);
 
-	var _isNumber = __webpack_require__(165);
+	var _isNumber = __webpack_require__(166);
 
 	var _isNumber2 = _interopRequireDefault(_isNumber);
 
@@ -102,27 +106,31 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-	var mersenne = __webpack_require__(166);
+	var mersenne = __webpack_require__(167);
 
-	var chars = 'abcdefghijklmnopqrstuvwxyz';
-	var any = '0123456789' + chars;
+	var chars = "abcdefghijklmnopqrstuvwxyz";
+	var any = "0123456789" + chars;
 
 	module.exports = function () {
 		var localeID = arguments.length <= 0 || arguments[0] === undefined ? "default" : arguments[0];
 
 		var self = this;
 
-		var locale = __webpack_require__(167)("./" + localeID + "/index");
+		var locale = void 0;
+		try {
+			locale = __webpack_require__(168)("./" + localeID + "/index");
+		} catch (e) {}
+
 		if (locale) {
 			if (localeID != "default") {
 				var fallbackID = locale._meta.fallback || "default";
-				var fbLocale = __webpack_require__(167)("./" + fallbackID + "/index");
+				var fbLocale = __webpack_require__(168)("./" + fallbackID + "/index");
 				if (fbLocale) {
 					locale = (0, _defaultsDeep2.default)(locale, fbLocale);
 				}
 			}
 		} else {
-			locale = __webpack_require__(178);
+			locale = __webpack_require__(179);
 		}
 		self.locale = locale;
 
@@ -150,18 +158,22 @@ return /******/ (function(modules) { // webpackBootstrap
 				return self.random.arrayElement(chars);
 			},
 			arrayElement: function arrayElement(array) {
-				return array[self.random.number(array.length - 1)];
+				if (array && array.length > 0) return array[self.random.number(array.length - 1)];
 			},
 			objectElement: function objectElement(obj) {
+				if (!obj) return;
+
 				var key = self.random.arrayElement(Object.keys(obj));
 				return _defineProperty({}, key, obj[key]);
 			},
 			masked: function masked(format) {
+				if ((0, _isNil2.default)(format)) return;
+
 				var result = [];
 				for (var i = 0; i <= format.length; i++) {
-					if (format.charAt(i) === "9") result.push(self.random.number(9).toString());else if (format.charAt(i) === "a") result.push(self.helpers.arrayElement(chars));else if (format.charAt(i) === "A") result.push(self.helpers.arrayElement(chars).toUpperCase());else if (format.charAt(i) === "*") result.push(self.helpers.arrayElement(any));else result.push(format.charAt(i));
+					if (format.charAt(i) === "9") result.push(self.random.number(9).toString());else if (format.charAt(i) === "a") result.push(self.random.arrayElement(chars));else if (format.charAt(i) === "A") result.push(self.random.arrayElement(chars).toUpperCase());else if (format.charAt(i) === "*") result.push(self.random.arrayElement(any));else result.push(format.charAt(i));
 				}
-				return result.join('');
+				return result.join("");
 			}
 		};
 
@@ -170,7 +182,7 @@ return /******/ (function(modules) { // webpackBootstrap
 		self.slugify = function () {
 			var str = arguments.length <= 0 || arguments[0] === undefined ? "" : arguments[0];
 
-			return str.replace(/ /g, '-').replace(/[^\w\.\-]+/g, '');
+			return str.trim().replace(/ /g, "-").replace(/[^\w\.\-]+/g, "");
 		};
 
 		self.replaceSymbols = function (format) {
@@ -181,6 +193,7 @@ return /******/ (function(modules) { // webpackBootstrap
 		};
 
 		self.shuffle = function (o) {
+			if ((0, _isNil2.default)(o)) return;
 			for (var j, x, i = o.length - 1; i; j = self.random.number(i), x = o[--i], o[i] = o[j], o[j] = x) {}
 			return o;
 		};
@@ -193,22 +206,20 @@ return /******/ (function(modules) { // webpackBootstrap
 			}
 
 			var res = format;
-			if (format.indexOf("#{") != -1) {
-				res = format.replace(maskRE, function (match, cap) {
-					var part = (0, _get2.default)(self.locale, cap);
-					if (part) {
-						if ((0, _isFunction2.default)(part)) {
-							var _part;
+			res = format.replace(maskRE, function (match, cap) {
+				var part = (0, _get2.default)(self.locale, cap);
+				if (part) {
+					if ((0, _isFunction2.default)(part)) {
+						var _part;
 
-							part = (_part = part).call.apply(_part, [self].concat(args));
-						}
-
-						if ((0, _isArray2.default)(part)) return self.populate.apply(self, [self.random.arrayElement(part)].concat(args));else if ((0, _isString2.default)(part)) return self.populate.apply(self, [part].concat(args));else if ((0, _isNumber2.default)(part) || (0, _isObject2.default)(part)) return part;
+						part = (_part = part).call.apply(_part, [self].concat(args));
 					}
 
-					return match;
-				});
-			}
+					if ((0, _isArray2.default)(part)) return self.populate.apply(self, [self.random.arrayElement(part)].concat(args));else if ((0, _isString2.default)(part)) return self.populate.apply(self, [part].concat(args));else if ((0, _isNumber2.default)(part) || (0, _isObject2.default)(part)) return part;
+				}
+
+				return match;
+			});
 
 			if ((0, _isString2.default)(res)) res = self.replaceSymbols(res);
 
@@ -259,7 +270,6 @@ return /******/ (function(modules) { // webpackBootstrap
 						return self.populate.apply(self, ["#{" + category + "." + item + "}"].concat(args));
 					};
 				}
-				console.log("Set " + category + "." + item);
 			});
 		});
 
@@ -5930,6 +5940,37 @@ return /******/ (function(modules) { // webpackBootstrap
 
 /***/ },
 /* 165 */
+/***/ function(module, exports) {
+
+	/**
+	 * Checks if `value` is `null` or `undefined`.
+	 *
+	 * @static
+	 * @memberOf _
+	 * @since 4.0.0
+	 * @category Lang
+	 * @param {*} value The value to check.
+	 * @returns {boolean} Returns `true` if `value` is nullish, else `false`.
+	 * @example
+	 *
+	 * _.isNil(null);
+	 * // => true
+	 *
+	 * _.isNil(void 0);
+	 * // => true
+	 *
+	 * _.isNil(NaN);
+	 * // => false
+	 */
+	function isNil(value) {
+	  return value == null;
+	}
+
+	module.exports = isNil;
+
+
+/***/ },
+/* 166 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var isObjectLike = __webpack_require__(44);
@@ -5983,7 +6024,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 166 */
+/* 167 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -6141,19 +6182,19 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ },
-/* 167 */
+/* 168 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var map = {
-		"./default/address/index": 168,
-		"./default/company/index": 175,
-		"./default/date/index": 176,
-		"./default/index": 178,
-		"./default/internet/index": 184,
-		"./default/lorem/index": 188,
-		"./default/names/index": 179,
-		"./default/phone/index": 183,
-		"./hu-HU/index": 191
+		"./default/address/index": 169,
+		"./default/company/index": 176,
+		"./default/date/index": 177,
+		"./default/index": 179,
+		"./default/internet/index": 185,
+		"./default/lorem/index": 189,
+		"./default/names/index": 180,
+		"./default/phone/index": 184,
+		"./hu-HU/index": 192
 	};
 	function webpackContext(req) {
 		return __webpack_require__(webpackContextResolve(req));
@@ -6166,23 +6207,23 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 	webpackContext.resolve = webpackContextResolve;
 	module.exports = webpackContext;
-	webpackContext.id = 167;
+	webpackContext.id = 168;
 
 
 /***/ },
-/* 168 */
+/* 169 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 
 	module.exports = {
-		country: __webpack_require__(169),
+		country: __webpack_require__(170),
 
-		countryCode: __webpack_require__(170),
+		countryCode: __webpack_require__(171),
 
-		state: __webpack_require__(171),
+		state: __webpack_require__(172),
 
-		stateAbbr: __webpack_require__(172),
+		stateAbbr: __webpack_require__(173),
 
 		city: ["#{address.cityPrefix} #{names.firstName}#{address.citySuffix}", "#{address.cityPrefix} #{names.firstName}", "#{names.firstName}#{address.citySuffix}", "#{names.lastName}#{address.citySuffix}"],
 
@@ -6194,7 +6235,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 		streetName: ["#{names.firstName} #{address.streetSuffix}", "#{names.lastName} #{address.streetSuffix}"],
 
-		streetSuffix: __webpack_require__(173),
+		streetSuffix: __webpack_require__(174),
 
 		buildingNumber: ["#####", "####", "###"],
 
@@ -6208,11 +6249,11 @@ return /******/ (function(modules) { // webpackBootstrap
 		},
 
 
-		geoLocationNearBy: __webpack_require__(174)
+		geoLocationNearBy: __webpack_require__(175)
 	};
 
 /***/ },
-/* 169 */
+/* 170 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(module) {"use strict";
@@ -6221,7 +6262,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(32)(module)))
 
 /***/ },
-/* 170 */
+/* 171 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(module) {"use strict";
@@ -6230,7 +6271,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(32)(module)))
 
 /***/ },
-/* 171 */
+/* 172 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(module) {"use strict";
@@ -6239,7 +6280,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(32)(module)))
 
 /***/ },
-/* 172 */
+/* 173 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(module) {"use strict";
@@ -6248,7 +6289,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(32)(module)))
 
 /***/ },
-/* 173 */
+/* 174 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(module) {"use strict";
@@ -6257,15 +6298,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(32)(module)))
 
 /***/ },
-/* 174 */
-/***/ function(module, exports, __webpack_require__) {
+/* 175 */
+/***/ function(module, exports) {
 
-	/* WEBPACK VAR INJECTION */(function(module) {"use strict";
+	"use strict";
 
-	module.export = function (coordinate, radius, isMetric) {
-		function randomFloat(min, max) {
-			return Math.random() * (max - min) + min;
-		}
+	module.exports = function (coordinate, radius, isMetric) {
 
 		function degreesToRadians(degrees) {
 			return degrees * (Math.PI / 180.0);
@@ -6275,16 +6313,16 @@ return /******/ (function(modules) { // webpackBootstrap
 			return radians * (180.0 / Math.PI);
 		}
 
-		function kilometersToMiles(miles) {
+		function milesToKm(miles) {
 			return miles * 0.621371;
 		}
 
 		function coordinateWithOffset(coordinate, bearing, distance, isMetric) {
 			var R = 6378.137;
-			var d = isMetric ? distance : kilometersToMiles(distance);
+			var d = isMetric ? distance : milesToKm(distance);
 
-			var lat1 = degreesToRadians(coordinate[0]);
-			var lon1 = degreesToRadians(coordinate[1]);
+			var lat1 = degreesToRadians(coordinate.latitude);
+			var lon1 = degreesToRadians(coordinate.longitude);
 
 			var lat2 = Math.asin(Math.sin(lat1) * Math.cos(d / R) + Math.cos(lat1) * Math.sin(d / R) * Math.cos(bearing));
 
@@ -6300,18 +6338,21 @@ return /******/ (function(modules) { // webpackBootstrap
 		}
 
 		if (coordinate === undefined) {
-			return [this.latitude(), this.longitude()];
+			return this.address.geoLocation();
 		}
 		radius = radius || 10.0;
-		isMetric = isMetric || false;
+		isMetric = isMetric || true;
 
-		var randomCoord = coordinateWithOffset(coordinate, degreesToRadians(Math.random() * 360.0), radius, isMetric);
-		return [randomCoord[0].toFixed(4), randomCoord[1].toFixed(4)];
+		var randomCoord = coordinateWithOffset(coordinate, degreesToRadians(this.random.number(360)), radius, isMetric);
+
+		return {
+			latitude: randomCoord[0],
+			longitude: randomCoord[1]
+		};
 	};
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(32)(module)))
 
 /***/ },
-/* 175 */
+/* 176 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -6323,7 +6364,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ },
-/* 176 */
+/* 177 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -6331,10 +6372,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = {
 		months: [],
 		days: [],
-		timezone: __webpack_require__(177),
+		timezone: __webpack_require__(178),
 
 		past: function past(years, refDate) {
-			debugger;
 			var date = refDate ? new Date(Date.parse(refDate)) : new Date();
 			var min = 1000;
 			var max = (years || 1) * 365 * 24 * 3600 * 1000;
@@ -6378,7 +6418,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ },
-/* 177 */
+/* 178 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(module) {"use strict";
@@ -6387,7 +6427,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(32)(module)))
 
 /***/ },
-/* 178 */
+/* 179 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -6401,31 +6441,31 @@ return /******/ (function(modules) { // webpackBootstrap
 			country: "Great Britain"
 		},
 
-		names: __webpack_require__(179),
-		phone: __webpack_require__(183),
-		address: __webpack_require__(168),
-		company: __webpack_require__(175),
-		internet: __webpack_require__(184),
-		lorem: __webpack_require__(188),
-		date: __webpack_require__(176)
+		names: __webpack_require__(180),
+		phone: __webpack_require__(184),
+		address: __webpack_require__(169),
+		company: __webpack_require__(176),
+		internet: __webpack_require__(185),
+		lorem: __webpack_require__(189),
+		date: __webpack_require__(177)
 	};
 
 /***/ },
-/* 179 */
+/* 180 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 
 	module.exports = {
-		firstNameM: __webpack_require__(180),
+		firstNameM: __webpack_require__(181),
 
-		firstNameF: __webpack_require__(181),
+		firstNameF: __webpack_require__(182),
 
 		firstName: ["#{names.firstNameM}", "#{names.firstNameF}"],
 
-		lastNameM: __webpack_require__(182),
+		lastNameM: __webpack_require__(183),
 
-		lastNameF: __webpack_require__(182),
+		lastNameF: __webpack_require__(183),
 
 		lastName: ["#{names.lastNameM}", "#{names.lastNameF}"],
 
@@ -6441,7 +6481,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ },
-/* 180 */
+/* 181 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(module) {"use strict";
@@ -6450,7 +6490,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(32)(module)))
 
 /***/ },
-/* 181 */
+/* 182 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(module) {"use strict";
@@ -6459,7 +6499,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(32)(module)))
 
 /***/ },
-/* 182 */
+/* 183 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -6467,7 +6507,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = ["Abbott", "Abernathy", "Abshire", "Adams", "Altenwerth", "Anderson", "Ankunding", "Armstrong", "Auer", "Aufderhar", "Bahringer", "Bailey", "Balistreri", "Barrows", "Bartell", "Bartoletti", "Barton", "Bashirian", "Batz", "Bauch", "Baumbach", "Bayer", "Beahan", "Beatty", "Bechtelar", "Becker", "Bednar", "Beer", "Beier", "Berge", "Bergnaum", "Bergstrom", "Bernhard", "Bernier", "Bins", "Blanda", "Blick", "Block", "Bode", "Boehm", "Bogan", "Bogisich", "Borer", "Bosco", "Botsford", "Boyer", "Boyle", "Bradtke", "Brakus", "Braun", "Breitenberg", "Brekke", "Brown", "Bruen", "Buckridge", "Carroll", "Carter", "Cartwright", "Casper", "Cassin", "Champlin", "Christiansen", "Cole", "Collier", "Collins", "Conn", "Connelly", "Conroy", "Considine", "Corkery", "Cormier", "Corwin", "Cremin", "Crist", "Crona", "Cronin", "Crooks", "Cruickshank", "Cummerata", "Cummings", "Dach", "D'Amore", "Daniel", "Dare", "Daugherty", "Davis", "Deckow", "Denesik", "Dibbert", "Dickens", "Dicki", "Dickinson", "Dietrich", "Donnelly", "Dooley", "Douglas", "Doyle", "DuBuque", "Durgan", "Ebert", "Effertz", "Eichmann", "Emard", "Emmerich", "Erdman", "Ernser", "Fadel", "Fahey", "Farrell", "Fay", "Feeney", "Feest", "Feil", "Ferry", "Fisher", "Flatley", "Frami", "Franecki", "Friesen", "Fritsch", "Funk", "Gaylord", "Gerhold", "Gerlach", "Gibson", "Gislason", "Gleason", "Gleichner", "Glover", "Goldner", "Goodwin", "Gorczany", "Gottlieb", "Goyette", "Grady", "Graham", "Grant", "Green", "Greenfelder", "Greenholt", "Grimes", "Gulgowski", "Gusikowski", "Gutkowski", "Gutmann", "Haag", "Hackett", "Hagenes", "Hahn", "Haley", "Halvorson", "Hamill", "Hammes", "Hand", "Hane", "Hansen", "Harber", "Harris", "Hartmann", "Harvey", "Hauck", "Hayes", "Heaney", "Heathcote", "Hegmann", "Heidenreich", "Heller", "Herman", "Hermann", "Hermiston", "Herzog", "Hessel", "Hettinger", "Hickle", "Hilll", "Hills", "Hilpert", "Hintz", "Hirthe", "Hodkiewicz", "Hoeger", "Homenick", "Hoppe", "Howe", "Howell", "Hudson", "Huel", "Huels", "Hyatt", "Jacobi", "Jacobs", "Jacobson", "Jakubowski", "Jaskolski", "Jast", "Jenkins", "Jerde", "Johns", "Johnson", "Johnston", "Jones", "Kassulke", "Kautzer", "Keebler", "Keeling", "Kemmer", "Kerluke", "Kertzmann", "Kessler", "Kiehn", "Kihn", "Kilback", "King", "Kirlin", "Klein", "Kling", "Klocko", "Koch", "Koelpin", "Koepp", "Kohler", "Konopelski", "Koss", "Kovacek", "Kozey", "Krajcik", "Kreiger", "Kris", "Kshlerin", "Kub", "Kuhic", "Kuhlman", "Kuhn", "Kulas", "Kunde", "Kunze", "Kuphal", "Kutch", "Kuvalis", "Labadie", "Lakin", "Lang", "Langosh", "Langworth", "Larkin", "Larson", "Leannon", "Lebsack", "Ledner", "Leffler", "Legros", "Lehner", "Lemke", "Lesch", "Leuschke", "Lind", "Lindgren", "Littel", "Little", "Lockman", "Lowe", "Lubowitz", "Lueilwitz", "Luettgen", "Lynch", "Macejkovic", "MacGyver", "Maggio", "Mann", "Mante", "Marks", "Marquardt", "Marvin", "Mayer", "Mayert", "McClure", "McCullough", "McDermott", "McGlynn", "McKenzie", "McLaughlin", "Medhurst", "Mertz", "Metz", "Miller", "Mills", "Mitchell", "Moen", "Mohr", "Monahan", "Moore", "Morar", "Morissette", "Mosciski", "Mraz", "Mueller", "Muller", "Murazik", "Murphy", "Murray", "Nader", "Nicolas", "Nienow", "Nikolaus", "Nitzsche", "Nolan", "Oberbrunner", "O'Connell", "O'Conner", "O'Hara", "O'Keefe", "O'Kon", "Okuneva", "Olson", "Ondricka", "O'Reilly", "Orn", "Ortiz", "Osinski", "Pacocha", "Padberg", "Pagac", "Parisian", "Parker", "Paucek", "Pfannerstill", "Pfeffer", "Pollich", "Pouros", "Powlowski", "Predovic", "Price", "Prohaska", "Prosacco", "Purdy", "Quigley", "Quitzon", "Rath", "Ratke", "Rau", "Raynor", "Reichel", "Reichert", "Reilly", "Reinger", "Rempel", "Renner", "Reynolds", "Rice", "Rippin", "Ritchie", "Robel", "Roberts", "Rodriguez", "Rogahn", "Rohan", "Rolfson", "Romaguera", "Roob", "Rosenbaum", "Rowe", "Ruecker", "Runolfsdottir", "Runolfsson", "Runte", "Russel", "Rutherford", "Ryan", "Sanford", "Satterfield", "Sauer", "Sawayn", "Schaden", "Schaefer", "Schamberger", "Schiller", "Schimmel", "Schinner", "Schmeler", "Schmidt", "Schmitt", "Schneider", "Schoen", "Schowalter", "Schroeder", "Schulist", "Schultz", "Schumm", "Schuppe", "Schuster", "Senger", "Shanahan", "Shields", "Simonis", "Sipes", "Skiles", "Smith", "Smitham", "Spencer", "Spinka", "Sporer", "Stamm", "Stanton", "Stark", "Stehr", "Steuber", "Stiedemann", "Stokes", "Stoltenberg", "Stracke", "Streich", "Stroman", "Strosin", "Swaniawski", "Swift", "Terry", "Thiel", "Thompson", "Tillman", "Torp", "Torphy", "Towne", "Toy", "Trantow", "Tremblay", "Treutel", "Tromp", "Turcotte", "Turner", "Ullrich", "Upton", "Vandervort", "Veum", "Volkman", "Von", "VonRueden", "Waelchi", "Walker", "Walsh", "Walter", "Ward", "Waters", "Watsica", "Weber", "Wehner", "Weimann", "Weissnat", "Welch", "West", "White", "Wiegand", "Wilderman", "Wilkinson", "Will", "Williamson", "Willms", "Windler", "Wintheiser", "Wisoky", "Wisozk", "Witting", "Wiza", "Wolf", "Wolff", "Wuckert", "Wunsch", "Wyman", "Yost", "Yundt", "Zboncak", "Zemlak", "Ziemann", "Zieme", "Zulauf"];
 
 /***/ },
-/* 183 */
+/* 184 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -6477,21 +6517,21 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ },
-/* 184 */
+/* 185 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 
-	var _passwordGenerator = __webpack_require__(185);
+	var _passwordGenerator = __webpack_require__(186);
 
 	var _passwordGenerator2 = _interopRequireDefault(_passwordGenerator);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	module.exports = {
-		avatar: __webpack_require__(186),
+		avatar: __webpack_require__(187),
 
-		domainSuffix: __webpack_require__(187),
+		domainSuffix: __webpack_require__(188),
 
 		userName: function userName(firstName, lastName) {
 			firstName = this.slugify(firstName ? firstName : this.populate("#{names.firstName}")).toLowerCase();
@@ -6520,8 +6560,8 @@ return /******/ (function(modules) { // webpackBootstrap
 		emailDomain: ["gmail.com", "yahoo.com", "hotmail.com"],
 
 		email: function email(firstName, lastName) {
-			firstName = firstName ? firstName.toLowerCase() : "#{names.firstName}";
-			lastName = lastName ? lastName.toLowerCase() : "#{names.lastName}";
+			firstName = this.slugify(firstName ? firstName : this.populate("#{names.firstName}")).toLowerCase();
+			lastName = this.slugify(lastName ? lastName : this.populate("#{names.lastName}")).toLowerCase();
 
 			return [firstName + "." + lastName + "@#{internet.emailDomain}", firstName + "." + lastName + "##@#{internet.emailDomain}", "" + firstName + lastName + "##@#{internet.emailDomain}", firstName + "##@#{internet.emailDomain}"];
 		},
@@ -6534,8 +6574,8 @@ return /******/ (function(modules) { // webpackBootstrap
 			var height = arguments.length <= 1 || arguments[1] === undefined ? 480 : arguments[1];
 			var category = arguments[2];
 
-			var url = 'http://lorempixel.com/' + width + '/' + height;
-			if (category) url += '/' + category;
+			var url = "http://lorempixel.com/" + width + "/" + height;
+			if (category) url += "/" + category;
 
 			return url;
 		},
@@ -6549,7 +6589,7 @@ return /******/ (function(modules) { // webpackBootstrap
 		ip: function ip() {
 			var parts = [];
 			for (var i = 0; i < 4; i++) {
-				parts.push(this.random.number(255, 1));
+				parts.push(this.random.number(254, 1));
 			}return parts.join(".");
 		},
 		color: function color() {
@@ -6563,12 +6603,12 @@ return /******/ (function(modules) { // webpackBootstrap
 			var redStr = red.toString(16);
 			var greenStr = green.toString(16);
 			var blueStr = blue.toString(16);
-			return '#' + (redStr.length === 1 ? '0' : '') + redStr + (greenStr.length === 1 ? '0' : '') + greenStr + (blueStr.length === 1 ? '0' : '') + blueStr;
+			return (redStr.length === 1 ? "0" : "") + redStr + (greenStr.length === 1 ? "0" : "") + greenStr + (blueStr.length === 1 ? "0" : "") + blueStr;
 		}
 	};
 
 /***/ },
-/* 185 */
+/* 186 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -6624,7 +6664,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	})(undefined);
 
 /***/ },
-/* 186 */
+/* 187 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(module) {"use strict";
@@ -6633,23 +6673,23 @@ return /******/ (function(modules) { // webpackBootstrap
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(32)(module)))
 
 /***/ },
-/* 187 */
+/* 188 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(module) {"use strict";
 
-	module["exports"] = ["com", "net", "org", "biz", "info", "name", "eu", "co"];
+	module["exports"] = ["com", "net", "org", "biz", "info", "eu", "co"];
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(32)(module)))
 
 /***/ },
-/* 188 */
+/* 189 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 
 	module.exports = {
-		word: __webpack_require__(189),
-		supplemental: __webpack_require__(190),
+		word: __webpack_require__(190),
+		supplemental: __webpack_require__(191),
 
 		sentence: function sentence() {
 			var wordCount = this.random.number(10, 3);
@@ -6670,7 +6710,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ },
-/* 189 */
+/* 190 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(module) {"use strict";
@@ -6679,7 +6719,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(32)(module)))
 
 /***/ },
-/* 190 */
+/* 191 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(module) {"use strict";
@@ -6688,7 +6728,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(32)(module)))
 
 /***/ },
-/* 191 */
+/* 192 */
 /***/ function(module, exports) {
 
 	"use strict";

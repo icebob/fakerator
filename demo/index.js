@@ -1,4 +1,4 @@
-var Fakerator = require("./fakerator");
+var Fakerator = require("../dist/fakerator");
 
 var fakerator = new Fakerator();
 //fakerator.seed(123);

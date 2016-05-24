@@ -14,7 +14,7 @@
     "coverall": "cat ./test/coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
     "coverage": "npm run test && npm run coverall",
     "changelog": "conventional-changelog -i CHANGELOG.md -s",
-    "_pretest": "npm run lint",
+    "pretest": "npm run lint",
     "test": "karma start test/karma.conf.js",
     "ci": "karma start test/karma.conf.js --auto-watch --no-single-run --reporters=dots"
   },
