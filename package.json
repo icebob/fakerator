@@ -7,12 +7,28 @@
     "test": "test"
   },
   "scripts": {
-    "test": "npm test"
+    "prebuild": "npm run test",
+    "build": "webpack --config config/webpack.build.config.js",
+    "demo": "webpack --config config/webpack.demo.config.js --watch",
+    "lint": "eslint --ext=.js lib",
+    "coverall": "cat ./test/coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
+    "coverage": "npm run test && npm run coverall",
+    "changelog": "conventional-changelog -i CHANGELOG.md -s",
+    "_pretest": "npm run lint",
+    "test": "karma start test/karma.conf.js",
+    "ci": "karma start test/karma.conf.js --auto-watch --no-single-run --reporters=dots"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/icebob/fakerator.git"
   },
+  "files": [
+    "dist/fakerator.js",
+    "dist/fakerator.min.js",
+    "src",
+    "vendor",
+    "test"
+  ],  
   "keywords": [
     "fake",
     "contextual",
@@ -34,8 +50,31 @@
     "babel-plugin-transform-runtime": "6.8.0",
     "babel-preset-es2015": "6.6.0",
     "babel-preset-stage-0": "6.5.0",
+    "eslint": "2.9.0",
+    "eslint-friendly-formatter": "2.0.4",
+    "inject-loader": "2.0.1",
+    "isparta-loader": "2.0.0",   
+    "karma": "0.13.9",
+    "karma-chai": "0.1.0",
+    "karma-chrome-launcher": "1.0.1",
+    "karma-coverage": "0.5.5",
+    "karma-coveralls": "1.1.2",
+    "karma-mocha": "0.2.2",
+    "karma-phantomjs-launcher": "1.0.0",
+    "karma-sinon-chai": "1.2.0",
+    "karma-sourcemap-loader": "0.3.7",
+    "karma-spec-reporter": "0.0.26",
+    "karma-webpack": "1.7.0",
     "lodash": "4.12.0",
+    "lolex": "1.4.0",    
+    "mocha": "2.4.5",
+    "mocha-generators": "1.2.0",
+    "mocha-loader": "0.7.1",    
     "password-generator": "2.0.2",
-    "webpack": "1.13.0"
+    "phantomjs-prebuilt": "2.1.3",
+    "sinon": "1.17.4",
+    "sinon-chai": "2.8.0",
+    "webpack": "1.13.0",
+    "webpack-merge": "0.12.0"
   }
 }
