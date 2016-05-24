@@ -25,4 +25,10 @@ describe("Fakerator.times", () => {
 		expect(res).to.be.deep.equal( [25, 24, 29, 17, 2, 33, 1, 35, 31, 13] );
 	});
 
+	it("check times function with populate", () => {
+		let res = fakerator.times(fakerator.populate, 5, "#{internet.userName}", "John");
+		expect(res).to.be.an("Array");
+		expect(res).to.be.length(5);
+		expect(res[0]).to.be.equal("john_koelpin");
+	});
 })
