@@ -17,6 +17,7 @@
     "fake",
     "contextual",
     "casual",
+    "random",
     "generator",
     "mocks",
     "test"
