@@ -19,5 +19,10 @@ describe("Fakerator.populate", () => {
 		expect(fakerator.populate("#{names.firstName}-###-???")).to.be.equal("Mandy-802-oqs");
 	});
 
+	it("check with sentence", () =>{
+		expect(fakerator.populate("Hi, my name is #{names.name}. I was born in #{address.city}, #{address.country}. I am #{date.age} years old."))
+			.to.be.equal("Hi, my name is Ross Hansen. I was born in New Roderickstad, Denmark. I am 75 years old.");
+
+	});
 
 })

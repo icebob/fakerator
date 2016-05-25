@@ -130,7 +130,7 @@ return /******/ (function(modules) { // webpackBootstrap
 				}
 			}
 		} else {
-			locale = __webpack_require__(180);
+			locale = __webpack_require__(179);
 		}
 		self.locale = locale;
 
@@ -242,9 +242,7 @@ return /******/ (function(modules) { // webpackBootstrap
 		self.times = function (func, n) {
 			var res = [];
 
-			if ((0, _isObject2.default)(n)) {
-				n = this.random.number(n.min || 1, n.max || 10);
-			}
+			if ((0, _isObject2.default)(n)) n = this.random.number(n.min || 1, n.max || 10);
 
 			for (var _len2 = arguments.length, args = Array(_len2 > 2 ? _len2 - 2 : 0), _key2 = 2; _key2 < _len2; _key2++) {
 				args[_key2 - 2] = arguments[_key2];
@@ -252,17 +250,13 @@ return /******/ (function(modules) { // webpackBootstrap
 
 			for (var i = 0; i < n; i++) {
 				res.push(func.call.apply(func, [self].concat(args)));
-			}
-
-			return res;
+			}return res;
 		};
 
 		self.utimes = function (func, n) {
 			var res = [];
 
-			if ((0, _isObject2.default)(n)) {
-				n = this.random.number(n.min || 1, n.max || 10);
-			}
+			if ((0, _isObject2.default)(n)) n = this.random.number(n.min || 1, n.max || 10);
 
 			var i = 0;
 
@@ -282,6 +276,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 		(0, _each2.default)(Object.keys(self.locale), function (category) {
 			if (category === "_meta") return;
+
 			(0, _each2.default)(Object.keys(self.locale[category]), function (item) {
 				self[category] = self[category] || {};
 
@@ -6227,16 +6222,16 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var map = {
 		"./default/address/index": 169,
-		"./default/company/index": 176,
-		"./default/date/index": 177,
-		"./default/entity/index": 179,
-		"./default/index": 180,
-		"./default/internet/index": 186,
-		"./default/lorem/index": 213,
-		"./default/misc/index": 216,
-		"./default/names/index": 181,
-		"./default/phone/index": 185,
-		"./hu-HU/index": 219
+		"./default/company/index": 175,
+		"./default/date/index": 176,
+		"./default/entity/index": 178,
+		"./default/index": 179,
+		"./default/internet/index": 185,
+		"./default/lorem/index": 212,
+		"./default/misc/index": 215,
+		"./default/names/index": 180,
+		"./default/phone/index": 184,
+		"./hu-HU/index": 218
 	};
 	function webpackContext(req) {
 		return __webpack_require__(webpackContextResolve(req));
@@ -6258,14 +6253,31 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	"use strict";
 
+	var _countryWithCodes = __webpack_require__(170);
+
+	var _countryWithCodes2 = _interopRequireDefault(_countryWithCodes);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 	module.exports = {
-		country: __webpack_require__(170),
+		countryAndCode: function countryAndCode() {
+			var country = this.random.objectElement(_countryWithCodes2.default);
+			return {
+				code: Object.keys(country)[0],
+				name: country[Object.keys(country)[0]]
+			};
+		},
+		country: function country() {
+			return this.address.countryAndCode().name;
+		},
+		countryCode: function countryCode() {
+			return this.address.countryAndCode().code;
+		},
 
-		countryCode: __webpack_require__(171),
 
-		state: __webpack_require__(172),
+		state: __webpack_require__(171),
 
-		stateAbbr: __webpack_require__(173),
+		stateAbbr: __webpack_require__(172),
 
 		city: ["#{address.cityPrefix} #{names.firstName}#{address.citySuffix}", "#{address.cityPrefix} #{names.firstName}", "#{names.firstName}#{address.citySuffix}", "#{names.lastName}#{address.citySuffix}"],
 
@@ -6277,7 +6289,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 		streetName: ["#{names.firstName} #{address.streetSuffix}", "#{names.lastName} #{address.streetSuffix}"],
 
-		streetSuffix: __webpack_require__(174),
+		streetSuffix: __webpack_require__(173),
 
 		buildingNumber: ["#####", "####", "###"],
 
@@ -6296,29 +6308,273 @@ return /******/ (function(modules) { // webpackBootstrap
 		},
 
 
-		geoLocationNearBy: __webpack_require__(175)
+		geoLocationNearBy: __webpack_require__(174)
 	};
 
 /***/ },
 /* 170 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ function(module, exports) {
 
-	/* WEBPACK VAR INJECTION */(function(module) {"use strict";
+	"use strict";
 
-	module["exports"] = ["Afghanistan", "Albania", "Algeria", "American Samoa", "Andorra", "Angola", "Anguilla", "Antarctica (the territory South of 60 deg S)", "Antigua and Barbuda", "Argentina", "Armenia", "Aruba", "Australia", "Austria", "Azerbaijan", "Bahamas", "Bahrain", "Bangladesh", "Barbados", "Belarus", "Belgium", "Belize", "Benin", "Bermuda", "Bhutan", "Bolivia", "Bosnia and Herzegovina", "Botswana", "Bouvet Island (Bouvetoya)", "Brazil", "British Indian Ocean Territory (Chagos Archipelago)", "Brunei Darussalam", "Bulgaria", "Burkina Faso", "Burundi", "Cambodia", "Cameroon", "Canada", "Cape Verde", "Cayman Islands", "Central African Republic", "Chad", "Chile", "China", "Christmas Island", "Cocos (Keeling) Islands", "Colombia", "Comoros", "Congo", "Cook Islands", "Costa Rica", "Cote d'Ivoire", "Croatia", "Cuba", "Cyprus", "Czech Republic", "Denmark", "Djibouti", "Dominica", "Dominican Republic", "Ecuador", "Egypt", "El Salvador", "Equatorial Guinea", "Eritrea", "Estonia", "Ethiopia", "Faroe Islands", "Falkland Islands (Malvinas)", "Fiji", "Finland", "France", "French Guiana", "French Polynesia", "French Southern Territories", "Gabon", "Gambia", "Georgia", "Germany", "Ghana", "Gibraltar", "Greece", "Greenland", "Grenada", "Guadeloupe", "Guam", "Guatemala", "Guernsey", "Guinea", "Guinea-Bissau", "Guyana", "Haiti", "Heard Island and McDonald Islands", "Holy See (Vatican City State)", "Honduras", "Hong Kong", "Hungary", "Iceland", "India", "Indonesia", "Iran", "Iraq", "Ireland", "Isle of Man", "Israel", "Italy", "Jamaica", "Japan", "Jersey", "Jordan", "Kazakhstan", "Kenya", "Kiribati", "Democratic People's Republic of Korea", "Republic of Korea", "Kuwait", "Kyrgyz Republic", "Lao People's Democratic Republic", "Latvia", "Lebanon", "Lesotho", "Liberia", "Libyan Arab Jamahiriya", "Liechtenstein", "Lithuania", "Luxembourg", "Macao", "Macedonia", "Madagascar", "Malawi", "Malaysia", "Maldives", "Mali", "Malta", "Marshall Islands", "Martinique", "Mauritania", "Mauritius", "Mayotte", "Mexico", "Micronesia", "Moldova", "Monaco", "Mongolia", "Montenegro", "Montserrat", "Morocco", "Mozambique", "Myanmar", "Namibia", "Nauru", "Nepal", "Netherlands Antilles", "Netherlands", "New Caledonia", "New Zealand", "Nicaragua", "Niger", "Nigeria", "Niue", "Norfolk Island", "Northern Mariana Islands", "Norway", "Oman", "Pakistan", "Palau", "Palestinian Territory", "Panama", "Papua New Guinea", "Paraguay", "Peru", "Philippines", "Pitcairn Islands", "Poland", "Portugal", "Puerto Rico", "Qatar", "Reunion", "Romania", "Russian Federation", "Rwanda", "Saint Barthelemy", "Saint Helena", "Saint Kitts and Nevis", "Saint Lucia", "Saint Martin", "Saint Pierre and Miquelon", "Saint Vincent and the Grenadines", "Samoa", "San Marino", "Sao Tome and Principe", "Saudi Arabia", "Senegal", "Serbia", "Seychelles", "Sierra Leone", "Singapore", "Slovakia (Slovak Republic)", "Slovenia", "Solomon Islands", "Somalia", "South Africa", "South Georgia and the South Sandwich Islands", "Spain", "Sri Lanka", "Sudan", "Suriname", "Svalbard & Jan Mayen Islands", "Swaziland", "Sweden", "Switzerland", "Syrian Arab Republic", "Taiwan", "Tajikistan", "Tanzania", "Thailand", "Timor-Leste", "Togo", "Tokelau", "Tonga", "Trinidad and Tobago", "Tunisia", "Turkey", "Turkmenistan", "Turks and Caicos Islands", "Tuvalu", "Uganda", "Ukraine", "United Arab Emirates", "United Kingdom", "United States of America", "United States Minor Outlying Islands", "Uruguay", "Uzbekistan", "Vanuatu", "Venezuela", "Vietnam", "Virgin Islands, British", "Virgin Islands, U.S.", "Wallis and Futuna", "Western Sahara", "Yemen", "Zambia", "Zimbabwe"];
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(32)(module)))
+	module.exports = {
+		"AF": "Afghanistan",
+		"AX": "Åland Islands",
+		"AL": "Albania",
+		"DZ": "Algeria",
+		"AS": "American Samoa",
+		"AD": "Andorra",
+		"AO": "Angola",
+		"AI": "Anguilla",
+		"AQ": "Antarctica",
+		"AG": "Antigua & Barbuda",
+		"AR": "Argentina",
+		"AM": "Armenia",
+		"AW": "Aruba",
+		"AC": "Ascension Island",
+		"AU": "Australia",
+		"AT": "Austria",
+		"AZ": "Azerbaijan",
+		"BS": "Bahamas",
+		"BH": "Bahrain",
+		"BD": "Bangladesh",
+		"BB": "Barbados",
+		"BY": "Belarus",
+		"BE": "Belgium",
+		"BZ": "Belize",
+		"BJ": "Benin",
+		"BM": "Bermuda",
+		"BT": "Bhutan",
+		"BO": "Bolivia",
+		"BA": "Bosnia & Herzegovina",
+		"BW": "Botswana",
+		"BR": "Brazil",
+		"IO": "British Indian Ocean Territory",
+		"VG": "British Virgin Islands",
+		"BN": "Brunei",
+		"BG": "Bulgaria",
+		"BF": "Burkina Faso",
+		"BI": "Burundi",
+		"KH": "Cambodia",
+		"CM": "Cameroon",
+		"CA": "Canada",
+		"IC": "Canary Islands",
+		"CV": "Cape Verde",
+		"BQ": "Caribbean Netherlands",
+		"KY": "Cayman Islands",
+		"CF": "Central African Republic",
+		"EA": "Ceuta & Melilla",
+		"TD": "Chad",
+		"CL": "Chile",
+		"CN": "China",
+		"CX": "Christmas Island",
+		"CC": "Cocos (Keeling) Islands",
+		"CO": "Colombia",
+		"KM": "Comoros",
+		"CG": "Congo - Brazzaville",
+		"CD": "Congo - Kinshasa",
+		"CK": "Cook Islands",
+		"CR": "Costa Rica",
+		"CI": "Côte d’Ivoire",
+		"HR": "Croatia",
+		"CU": "Cuba",
+		"CW": "Curaçao",
+		"CY": "Cyprus",
+		"CZ": "Czech Republic",
+		"DK": "Denmark",
+		"DG": "Diego Garcia",
+		"DJ": "Djibouti",
+		"DM": "Dominica",
+		"DO": "Dominican Republic",
+		"EC": "Ecuador",
+		"EG": "Egypt",
+		"SV": "El Salvador",
+		"GQ": "Equatorial Guinea",
+		"ER": "Eritrea",
+		"EE": "Estonia",
+		"ET": "Ethiopia",
+		"FK": "Falkland Islands",
+		"FO": "Faroe Islands",
+		"FJ": "Fiji",
+		"FI": "Finland",
+		"FR": "France",
+		"GF": "French Guiana",
+		"PF": "French Polynesia",
+		"TF": "French Southern Territories",
+		"GA": "Gabon",
+		"GM": "Gambia",
+		"GE": "Georgia",
+		"DE": "Germany",
+		"GH": "Ghana",
+		"GI": "Gibraltar",
+		"GR": "Greece",
+		"GL": "Greenland",
+		"GD": "Grenada",
+		"GP": "Guadeloupe",
+		"GU": "Guam",
+		"GT": "Guatemala",
+		"GG": "Guernsey",
+		"GN": "Guinea",
+		"GW": "Guinea-Bissau",
+		"GY": "Guyana",
+		"HT": "Haiti",
+		"HN": "Honduras",
+		"HK": "Hong Kong SAR China",
+		"HU": "Hungary",
+		"IS": "Iceland",
+		"IN": "India",
+		"ID": "Indonesia",
+		"IR": "Iran",
+		"IQ": "Iraq",
+		"IE": "Ireland",
+		"IM": "Isle of Man",
+		"IL": "Israel",
+		"IT": "Italy",
+		"JM": "Jamaica",
+		"JP": "Japan",
+		"JE": "Jersey",
+		"JO": "Jordan",
+		"KZ": "Kazakhstan",
+		"KE": "Kenya",
+		"KI": "Kiribati",
+		"XK": "Kosovo",
+		"KW": "Kuwait",
+		"KG": "Kyrgyzstan",
+		"LA": "Laos",
+		"LV": "Latvia",
+		"LB": "Lebanon",
+		"LS": "Lesotho",
+		"LR": "Liberia",
+		"LY": "Libya",
+		"LI": "Liechtenstein",
+		"LT": "Lithuania",
+		"LU": "Luxembourg",
+		"MO": "Macau SAR China",
+		"MK": "Macedonia",
+		"MG": "Madagascar",
+		"MW": "Malawi",
+		"MY": "Malaysia",
+		"MV": "Maldives",
+		"ML": "Mali",
+		"MT": "Malta",
+		"MH": "Marshall Islands",
+		"MQ": "Martinique",
+		"MR": "Mauritania",
+		"MU": "Mauritius",
+		"YT": "Mayotte",
+		"MX": "Mexico",
+		"FM": "Micronesia",
+		"MD": "Moldova",
+		"MC": "Monaco",
+		"MN": "Mongolia",
+		"ME": "Montenegro",
+		"MS": "Montserrat",
+		"MA": "Morocco",
+		"MZ": "Mozambique",
+		"MM": "Myanmar (Burma)",
+		"NA": "Namibia",
+		"NR": "Nauru",
+		"NP": "Nepal",
+		"NL": "Netherlands",
+		"NC": "New Caledonia",
+		"NZ": "New Zealand",
+		"NI": "Nicaragua",
+		"NE": "Niger",
+		"NG": "Nigeria",
+		"NU": "Niue",
+		"NF": "Norfolk Island",
+		"KP": "North Korea",
+		"MP": "Northern Mariana Islands",
+		"NO": "Norway",
+		"OM": "Oman",
+		"PK": "Pakistan",
+		"PW": "Palau",
+		"PS": "Palestinian Territories",
+		"PA": "Panama",
+		"PG": "Papua New Guinea",
+		"PY": "Paraguay",
+		"PE": "Peru",
+		"PH": "Philippines",
+		"PN": "Pitcairn Islands",
+		"PL": "Poland",
+		"PT": "Portugal",
+		"PR": "Puerto Rico",
+		"QA": "Qatar",
+		"RE": "Réunion",
+		"RO": "Romania",
+		"RU": "Russia",
+		"RW": "Rwanda",
+		"WS": "Samoa",
+		"SM": "San Marino",
+		"ST": "São Tomé & Príncipe",
+		"SA": "Saudi Arabia",
+		"SN": "Senegal",
+		"RS": "Serbia",
+		"SC": "Seychelles",
+		"SL": "Sierra Leone",
+		"SG": "Singapore",
+		"SX": "Sint Maarten",
+		"SK": "Slovakia",
+		"SI": "Slovenia",
+		"SB": "Solomon Islands",
+		"SO": "Somalia",
+		"ZA": "South Africa",
+		"GS": "South Georgia & South Sandwich Islands",
+		"KR": "South Korea",
+		"SS": "South Sudan",
+		"ES": "Spain",
+		"LK": "Sri Lanka",
+		"BL": "St. Barthélemy",
+		"SH": "St. Helena",
+		"KN": "St. Kitts & Nevis",
+		"LC": "St. Lucia",
+		"MF": "St. Martin",
+		"PM": "St. Pierre & Miquelon",
+		"VC": "St. Vincent & Grenadines",
+		"SD": "Sudan",
+		"SR": "Suriname",
+		"SJ": "Svalbard & Jan Mayen",
+		"SZ": "Swaziland",
+		"SE": "Sweden",
+		"CH": "Switzerland",
+		"SY": "Syria",
+		"TW": "Taiwan",
+		"TJ": "Tajikistan",
+		"TZ": "Tanzania",
+		"TH": "Thailand",
+		"TL": "Timor-Leste",
+		"TG": "Togo",
+		"TK": "Tokelau",
+		"TO": "Tonga",
+		"TT": "Trinidad & Tobago",
+		"TA": "Tristan da Cunha",
+		"TN": "Tunisia",
+		"TR": "Turkey",
+		"TM": "Turkmenistan",
+		"TC": "Turks & Caicos Islands",
+		"TV": "Tuvalu",
+		"UM": "U.S. Outlying Islands",
+		"VI": "U.S. Virgin Islands",
+		"UG": "Uganda",
+		"UA": "Ukraine",
+		"AE": "United Arab Emirates",
+		"GB": "United Kingdom",
+		"US": "United States",
+		"UY": "Uruguay",
+		"UZ": "Uzbekistan",
+		"VU": "Vanuatu",
+		"VA": "Vatican City",
+		"VE": "Venezuela",
+		"VN": "Vietnam",
+		"WF": "Wallis & Futuna",
+		"EH": "Western Sahara",
+		"YE": "Yemen",
+		"ZM": "Zambia",
+		"ZW": "Zimbabwe"
+	};
 
 /***/ },
 /* 171 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* WEBPACK VAR INJECTION */(function(module) {"use strict";
-
-	module["exports"] = ["AD", "AE", "AF", "AG", "AI", "AL", "AM", "AO", "AQ", "AR", "AS", "AT", "AU", "AW", "AX", "AZ", "BA", "BB", "BD", "BE", "BF", "BG", "BH", "BI", "BJ", "BL", "BM", "BN", "BO", "BQ", "BQ", "BR", "BS", "BT", "BV", "BW", "BY", "BZ", "CA", "CC", "CD", "CF", "CG", "CH", "CI", "CK", "CL", "CM", "CN", "CO", "CR", "CU", "CV", "CW", "CX", "CY", "CZ", "DE", "DJ", "DK", "DM", "DO", "DZ", "EC", "EE", "EG", "EH", "ER", "ES", "ET", "FI", "FJ", "FK", "FM", "FO", "FR", "GA", "GB", "GD", "GE", "GF", "GG", "GH", "GI", "GL", "GM", "GN", "GP", "GQ", "GR", "GS", "GT", "GU", "GW", "GY", "HK", "HM", "HN", "HR", "HT", "HU", "ID", "IE", "IL", "IM", "IN", "IO", "IQ", "IR", "IS", "IT", "JE", "JM", "JO", "JP", "KE", "KG", "KH", "KI", "KM", "KN", "KP", "KR", "KW", "KY", "KZ", "LA", "LB", "LC", "LI", "LK", "LR", "LS", "LT", "LU", "LV", "LY", "MA", "MC", "MD", "ME", "MF", "MG", "MH", "MK", "ML", "MM", "MN", "MO", "MP", "MQ", "MR", "MS", "MT", "MU", "MV", "MW", "MX", "MY", "MZ", "NA", "NC", "NE", "NF", "NG", "NI", "NL", "NO", "NP", "NR", "NU", "NZ", "OM", "PA", "PE", "PF", "PG", "PH", "PK", "PL", "PM", "PN", "PR", "PS", "PT", "PW", "PY", "QA", "RE", "RO", "RS", "RU", "RW", "SA", "SB", "SC", "SD", "SE", "SG", "SH", "SI", "SJ", "SK", "SL", "SM", "SN", "SO", "SR", "SS", "ST", "SV", "SX", "SY", "SZ", "TC", "TD", "TF", "TG", "TH", "TJ", "TK", "TL", "TM", "TN", "TO", "TR", "TT", "TV", "TW", "TZ", "UA", "UG", "UM", "US", "UY", "UZ", "VA", "VC", "VE", "VG", "VI", "VN", "VU", "WF", "WS", "YE", "YT", "ZA", "ZM", "ZW"];
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(32)(module)))
-
-/***/ },
-/* 172 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(module) {"use strict";
@@ -6327,7 +6583,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(32)(module)))
 
 /***/ },
-/* 173 */
+/* 172 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(module) {"use strict";
@@ -6336,7 +6592,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(32)(module)))
 
 /***/ },
-/* 174 */
+/* 173 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(module) {"use strict";
@@ -6345,7 +6601,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(32)(module)))
 
 /***/ },
-/* 175 */
+/* 174 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -6399,7 +6655,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ },
-/* 176 */
+/* 175 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -6411,7 +6667,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ },
-/* 177 */
+/* 176 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -6419,7 +6675,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = {
 		months: [],
 		days: [],
-		timezone: __webpack_require__(178),
+		timezone: __webpack_require__(177),
 
 		past: function past(years, refDate) {
 			var date = refDate ? new Date(Date.parse(refDate)) : new Date();
@@ -6461,11 +6717,17 @@ return /******/ (function(modules) { // webpackBootstrap
 			date.setTime(past);
 
 			return date;
+		},
+		age: function age() {
+			var min = arguments.length <= 0 || arguments[0] === undefined ? 18 : arguments[0];
+			var max = arguments.length <= 1 || arguments[1] === undefined ? 80 : arguments[1];
+
+			return this.random.number(min, max);
 		}
 	};
 
 /***/ },
-/* 178 */
+/* 177 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(module) {"use strict";
@@ -6474,7 +6736,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(32)(module)))
 
 /***/ },
-/* 179 */
+/* 178 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -6483,8 +6745,10 @@ return /******/ (function(modules) { // webpackBootstrap
 		address: function address() {
 			var def = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
 
+			var country = this.address.countryAndCode();
 			return {
-				country: def.country || this.address.country(),
+				country: def.country || country.name,
+				countryCode: def.countryCode || country.code,
 				state: def.state || this.address.state(),
 				city: def.city || this.address.city(),
 				street: def.street || this.address.street(),
@@ -6538,7 +6802,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ },
-/* 180 */
+/* 179 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -6552,33 +6816,33 @@ return /******/ (function(modules) { // webpackBootstrap
 			country: "United Kingdom"
 		},
 
-		names: __webpack_require__(181),
-		phone: __webpack_require__(185),
+		names: __webpack_require__(180),
+		phone: __webpack_require__(184),
 		address: __webpack_require__(169),
-		company: __webpack_require__(176),
-		internet: __webpack_require__(186),
-		lorem: __webpack_require__(213),
-		date: __webpack_require__(177),
-		misc: __webpack_require__(216),
-		entity: __webpack_require__(179)
+		company: __webpack_require__(175),
+		internet: __webpack_require__(185),
+		lorem: __webpack_require__(212),
+		date: __webpack_require__(176),
+		misc: __webpack_require__(215),
+		entity: __webpack_require__(178)
 	};
 
 /***/ },
-/* 181 */
+/* 180 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 
 	module.exports = {
-		firstNameM: __webpack_require__(182),
+		firstNameM: __webpack_require__(181),
 
-		firstNameF: __webpack_require__(183),
+		firstNameF: __webpack_require__(182),
 
 		firstName: ["#{names.firstNameM}", "#{names.firstNameF}"],
 
-		lastNameM: __webpack_require__(184),
+		lastNameM: __webpack_require__(183),
 
-		lastNameF: __webpack_require__(184),
+		lastNameF: __webpack_require__(183),
 
 		lastName: ["#{names.lastNameM}", "#{names.lastNameF}"],
 
@@ -6594,7 +6858,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ },
-/* 182 */
+/* 181 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(module) {"use strict";
@@ -6603,7 +6867,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(32)(module)))
 
 /***/ },
-/* 183 */
+/* 182 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(module) {"use strict";
@@ -6612,7 +6876,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(32)(module)))
 
 /***/ },
-/* 184 */
+/* 183 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -6620,7 +6884,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = ["Abbott", "Abernathy", "Abshire", "Adams", "Altenwerth", "Anderson", "Ankunding", "Armstrong", "Auer", "Aufderhar", "Bahringer", "Bailey", "Balistreri", "Barrows", "Bartell", "Bartoletti", "Barton", "Bashirian", "Batz", "Bauch", "Baumbach", "Bayer", "Beahan", "Beatty", "Bechtelar", "Becker", "Bednar", "Beer", "Beier", "Berge", "Bergnaum", "Bergstrom", "Bernhard", "Bernier", "Bins", "Blanda", "Blick", "Block", "Bode", "Boehm", "Bogan", "Bogisich", "Borer", "Bosco", "Botsford", "Boyer", "Boyle", "Bradtke", "Brakus", "Braun", "Breitenberg", "Brekke", "Brown", "Bruen", "Buckridge", "Carroll", "Carter", "Cartwright", "Casper", "Cassin", "Champlin", "Christiansen", "Cole", "Collier", "Collins", "Conn", "Connelly", "Conroy", "Considine", "Corkery", "Cormier", "Corwin", "Cremin", "Crist", "Crona", "Cronin", "Crooks", "Cruickshank", "Cummerata", "Cummings", "Dach", "D'Amore", "Daniel", "Dare", "Daugherty", "Davis", "Deckow", "Denesik", "Dibbert", "Dickens", "Dicki", "Dickinson", "Dietrich", "Donnelly", "Dooley", "Douglas", "Doyle", "DuBuque", "Durgan", "Ebert", "Effertz", "Eichmann", "Emard", "Emmerich", "Erdman", "Ernser", "Fadel", "Fahey", "Farrell", "Fay", "Feeney", "Feest", "Feil", "Ferry", "Fisher", "Flatley", "Frami", "Franecki", "Friesen", "Fritsch", "Funk", "Gaylord", "Gerhold", "Gerlach", "Gibson", "Gislason", "Gleason", "Gleichner", "Glover", "Goldner", "Goodwin", "Gorczany", "Gottlieb", "Goyette", "Grady", "Graham", "Grant", "Green", "Greenfelder", "Greenholt", "Grimes", "Gulgowski", "Gusikowski", "Gutkowski", "Gutmann", "Haag", "Hackett", "Hagenes", "Hahn", "Haley", "Halvorson", "Hamill", "Hammes", "Hand", "Hane", "Hansen", "Harber", "Harris", "Hartmann", "Harvey", "Hauck", "Hayes", "Heaney", "Heathcote", "Hegmann", "Heidenreich", "Heller", "Herman", "Hermann", "Hermiston", "Herzog", "Hessel", "Hettinger", "Hickle", "Hilll", "Hills", "Hilpert", "Hintz", "Hirthe", "Hodkiewicz", "Hoeger", "Homenick", "Hoppe", "Howe", "Howell", "Hudson", "Huel", "Huels", "Hyatt", "Jacobi", "Jacobs", "Jacobson", "Jakubowski", "Jaskolski", "Jast", "Jenkins", "Jerde", "Johns", "Johnson", "Johnston", "Jones", "Kassulke", "Kautzer", "Keebler", "Keeling", "Kemmer", "Kerluke", "Kertzmann", "Kessler", "Kiehn", "Kihn", "Kilback", "King", "Kirlin", "Klein", "Kling", "Klocko", "Koch", "Koelpin", "Koepp", "Kohler", "Konopelski", "Koss", "Kovacek", "Kozey", "Krajcik", "Kreiger", "Kris", "Kshlerin", "Kub", "Kuhic", "Kuhlman", "Kuhn", "Kulas", "Kunde", "Kunze", "Kuphal", "Kutch", "Kuvalis", "Labadie", "Lakin", "Lang", "Langosh", "Langworth", "Larkin", "Larson", "Leannon", "Lebsack", "Ledner", "Leffler", "Legros", "Lehner", "Lemke", "Lesch", "Leuschke", "Lind", "Lindgren", "Littel", "Little", "Lockman", "Lowe", "Lubowitz", "Lueilwitz", "Luettgen", "Lynch", "Macejkovic", "MacGyver", "Maggio", "Mann", "Mante", "Marks", "Marquardt", "Marvin", "Mayer", "Mayert", "McClure", "McCullough", "McDermott", "McGlynn", "McKenzie", "McLaughlin", "Medhurst", "Mertz", "Metz", "Miller", "Mills", "Mitchell", "Moen", "Mohr", "Monahan", "Moore", "Morar", "Morissette", "Mosciski", "Mraz", "Mueller", "Muller", "Murazik", "Murphy", "Murray", "Nader", "Nicolas", "Nienow", "Nikolaus", "Nitzsche", "Nolan", "Oberbrunner", "O'Connell", "O'Conner", "O'Hara", "O'Keefe", "O'Kon", "Okuneva", "Olson", "Ondricka", "O'Reilly", "Orn", "Ortiz", "Osinski", "Pacocha", "Padberg", "Pagac", "Parisian", "Parker", "Paucek", "Pfannerstill", "Pfeffer", "Pollich", "Pouros", "Powlowski", "Predovic", "Price", "Prohaska", "Prosacco", "Purdy", "Quigley", "Quitzon", "Rath", "Ratke", "Rau", "Raynor", "Reichel", "Reichert", "Reilly", "Reinger", "Rempel", "Renner", "Reynolds", "Rice", "Rippin", "Ritchie", "Robel", "Roberts", "Rodriguez", "Rogahn", "Rohan", "Rolfson", "Romaguera", "Roob", "Rosenbaum", "Rowe", "Ruecker", "Runolfsdottir", "Runolfsson", "Runte", "Russel", "Rutherford", "Ryan", "Sanford", "Satterfield", "Sauer", "Sawayn", "Schaden", "Schaefer", "Schamberger", "Schiller", "Schimmel", "Schinner", "Schmeler", "Schmidt", "Schmitt", "Schneider", "Schoen", "Schowalter", "Schroeder", "Schulist", "Schultz", "Schumm", "Schuppe", "Schuster", "Senger", "Shanahan", "Shields", "Simonis", "Sipes", "Skiles", "Smith", "Smitham", "Spencer", "Spinka", "Sporer", "Stamm", "Stanton", "Stark", "Stehr", "Steuber", "Stiedemann", "Stokes", "Stoltenberg", "Stracke", "Streich", "Stroman", "Strosin", "Swaniawski", "Swift", "Terry", "Thiel", "Thompson", "Tillman", "Torp", "Torphy", "Towne", "Toy", "Trantow", "Tremblay", "Treutel", "Tromp", "Turcotte", "Turner", "Ullrich", "Upton", "Vandervort", "Veum", "Volkman", "Von", "VonRueden", "Waelchi", "Walker", "Walsh", "Walter", "Ward", "Waters", "Watsica", "Weber", "Wehner", "Weimann", "Weissnat", "Welch", "West", "White", "Wiegand", "Wilderman", "Wilkinson", "Will", "Williamson", "Willms", "Windler", "Wintheiser", "Wisoky", "Wisozk", "Witting", "Wiza", "Wolf", "Wolff", "Wuckert", "Wunsch", "Wyman", "Yost", "Yundt", "Zboncak", "Zemlak", "Ziemann", "Zieme", "Zulauf"];
 
 /***/ },
-/* 185 */
+/* 184 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -6630,25 +6894,25 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ },
-/* 186 */
+/* 185 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 
-	var _passwordGenerator = __webpack_require__(187);
+	var _passwordGenerator = __webpack_require__(186);
 
 	var _passwordGenerator2 = _interopRequireDefault(_passwordGenerator);
 
-	var _crypto = __webpack_require__(188);
+	var _crypto = __webpack_require__(187);
 
 	var _crypto2 = _interopRequireDefault(_crypto);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	module.exports = {
-		avatar: __webpack_require__(211),
+		avatar: __webpack_require__(210),
 
-		tld: __webpack_require__(212),
+		tld: __webpack_require__(211),
 
 		userName: function userName(firstName, lastName) {
 			firstName = this.slugify(firstName ? firstName : this.populate("#{names.firstName}")).toLowerCase();
@@ -6729,7 +6993,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ },
-/* 187 */
+/* 186 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -6785,10 +7049,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	})(undefined);
 
 /***/ },
-/* 188 */
+/* 187 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function(Buffer) {var rng = __webpack_require__(193)
+	/* WEBPACK VAR INJECTION */(function(Buffer) {var rng = __webpack_require__(192)
 
 	function error () {
 	  var m = [].slice.call(arguments).join(' ')
@@ -6799,9 +7063,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	    ].join('\n'))
 	}
 
-	exports.createHash = __webpack_require__(195)
+	exports.createHash = __webpack_require__(194)
 
-	exports.createHmac = __webpack_require__(208)
+	exports.createHmac = __webpack_require__(207)
 
 	exports.randomBytes = function(size, callback) {
 	  if (callback && callback.call) {
@@ -6822,7 +7086,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  return ['sha1', 'sha256', 'sha512', 'md5', 'rmd160']
 	}
 
-	var p = __webpack_require__(209)(exports)
+	var p = __webpack_require__(208)(exports)
 	exports.pbkdf2 = p.pbkdf2
 	exports.pbkdf2Sync = p.pbkdf2Sync
 
@@ -6842,10 +7106,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	  }
 	})
 
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(189).Buffer))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(188).Buffer))
 
 /***/ },
-/* 189 */
+/* 188 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(Buffer, global) {/*!
@@ -6858,9 +7122,9 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	'use strict'
 
-	var base64 = __webpack_require__(190)
-	var ieee754 = __webpack_require__(191)
-	var isArray = __webpack_require__(192)
+	var base64 = __webpack_require__(189)
+	var ieee754 = __webpack_require__(190)
+	var isArray = __webpack_require__(191)
 
 	exports.Buffer = Buffer
 	exports.SlowBuffer = SlowBuffer
@@ -8397,10 +8661,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	  return i
 	}
 
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(189).Buffer, (function() { return this; }())))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(188).Buffer, (function() { return this; }())))
 
 /***/ },
-/* 190 */
+/* 189 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var lookup = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/';
@@ -8530,7 +8794,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 191 */
+/* 190 */
 /***/ function(module, exports) {
 
 	exports.read = function (buffer, offset, isLE, mLen, nBytes) {
@@ -8620,7 +8884,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 192 */
+/* 191 */
 /***/ function(module, exports) {
 
 	var toString = {}.toString;
@@ -8631,13 +8895,13 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 193 */
+/* 192 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(global, Buffer) {(function() {
 	  var g = ('undefined' === typeof window ? global : window) || {}
 	  _crypto = (
-	    g.crypto || g.msCrypto || __webpack_require__(194)
+	    g.crypto || g.msCrypto || __webpack_require__(193)
 	  )
 	  module.exports = function(size) {
 	    // Modern Browsers
@@ -8661,22 +8925,22 @@ return /******/ (function(modules) { // webpackBootstrap
 	  }
 	}())
 
-	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }()), __webpack_require__(189).Buffer))
+	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }()), __webpack_require__(188).Buffer))
 
 /***/ },
-/* 194 */
+/* 193 */
 /***/ function(module, exports) {
 
 	/* (ignored) */
 
 /***/ },
-/* 195 */
+/* 194 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function(Buffer) {var createHash = __webpack_require__(196)
+	/* WEBPACK VAR INJECTION */(function(Buffer) {var createHash = __webpack_require__(195)
 
-	var md5 = toConstructor(__webpack_require__(205))
-	var rmd160 = toConstructor(__webpack_require__(207))
+	var md5 = toConstructor(__webpack_require__(204))
+	var rmd160 = toConstructor(__webpack_require__(206))
 
 	function toConstructor (fn) {
 	  return function () {
@@ -8704,10 +8968,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	  return createHash(alg)
 	}
 
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(189).Buffer))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(188).Buffer))
 
 /***/ },
-/* 196 */
+/* 195 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var exports = module.exports = function (alg) {
@@ -8716,16 +8980,16 @@ return /******/ (function(modules) { // webpackBootstrap
 	  return new Alg()
 	}
 
-	var Buffer = __webpack_require__(189).Buffer
-	var Hash   = __webpack_require__(197)(Buffer)
+	var Buffer = __webpack_require__(188).Buffer
+	var Hash   = __webpack_require__(196)(Buffer)
 
-	exports.sha1 = __webpack_require__(198)(Buffer, Hash)
-	exports.sha256 = __webpack_require__(203)(Buffer, Hash)
-	exports.sha512 = __webpack_require__(204)(Buffer, Hash)
+	exports.sha1 = __webpack_require__(197)(Buffer, Hash)
+	exports.sha256 = __webpack_require__(202)(Buffer, Hash)
+	exports.sha512 = __webpack_require__(203)(Buffer, Hash)
 
 
 /***/ },
-/* 197 */
+/* 196 */
 /***/ function(module, exports) {
 
 	module.exports = function (Buffer) {
@@ -8808,7 +9072,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 198 */
+/* 197 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -8820,7 +9084,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * See http://pajhome.org.uk/crypt/md5 for details.
 	 */
 
-	var inherits = __webpack_require__(199).inherits
+	var inherits = __webpack_require__(198).inherits
 
 	module.exports = function (Buffer, Hash) {
 
@@ -8952,7 +9216,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 199 */
+/* 198 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(global, process) {// Copyright Joyent, Inc. and other Node contributors.
@@ -9480,7 +9744,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 	exports.isPrimitive = isPrimitive;
 
-	exports.isBuffer = __webpack_require__(201);
+	exports.isBuffer = __webpack_require__(200);
 
 	function objectToString(o) {
 	  return Object.prototype.toString.call(o);
@@ -9524,7 +9788,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 *     prototype.
 	 * @param {function} superCtor Constructor function to inherit prototype from.
 	 */
-	exports.inherits = __webpack_require__(202);
+	exports.inherits = __webpack_require__(201);
 
 	exports._extend = function(origin, add) {
 	  // Don't do anything if add isn't an object
@@ -9542,10 +9806,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	  return Object.prototype.hasOwnProperty.call(obj, prop);
 	}
 
-	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }()), __webpack_require__(200)))
+	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }()), __webpack_require__(199)))
 
 /***/ },
-/* 200 */
+/* 199 */
 /***/ function(module, exports) {
 
 	// shim for using process in browser
@@ -9645,7 +9909,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 201 */
+/* 200 */
 /***/ function(module, exports) {
 
 	module.exports = function isBuffer(arg) {
@@ -9656,7 +9920,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 /***/ },
-/* 202 */
+/* 201 */
 /***/ function(module, exports) {
 
 	if (typeof Object.create === 'function') {
@@ -9685,7 +9949,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 203 */
+/* 202 */
 /***/ function(module, exports, __webpack_require__) {
 
 	
@@ -9697,7 +9961,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 *
 	 */
 
-	var inherits = __webpack_require__(199).inherits
+	var inherits = __webpack_require__(198).inherits
 
 	module.exports = function (Buffer, Hash) {
 
@@ -9838,10 +10102,10 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 204 */
+/* 203 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var inherits = __webpack_require__(199).inherits
+	var inherits = __webpack_require__(198).inherits
 
 	module.exports = function (Buffer, Hash) {
 	  var K = [
@@ -10088,7 +10352,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 205 */
+/* 204 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -10100,7 +10364,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * See http://pajhome.org.uk/crypt/md5 for more info.
 	 */
 
-	var helpers = __webpack_require__(206);
+	var helpers = __webpack_require__(205);
 
 	/*
 	 * Calculate the MD5 of an array of little-endian words, and a bit length
@@ -10249,7 +10513,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 206 */
+/* 205 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(Buffer) {var intSize = 4;
@@ -10287,10 +10551,10 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	module.exports = { hash: hash };
 
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(189).Buffer))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(188).Buffer))
 
 /***/ },
-/* 207 */
+/* 206 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(Buffer) {
@@ -10499,13 +10763,13 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(189).Buffer))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(188).Buffer))
 
 /***/ },
-/* 208 */
+/* 207 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function(Buffer) {var createHash = __webpack_require__(195)
+	/* WEBPACK VAR INJECTION */(function(Buffer) {var createHash = __webpack_require__(194)
 
 	var zeroBuffer = new Buffer(128)
 	zeroBuffer.fill(0)
@@ -10549,13 +10813,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(189).Buffer))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(188).Buffer))
 
 /***/ },
-/* 209 */
+/* 208 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var pbkdf2Export = __webpack_require__(210)
+	var pbkdf2Export = __webpack_require__(209)
 
 	module.exports = function (crypto, exports) {
 	  exports = exports || {}
@@ -10570,7 +10834,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 210 */
+/* 209 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(Buffer) {module.exports = function(crypto) {
@@ -10658,10 +10922,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	  }
 	}
 
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(189).Buffer))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(188).Buffer))
 
 /***/ },
-/* 211 */
+/* 210 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(module) {"use strict";
@@ -10670,7 +10934,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(32)(module)))
 
 /***/ },
-/* 212 */
+/* 211 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(module) {"use strict";
@@ -10679,14 +10943,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(32)(module)))
 
 /***/ },
-/* 213 */
+/* 212 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 
 	module.exports = {
-		word: __webpack_require__(214),
-		supplemental: __webpack_require__(215),
+		word: __webpack_require__(213),
+		supplemental: __webpack_require__(214),
 
 		sentence: function sentence() {
 			var wordCount = this.random.number(3, 10);
@@ -10707,7 +10971,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ },
-/* 214 */
+/* 213 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(module) {"use strict";
@@ -10716,7 +10980,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(32)(module)))
 
 /***/ },
-/* 215 */
+/* 214 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(module) {"use strict";
@@ -10725,12 +10989,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(32)(module)))
 
 /***/ },
-/* 216 */
+/* 215 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 
-	var _uuid = __webpack_require__(217);
+	var _uuid = __webpack_require__(216);
 
 	var _uuid2 = _interopRequireDefault(_uuid);
 
@@ -10741,7 +11005,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ },
-/* 217 */
+/* 216 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//     uuid.js
@@ -10752,7 +11016,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	// Unique ID creation requires a high quality random # generator.  We feature
 	// detect to determine the best RNG source, normalizing to a function that
 	// returns 128-bits of randomness, since that's what's usually required
-	var _rng = __webpack_require__(218);
+	var _rng = __webpack_require__(217);
 
 	// Maps for number <-> hex string conversion
 	var _byteToHex = [];
@@ -10930,7 +11194,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 218 */
+/* 217 */
 /***/ function(module, exports) {
 
 	/* WEBPACK VAR INJECTION */(function(global) {
@@ -10968,7 +11232,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ },
-/* 219 */
+/* 218 */
 /***/ function(module, exports) {
 
 	"use strict";

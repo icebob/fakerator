@@ -40,4 +40,9 @@ describe("Default date", () => {
 		expect(fakerator.date.recent(10)).to.be.an("Date");
 	});
 
+	it("check date.age", () => {
+		expect(fakerator.populate("#{date.age}")).to.be.equal("63");
+		expect(fakerator.date.age()).to.be.equal(26);
+		expect(fakerator.date.age(6, 18)).to.be.equal(18);
+	});
 })
