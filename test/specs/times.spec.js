@@ -31,4 +31,12 @@ describe("Fakerator.times", () => {
 		expect(res).to.be.length(5);
 		expect(res[0]).to.be.equal("john_koelpin");
 	});
+
+	it("check times function with min max", () => {
+		let res = fakerator.times(fakerator.random.number, { min: 5, max: 8} , 1, 50);
+		expect(res).to.be.an("Array");
+		expect(res.length).to.be.least(5).most(8);
+		expect(res).to.be.deep.equal( [24, 29, 17, 2, 33, 1] );
+	});
+
 })
