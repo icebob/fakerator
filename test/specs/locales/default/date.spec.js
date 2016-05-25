@@ -45,4 +45,25 @@ describe("Default date", () => {
 		expect(fakerator.date.age()).to.be.equal(26);
 		expect(fakerator.date.age(6, 18)).to.be.equal(18);
 	});
+
+	it("check date.months", () => {
+		expect(fakerator.populate("#{date.months}")).to.be.equal("September");
+		expect(fakerator.date.months()).to.be.equal("February");
+	});	
+
+	it("check date.weekdays", () => {
+		expect(fakerator.populate("#{date.weekdays}")).to.be.equal("Friday");
+		expect(fakerator.date.weekdays()).to.be.equal("Sunday");
+	});	
+
+	it("check date.weekdaysShort", () => {
+		expect(fakerator.populate("#{date.weekdaysShort}")).to.be.equal("Fri");
+		expect(fakerator.date.weekdaysShort()).to.be.equal("Sun");
+	});	
+
+	it("check date.weekdaysMin", () => {
+		expect(fakerator.populate("#{date.weekdaysMin}")).to.be.equal("Fr");
+		expect(fakerator.date.weekdaysMin()).to.be.equal("Su");
+	});	
+
 })
