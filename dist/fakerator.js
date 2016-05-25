@@ -154,7 +154,9 @@ return /******/ (function(modules) { // webpackBootstrap
 				return precision * Math.floor(mersenne.rand(max + 1, min));
 			},
 			boolean: function boolean() {
-				return !!self.random.number(0, 1);
+				var likelihood = arguments.length <= 0 || arguments[0] === undefined ? 50 : arguments[0];
+
+				return self.random.number(0, 100) <= likelihood;
 			},
 			digit: function digit() {
 				return self.random.number(9);
@@ -169,6 +171,16 @@ return /******/ (function(modules) { // webpackBootstrap
 			},
 			letter: function letter() {
 				return self.random.arrayElement(chars);
+			},
+			string: function string() {
+				var len = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
+
+				var res = [];
+				if ((0, _isObject2.default)(len)) len = self.random.number(len.min || 5, len.max || 10);
+
+				for (var i = 0; i < len; i++) {
+					res.push(self.random.letter());
+				}return res.join("");
 			},
 			arrayElement: function arrayElement(array) {
 				if (array && array.length > 0) return array[self.random.number(array.length - 1)];
@@ -6673,14 +6685,23 @@ return /******/ (function(modules) { // webpackBootstrap
 	"use strict";
 
 	module.exports = {
-		months: [],
-		days: [],
+		months: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
+
+		weekdays: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+
+		weekdaysShort: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
+
+		weekdaysMin: ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"],
+
 		timezone: __webpack_require__(177),
 
-		past: function past(years, refDate) {
+		past: function past() {
+			var years = arguments.length <= 0 || arguments[0] === undefined ? 1 : arguments[0];
+			var refDate = arguments[1];
+
 			var date = refDate ? new Date(Date.parse(refDate)) : new Date();
 			var min = 1000;
-			var max = (years || 1) * 365 * 24 * 3600 * 1000;
+			var max = years * 365 * 24 * 3600 * 1000;
 
 			var past = date.getTime();
 			past -= this.random.number(min, max);
@@ -6688,10 +6709,13 @@ return /******/ (function(modules) { // webpackBootstrap
 
 			return date;
 		},
-		future: function future(years, refDate) {
+		future: function future() {
+			var years = arguments.length <= 0 || arguments[0] === undefined ? 1 : arguments[0];
+			var refDate = arguments[1];
+
 			var date = refDate ? new Date(Date.parse(refDate)) : new Date();
 			var min = 1000;
-			var max = (years || 1) * 365 * 24 * 3600 * 1000;
+			var max = years * 365 * 24 * 3600 * 1000;
 
 			var future = date.getTime();
 			future += this.random.number(min, max);
@@ -6707,10 +6731,12 @@ return /******/ (function(modules) { // webpackBootstrap
 
 			return newDate;
 		},
-		recent: function recent(days) {
+		recent: function recent() {
+			var days = arguments.length <= 0 || arguments[0] === undefined ? 1 : arguments[0];
+
 			var date = new Date();
 			var min = 1000;
-			var max = (days || 1) * 24 * 3600 * 1000;
+			var max = days * 24 * 3600 * 1000;
 
 			var past = date.getTime();
 			past -= this.random.number(min, max);
