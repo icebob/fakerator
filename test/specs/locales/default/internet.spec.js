@@ -54,13 +54,14 @@ describe("Default internet", () => {
 	});
 
 	it("check internet.email", () => {
-		expect(fakerator.populate("#{internet.email}")).to.be.equal("kelly.moore43@gmail.com");
-		expect(fakerator.internet.email()).to.be.equal("annette.mante60@gmail.com");
+		expect(fakerator.populate("#{internet.email}")).to.be.equal("kelly.moore@gmail.com");
+		expect(fakerator.internet.email()).to.be.equal("vernonheidenreich43@hotmail.com");
 	});
 
 	it("check internet.email with name parameters", () => {
-		expect(fakerator.populate("#{internet.email}", "John", "Doe")).to.be.equal("johndoe96@gmail.com");
-		expect(fakerator.internet.email("Jane", "Doe")).to.be.equal("jane.doe43@gmail.com");
+		expect(fakerator.populate("#{internet.email}", "John", "Doe")).to.be.equal("john.doe@hotmail.com");
+		expect(fakerator.internet.email("Jane", "Doe")).to.be.equal("janedoe21@hotmail.com");
+		expect(fakerator.internet.email(null, null, "company.org")).to.be.equal("vernonheidenreich54@company.org");
 	});
 
 	it("check internet.imageCategories", () => {
@@ -90,8 +91,8 @@ describe("Default internet", () => {
 	});
 
 	it("check internet.gravatar", () => {
-		expect(fakerator.populate("#{internet.gravatar}")).to.be.equal("//www.gravatar.com/avatar/43773e15060b15aca46d63cf57a7d60e");
-		expect(fakerator.internet.gravatar()).to.be.equal("//www.gravatar.com/avatar/833e19911ae57b595fdd535c51be0b42");
+		expect(fakerator.populate("#{internet.gravatar}")).to.be.equal("//www.gravatar.com/avatar/a91004b566f80271f0a3577f71d43cd4");
+		expect(fakerator.internet.gravatar()).to.be.equal("//www.gravatar.com/avatar/06ba08b465e85247620b410fbb26dacf");
 		expect(fakerator.internet.gravatar("john.doe@gmail.com")).to.be.equal("//www.gravatar.com/avatar/e13743a7f1db7f4246badd6fd6ff54ff");
 	});
 
