@@ -7,7 +7,6 @@
 - color with #
 - email with domain parameter
 - ipv6
-- address.altitude
 - country name and code same
 - times n variable as object {min: 1, max: 100} and select a random n
 - unique() as times() (utimes)

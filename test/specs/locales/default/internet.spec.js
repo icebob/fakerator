@@ -88,4 +88,11 @@ describe("Default internet", () => {
 		expect(fakerator.internet.color()).to.be.equal("4e2216");
 		expect(fakerator.internet.color(255, 128)).to.be.equal("b76f49");
 	});
+
+	it("check internet.gravatar", () => {
+		expect(fakerator.populate("#{internet.gravatar}")).to.be.equal("//www.gravatar.com/avatar/43773e15060b15aca46d63cf57a7d60e");
+		expect(fakerator.internet.gravatar()).to.be.equal("//www.gravatar.com/avatar/833e19911ae57b595fdd535c51be0b42");
+		expect(fakerator.internet.gravatar("john.doe@gmail.com")).to.be.equal("//www.gravatar.com/avatar/e13743a7f1db7f4246badd6fd6ff54ff");
+	});
+
 })
