@@ -32,6 +32,7 @@ describe("Default entity", () => {
 			expect(user).to.have.property("address").an("Object");
 
 			expect(user.address).to.have.property("country").an("String");
+			expect(user.address).to.have.property("countryCode").an("String").length(2);
 			expect(user.address).to.have.property("state").an("String");
 			expect(user.address).to.have.property("city").an("String");
 			expect(user.address).to.have.property("street").an("String");
@@ -71,6 +72,7 @@ describe("Default entity", () => {
 			expect(address).to.be.an("Object");
 
 			expect(address).to.have.property("country").an("String");
+			expect(address).to.have.property("countryCode").an("String").length(2);
 			expect(address).to.have.property("state").an("String");
 			expect(address).to.have.property("city").an("String");
 			expect(address).to.have.property("street").an("String");
@@ -79,12 +81,13 @@ describe("Default entity", () => {
 			expect(address.geo).to.have.property("latitude").an("Number");
 			expect(address.geo).to.have.property("longitude").an("Number");
 
-			//console.log(address);
+			// console.log(address);
 		});
 
 		it("check address with defined country", () => {
-			let address = fakerator.entity.address({ country: "France" });
+			let address = fakerator.entity.address({ country: "France", countryCode: "FR" });
 			expect(address.country).to.be.equal("France");
+			expect(address.countryCode).to.be.equal("FR");
 		});		
 
 	});	
@@ -107,18 +110,7 @@ describe("Default entity", () => {
 			expect(company).to.have.property("phone").an("String");
 			expect(company).to.have.property("website").an("String");
 			expect(company).to.have.property("ip").an("String");
-
 			expect(company).to.have.property("address").an("Object");
-			expect(company.address).to.have.property("country").an("String");
-			expect(company.address).to.have.property("state").an("String");
-			expect(company.address).to.have.property("city").an("String");
-			expect(company.address).to.have.property("street").an("String");
-			expect(company.address).to.have.property("zip").an("String");
-			expect(company.address).to.have.property("geo").an("Object");
-			expect(company.address.geo).to.have.property("latitude").an("Number");
-			expect(company.address.geo).to.have.property("longitude").an("Number");
-
-			// console.log(company);
 		});
 
 	});

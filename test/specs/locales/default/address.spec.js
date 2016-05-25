@@ -12,8 +12,20 @@ describe("Default address", () => {
 	});
 
 	it("check address.country", () => {
-		expect(fakerator.populate("#{address.country}")).to.be.equal("Qatar");
-		expect(fakerator.address.country()).to.be.equal("Bulgaria");
+		expect(fakerator.populate("#{address.country}")).to.be.equal("Romania");
+		expect(fakerator.address.country()).to.be.equal("Brunei");
+	});
+
+	it("check address.countryCode", () => {
+		expect(fakerator.populate("#{address.countryCode}")).to.be.equal("RO");
+		expect(fakerator.address.countryCode()).to.be.equal("BN");
+	});
+
+	it("check address.countryAndCode", () => {
+		let res = fakerator.address.countryAndCode()
+		expect(res).to.be.an("Object");
+		expect(res).to.have.property("code").equal("RO");
+		expect(res).to.have.property("name").equal("Romania");
 	});
 
 	it("check address.city", () => {
