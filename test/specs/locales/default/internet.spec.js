@@ -91,9 +91,9 @@ describe("Default internet", () => {
 	});
 
 	it("check internet.gravatar", () => {
-		expect(fakerator.populate("#{internet.gravatar}")).to.be.equal("//www.gravatar.com/avatar/a91004b566f80271f0a3577f71d43cd4");
-		expect(fakerator.internet.gravatar()).to.be.equal("//www.gravatar.com/avatar/06ba08b465e85247620b410fbb26dacf");
-		expect(fakerator.internet.gravatar("john.doe@gmail.com")).to.be.equal("//www.gravatar.com/avatar/e13743a7f1db7f4246badd6fd6ff54ff");
+		expect(fakerator.populate("#{internet.gravatar}")).to.be.equal("https://www.gravatar.com/avatar/a91004b566f80271f0a3577f71d43cd4");
+		expect(fakerator.internet.gravatar()).to.be.equal("https://www.gravatar.com/avatar/06ba08b465e85247620b410fbb26dacf");
+		expect(fakerator.internet.gravatar("john.doe@gmail.com")).to.be.equal("https://www.gravatar.com/avatar/e13743a7f1db7f4246badd6fd6ff54ff");
 	});
 
 	it("check internet.ipv6", () => {

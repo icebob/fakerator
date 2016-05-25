@@ -1,5 +1,5 @@
 # fakerator [![NPM version](https://img.shields.io/npm/f/fakerator.svg)](https://www.npmjs.com/package/fakerator)
-> Random data generator with localization
+> Random fake data generator with localization
 
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/939fc8b138a64c65b9827543e30dab39)](https://www.codacy.com/app/mereg-norbert/fakerator?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=icebob/fakerator&amp;utm_campaign=Badge_Grade)
 [![Build Status](https://travis-ci.org/icebob/fakerator.svg?branch=master)](https://travis-ci.org/icebob/fakerator)
@@ -8,3 +8,7 @@
 [![Dependency Status](https://david-dm.org/icebob/fakerator.svg)](https://david-dm.org/icebob/fakerator)
 [![devDependency Status](https://david-dm.org/icebob/fakerator/dev-status.svg)](https://david-dm.org/icebob/fakerator#info=devDependencies)
 [![Downloads](https://img.shields.io/npm/dt/fakerator.svg)](https://www.npmjs.com/package/fakerator)
+
+
+## Demo
+[JSFiddle test page](https://jsfiddle.net/icebob/wngcbpkq/)

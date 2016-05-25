@@ -25,4 +25,8 @@ describe("Fakerator.populate", () => {
 
 	});
 
+	it("check populate with missing def", () => {
+		expect(fakerator.populate("#{abcd.xyz}")).to.be.equal("4{abcd.xyz}");
+	});
+
 })
