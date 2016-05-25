@@ -39,4 +39,36 @@ describe("Fakerator.times", () => {
 		expect(res).to.be.deep.equal( [24, 29, 17, 2, 33, 1] );
 	});
 
-})
+});
+
+describe("Fakerator.utimes", () => {
+
+	let fakerator;
+
+	beforeEach( () => {
+		fakerator = new Fakerator();
+		fakerator.seed(4278);
+	});
+
+	it("check utimes function with random.number", () => {
+		let res = fakerator.utimes(fakerator.random.number, 6, 1, 10);
+		expect(res).to.be.an("Array");
+		expect(res).to.be.length(6);
+		expect(res).to.be.deep.equal( [5, 6, 4, 1, 7, 3] );
+	});
+
+	it("check utimes function with 10 random.number between 1 to 10", () => {
+		let res = fakerator.utimes(fakerator.random.number, 10, 1, 10);
+		expect(res).to.be.an("Array");
+		expect(res).to.be.length(10);
+		expect(res).to.be.deep.equal( [5, 6, 4, 1, 7, 3, 10, 2, 9, 8] );
+	});
+
+	it("check utimes function with 10 random.number from 1 to 5 ", () => {
+		let res = fakerator.utimes(fakerator.random.number, 10, 1, 5);
+		expect(res).to.be.an("Array");
+		expect(res).to.be.length(5);
+		expect(res).to.be.deep.equal( [3, 2, 1, 4, 5] );
+	});
+
+});
