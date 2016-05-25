@@ -77,4 +77,11 @@ describe("Fakerator.random", () => {
 		expect(fakerator.random.hex()).to.be.a.equal("7");
 		expect(fakerator.random.hex(8)).to.be.equal("7950a0b9");
 	});	
+
+	it("check random.string function", () => {
+		expect(fakerator.random.string()).to.be.a("String").length(7);
+		expect(fakerator.random.string(10)).to.be.length(10);
+		expect(fakerator.random.string({ min: 5, max: 10 })).to.be.length(5);
+	});
+
 })
