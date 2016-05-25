@@ -2,7 +2,7 @@ import { expect } from "chai";
 
 import Fakerator from "lib/fakerator";
 
-describe("Default names", () => {
+describe("Default lorem", () => {
 
 	let fakerator;
 
