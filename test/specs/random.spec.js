@@ -64,4 +64,9 @@ describe("Fakerator.random", () => {
 		expect(fakerator.random.masked("")).to.be.equal("");
 		expect(fakerator.random.masked()).to.be.undefined;
 	});
+
+	it("check random.hex function", () => {
+		expect(fakerator.random.hex()).to.be.a.equal("7");
+		expect(fakerator.random.hex(8)).to.be.equal("7950a0b9");
+	});	
 })

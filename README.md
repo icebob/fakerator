@@ -4,7 +4,6 @@
 # TODO
 - middle name
 - color with #
-- ipv6
 - country name and code same
 - times n variable as object {min: 1, max: 100} and select a random n
 - unique() as times() (utimes)

@@ -96,4 +96,9 @@ describe("Default internet", () => {
 		expect(fakerator.internet.gravatar("john.doe@gmail.com")).to.be.equal("//www.gravatar.com/avatar/e13743a7f1db7f4246badd6fd6ff54ff");
 	});
 
+	it("check internet.ipv6", () => {
+		expect(fakerator.populate("#{internet.ipv6}")).to.be.equal("b2e9:4275:95a9:65a1:a618:940b:a6ce:adb6");
+		expect(fakerator.internet.ipv6()).to.be.equal("8807:58c0:6a36:4afe:b1ce:2347:2438:78be");
+	});
+
 })
