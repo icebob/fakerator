@@ -124,7 +124,7 @@ function MersenneTwister19937()
 	this.init_by_array = function (init_key, key_length)
 	{
 		//c//int i, j, k;
-		var i, j, k;
+		var i, j, k, dbg;
 		//c//init_genrand(19650218);
 		this.init_genrand(19650218);
 		i=1; j=0;

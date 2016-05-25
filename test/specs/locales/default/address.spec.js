@@ -75,6 +75,14 @@ describe("Default address", () => {
 		expect(res.longitude).to.be.closeTo(-131.9741, 0.01);
 	});
 
+	it("check address.geoLocationNearBy without coordinates", () => {
+		let res = fakerator.address.geoLocationNearBy();
+		expect(res).to.be.an("Object");
+		expect(res.latitude).to.be.closeTo(40.4233, 0.01);
+		expect(res.longitude).to.be.closeTo(-131.9741, 0.01);
+
+	});
+
 	it("check address.geoLocationNearBy", () => {
 		let res = fakerator.address.geoLocationNearBy({
 			latitude: 40,
@@ -85,6 +93,17 @@ describe("Default address", () => {
 		expect(res.longitude).to.be.closeTo(17.8442, 0.01);
 
 	});
+
+	it("check address.geoLocationNearBy with miles", () => {
+		let res = fakerator.address.geoLocationNearBy({
+			latitude: 40,
+			longitude: 19
+		}, 100, false);
+		expect(res).to.be.an("Object");
+		expect(res.latitude).to.be.closeTo(39.9104, 0.01);
+		expect(res.longitude).to.be.closeTo(18.2812, 0.01);
+
+	});	
 
 	it("check address.altitude", () => {
 		expect(fakerator.populate("#{address.altitude}")).to.be.equal("6411");

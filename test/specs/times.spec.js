@@ -57,6 +57,13 @@ describe("Fakerator.utimes", () => {
 		expect(res).to.be.deep.equal( [5, 6, 4, 1, 7, 3] );
 	});
 
+	it("check utimes function with min max", () => {
+		let res = fakerator.utimes(fakerator.random.number, { min: 3, max: 8}, 1, 10);
+		expect(res).to.be.an("Array");
+		expect(res).to.be.length(5);
+		expect(res).to.be.deep.equal( [5, 6, 4, 1, 7] );
+	});
+
 	it("check utimes function with 10 random.number between 1 to 10", () => {
 		let res = fakerator.utimes(fakerator.random.number, 10, 1, 10);
 		expect(res).to.be.an("Array");

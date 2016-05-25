@@ -1,4 +1,5 @@
 var webpack = require("webpack");
+var path = require("path");
 var version = require("../package.json").version;
 
 var merge = require("webpack-merge");
@@ -8,14 +9,19 @@ module.exports = merge(wpBaseConfig, {
 	entry: null,
 	output: null,
 	devtool: '#inline-source-map',
-	preLoaders: [
-		{
-			test: /\.js$/,
-			loader: 'isparta',
-			include: './lib',
-			exclude: /node_modules/
-		}		
-	]
+	module: {
+		preLoaders: [
+			{
+				test: /\.js$/,
+				include: path.resolve('lib'),
+				loader: 'babel-istanbul',
+				query: {
+					cacheDirectory: true
+				}
+			}			
+		]
+	}
+
 });
 
 delete module.exports.entry;
