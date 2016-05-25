@@ -20,8 +20,16 @@ describe("Fakerator.random", () => {
 
 	it("check random.boolean function", () => {
 		expect(fakerator.random.boolean()).to.be.a("Boolean");
-		expect(fakerator.random.boolean()).to.be.equal(false);
 		expect(fakerator.random.boolean()).to.be.equal(true);
+		expect(fakerator.random.boolean()).to.be.equal(false);
+	});
+
+	it("check random.boolean with likelihood function", () => {
+		let res = fakerator.times(fakerator.random.boolean, 10, 60);
+		expect(res).to.include(true).include(false);
+
+		expect(fakerator.times(fakerator.random.boolean, 10, 0)).to.not.include(true);
+		expect(fakerator.times(fakerator.random.boolean, 10, 100)).to.not.include(false);
 	});
 
 	it("check random.digit function", () => {

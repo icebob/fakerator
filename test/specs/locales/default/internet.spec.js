@@ -43,9 +43,9 @@ describe("Default internet", () => {
 	});
 
 	it("check internet.url", () => {
-		expect(fakerator.populate("#{internet.url}")).to.be.equal("https://www.juanita-kertzmann.org");
-		expect(fakerator.internet.url()).to.be.equal("https://www.ella-parisian.com");
-		expect(fakerator.internet.url(false, false)).to.be.equal("http://arthurmacgyver.net");
+		expect(fakerator.populate("#{internet.url}")).to.be.equal("http://juanita-kertzmann.org");
+		expect(fakerator.internet.url()).to.be.equal("http://ella-parisian.com");
+		expect(fakerator.internet.url(true, true)).to.be.equal("https://www.arthurmacgyver.net");
 	});
 
 	it("check internet.emailDomain", () => {
