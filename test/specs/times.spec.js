@@ -19,7 +19,7 @@ describe("Fakerator.times", () => {
 	});
 
 	it("check times function with random.number", () => {
-		let res = fakerator.times(fakerator.random.number, 10, 50, 1);
+		let res = fakerator.times(fakerator.random.number, 10, 1, 50);
 		expect(res).to.be.an("Array");
 		expect(res).to.be.length(10);
 		expect(res).to.be.deep.equal( [25, 24, 29, 17, 2, 33, 1, 35, 31, 13] );

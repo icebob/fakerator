@@ -35,7 +35,7 @@ describe("Fakerator", () => {
 		expect(fakerator.locale).to.be.an("Object");
 		expect(fakerator.locale._meta.id).to.be.equal("default");
 		expect(fakerator.locale._meta.language).to.be.equal("English");
-		expect(fakerator.locale._meta.country).to.be.equal("Great Britain");
+		expect(fakerator.locale._meta.country).to.be.equal("United Kingdom");
 
 	});
 

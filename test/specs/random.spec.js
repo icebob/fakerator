@@ -12,10 +12,10 @@ describe("Fakerator.random", () => {
 	});
 
 	it("check random.number function", () => {
-		expect(fakerator.random.number(100)).to.be.equal(50);
-		expect(fakerator.random.number(100)).to.be.a("Number");
-		expect(fakerator.random.number(100, 80)).to.be.equal(91);
-		expect(fakerator.random.number(100, 1, 0.1)).to.be.closeTo(33.4, 0.1);
+		expect(fakerator.random.number(100)).to.be.equal(50).a("Number");
+		expect(fakerator.random.number(80, 100, 80)).to.be.equal(80);
+		expect(fakerator.random.number(100, 1)).to.be.equal(57);
+		expect(fakerator.random.number(1, 100, 0.1)).to.be.closeTo(33.4, 0.1);
 	});
 
 	it("check random.boolean function", () => {

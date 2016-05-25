@@ -74,6 +74,11 @@ describe("Default address", () => {
 
 	});
 
+	it("check address.altitude", () => {
+		expect(fakerator.populate("#{address.altitude}")).to.be.equal("6411");
+		expect(fakerator.address.altitude()).to.be.equal(1180);
 
+		expect(fakerator.address.altitude({ max: 500 })).to.be.below(500);
+	});
 
 })
