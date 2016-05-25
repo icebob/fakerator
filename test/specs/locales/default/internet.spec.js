@@ -16,9 +16,9 @@ describe("Default internet", () => {
 		expect(fakerator.internet.avatar()).to.be.equal("https://s3.amazonaws.com/uifaces/faces/twitter/charliecwaite/128.jpg");
 	});
 
-	it("check internet.domainSuffix", () => {
-		expect(fakerator.populate("#{internet.domainSuffix}")).to.be.equal("eu");
-		expect(fakerator.internet.domainSuffix()).to.be.equal("com");
+	it("check internet.tld", () => {
+		expect(fakerator.populate("#{internet.tld}")).to.be.equal("eu");
+		expect(fakerator.internet.tld()).to.be.equal("com");
 	});
 
 	it("check internet.userName", () => {
