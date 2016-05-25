@@ -2,7 +2,6 @@
 > Random data generator with localization
 
 # TODO
-- middle name
 - color with #
 - country name and code same
 
