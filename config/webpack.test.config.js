@@ -6,8 +6,6 @@ var merge = require("webpack-merge");
 var wpBaseConfig = require("./webpack.base.config");
 
 module.exports = merge(wpBaseConfig, {
-	entry: null,
-	output: null,
 	devtool: '#inline-source-map',
 	module: {
 		preLoaders: [
