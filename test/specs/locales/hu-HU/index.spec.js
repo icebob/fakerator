@@ -51,10 +51,13 @@ describe("Locale hu-HU", () => {
 	});
 
 	it("check internet definitions", () => {
-		expect(fakerator.internet.userName()).to.be.equal("marcellbudai02");
-		expect(fakerator.internet.domain()).to.be.equal("szilrdfarkas.info");
+		expect(fakerator.internet.userName()).to.be.equal("budaimarcell02");
+		expect(fakerator.internet.domain()).to.be.equal("bognrpter.hu");
 		expect(fakerator.internet.emailDomain()).to.be.equal("freemail.hu");
-		expect(fakerator.internet.email()).to.be.equal("belbalogh51@gmail.com");
+		expect(fakerator.internet.email()).to.be.equal("baloghbel51@gmail.com");
+
+		expect(fakerator.internet.userName("Jakab", "Gipsz")).to.be.equal("gipsz18");
+		expect(fakerator.internet.email("Jakab", "Gipsz")).to.be.equal("gipszjakab56@freemail.hu");
 	});
 
 	it("check entity.user", () => {
