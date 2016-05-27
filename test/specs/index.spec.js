@@ -64,9 +64,4 @@ describe("Fakerator", () => {
 		expect(fakerator.locale.lorem).to.be.an("Object");
 	});	
 
-	it.skip("generate", () => {
-		let fakerator = new Fakerator();
-
-		console.log(fakerator.generate(fakerator.locale.address.buildingNumber));
-	})
-})
+});
