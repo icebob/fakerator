@@ -8,6 +8,7 @@ describe("Locale hu-HU", () => {
 
 	beforeEach( () => {
 		fakerator = new Fakerator("hu-HU");
+		fakerator.seed(3636);		
 	});
 
 	it("check locale definitions", () => {
@@ -21,39 +22,39 @@ describe("Locale hu-HU", () => {
 	});
 
 	it("check names definitions", () => {
-		expect(fakerator.names.firstNameM()).to.be.equal("Zalán");
-		expect(fakerator.names.firstNameF()).to.be.equal("Györgyi");
-		expect(fakerator.names.lastName()).to.be.equal("Soós");
-		expect(fakerator.names.nameM()).to.be.equal("Veres Milán Sándor");
-		expect(fakerator.names.nameF()).to.be.equal("Fülöp Zita");
+		expect(fakerator.names.firstNameM()).to.be.equal("Gábor");
+		expect(fakerator.names.firstNameF()).to.be.equal("Gyöngyi");
+		expect(fakerator.names.lastName()).to.be.equal("Budai");
+		expect(fakerator.names.nameM()).to.be.equal("Török Roland Norbert");
+		expect(fakerator.names.nameF()).to.be.equal("Farkas Etelka");
 	});
 
 	it("check company definitions", () => {
-		expect(fakerator.company.name()).to.be.equal("Szücs Kft.");
+		expect(fakerator.company.name()).to.be.equal("Orbán Zrt.");
 	});
 
 	it("check phone definitions", () => {
-		expect(fakerator.phone.number()).to.be.equal("06-70-269-8707");
+		expect(fakerator.phone.number()).to.be.equal("06-20-585-8023");
 	});
 
 	it("check address definitions", () => {
-		expect(fakerator.address.city()).to.be.equal("Feketeújváros");
-		expect(fakerator.address.cityPrefix()).to.be.equal("Balaton");
-		expect(fakerator.address.citySuffix()).to.be.equal("némedi");
-		expect(fakerator.address.street()).to.be.equal("Somogyi Aranka udvar 963. 2. emelet 4. ajtó");
-		expect(fakerator.address.streetName()).to.be.equal("Nagy Kristóf dűlő");
-		expect(fakerator.address.streetSuffix()).to.be.equal("út");
-		expect(fakerator.address.buildingNumber()).to.be.equal("5");
-		expect(fakerator.address.postCode()).to.be.equal("0086");
+		expect(fakerator.address.city()).to.be.equal("Pestszeg");
+		expect(fakerator.address.cityPrefix()).to.be.equal("Pest");
+		expect(fakerator.address.citySuffix()).to.be.equal("sziget");
+		expect(fakerator.address.street()).to.be.equal("Fodor Edit út 439");
+		expect(fakerator.address.streetName()).to.be.equal("Szabó Rita út");
+		expect(fakerator.address.streetSuffix()).to.be.equal("körút");
+		expect(fakerator.address.buildingNumber()).to.be.equal("8");
+		expect(fakerator.address.postCode()).to.be.equal("6564");
 
 		expect(fakerator.address.state()).to.be.undefined;
 	});
 
 	it("check internet definitions", () => {
-		expect(fakerator.internet.userName()).to.be.equal("bernadett_olh");
-		expect(fakerator.internet.domain()).to.be.equal("jzmin-somogyi.biz");
-		expect(fakerator.internet.emailDomain()).to.be.equal("gmail.com");
-		expect(fakerator.internet.email()).to.be.equal("rita19@gmail.com");
+		expect(fakerator.internet.userName()).to.be.equal("marcellbudai02");
+		expect(fakerator.internet.domain()).to.be.equal("szilrdfarkas.info");
+		expect(fakerator.internet.emailDomain()).to.be.equal("freemail.hu");
+		expect(fakerator.internet.email()).to.be.equal("belbalogh51@gmail.com");
 	});
 
 	it("check entity.user", () => {
