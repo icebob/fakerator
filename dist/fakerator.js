@@ -150,7 +150,7 @@ return /******/ (function(modules) { // webpackBootstrap
 				var fbLocale = __webpack_require__(165)("./" + fallbackID + "/index");
 				if (fbLocale) {
 					locale = (0, _mergeWith2.default)(locale, fbLocale, function (objValue) {
-						if ((0, _isArray2.default)(objValue)) return objValue;
+						if ((0, _isArray2.default)(objValue) || (0, _isFunction2.default)(objValue)) return objValue;
 
 						if (!(0, _isNil2.default)(objValue) && !(0, _isObject2.default)(objValue)) return objValue;
 					});

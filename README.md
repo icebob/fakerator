@@ -12,3 +12,7 @@
 
 ## Demo
 [JSFiddle test page](https://jsfiddle.net/icebob/wngcbpkq/)
+
+
+# TODO
+- [ ] use localized country list
