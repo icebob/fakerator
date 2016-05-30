@@ -7,7 +7,7 @@
 
 [![Dependency Status](https://david-dm.org/icebob/fakerator.svg)](https://david-dm.org/icebob/fakerator)
 [![devDependency Status](https://david-dm.org/icebob/fakerator/dev-status.svg)](https://david-dm.org/icebob/fakerator#info=devDependencies)
-[![Downloads](https://img.shields.io/github/downloads/icebob/fakerator/total.svg)](https://www.npmjs.com/package/fakerator)
+[![Downloads](https://img.shields.io/npm/dt/fakerator.svg?maxAge=2592000)](https://www.npmjs.com/package/fakerator)
 
 ## Demo
 [JSFiddle test page](https://jsfiddle.net/icebob/wngcbpkq/)
@@ -52,7 +52,7 @@ var name = fakerator.names.name();
 ```
 
 ## Seeding
-The library uses the [Mersenne Twister](http://www.math.sci.hiroshima-u.ac.jp/~m-mat/MT/emt.html) random number generator, so you can set seed for random.
+The library uses the [Mersenne Twister](http://www.math.sci.hiroshima-u.ac.jp/~m-mat/MT/emt.html) random number generator, so you can set seed value.
 ```js
 fakerator.seed(5567832);
 ```
@@ -62,7 +62,7 @@ fakerator.seed(new Date().valueOf());
 ```
 
 ## Random
-Generate random values
+Generate random values or select a random element from array.
 
 Function                           | Description                 | Sample result
 -----------------------------------| --------------------------- | -----------------------
@@ -73,18 +73,18 @@ Function                           | Description                 | Sample result
 `fakerator.random.digit()`                      | Generate a digit (0..9)                               | 5
 `fakerator.random.letter()`                     | Generate a letter (a..z)                              | "h"
 `fakerator.random.arrayElement(array)`          | Give a random element from the array                  |
-`fakerator.random.objectElement(array)`         | Give a random `{ key: value }` from the object
-`fakerator.random.masked()`                     | Generate a masked string                              |  "aaa-AAA_999:***+***"" ->"aqa-RPG_932:606+vv1"
+`fakerator.random.objectElement(obj)`           | Give a random `{ key: value }` from the object
+`fakerator.random.masked(mask)`                 | Generate a masked string ( a - lowercase letter, A - uppercase letter, 9 - digit, * - letter or digit |  "aaa-AAA_999:*" -> "aqa-RPG_932:6"
 `fakerator.random.hex(length)`                  | Generate a hexadecimal number                         | "7950a0b9"
 `fakerator.random.string(length)`               | Generate a random string                              | "dulgecbhrsa"
 
 
 ## Localization
-The library supports localizations. You can set the locale code in contructor.
+The library supports localizations. You can set the locale code in constructor.
 
 ### Usage
 ```js
-  // Use default
+  // Use default (English) localization
   var fakerator = new Fakerator();
   console.log(fakerator.names.name());
   // Floyd Corkery
@@ -105,8 +105,8 @@ The library supports localizations. You can set the locale code in contructor.
 ```
 
 ### Available localizations:
-Code      | Language/Country      | Usage                   | Creator/Source
---------- | --------------------- | ----------------------- | --------------
+Code      | Language/Country      | Usage                     | Creator/Source
+--------- | --------------------- | ------------------------- | --------------
 default   | English (default)     | `new Fakerator();`        | [faker.js](https://github.com/Marak/faker.js)
 de-DE     | German                | `new Fakerator("de-DE");` | [faker.js](https://github.com/Marak/faker.js)
 es-ES     | Spanish               | `new Fakerator("es-ES");` | [faker.js](https://github.com/Marak/faker.js)
@@ -133,7 +133,7 @@ Function                          | Description                     | Sample res
 `fakerator.names.lastNameF()`     | Generate a female last name (*) | "Moore"
 `fakerator.names.prefix()`        | Generate a name prefix name     | "Mr."
 `fakerator.names.suffix()`        | Generate a name suffix          | "MD"
-(*) - if localization supported
+(*) - if localization support
  
 ### Address
 Function                              | Description                 | Sample result
@@ -183,10 +183,10 @@ Function                            | Description                 | Sample resul
 Function                            | Description                 | Sample result
 ----------------------------------- | --------------------------- | -----------------------
 `fakerator.lorem.word()`            | Give a lorem word           | "dolores"
-`fakerator.lorem.sentence()`        | Generate a sentence         | "Libero similique quam voluptas soluta."
-`fakerator.lorem.paragraph()`       | Give a lorem word           | "Ut velit enim vel. Unde aut sint possimus velit commodi numquam. Autem expedita dignissimos est qui consequatur et delectus. Et qui necessitatibus voluptas quam. Dicta temporibus animi optio tempora aperiam repudiandae beatae. Placeat quo voluptatibus neque repellendus dolorem."
+`fakerator.lorem.sentence()`        | Generate a lorem sentence   | "Libero similique quam voluptas soluta."
+`fakerator.lorem.paragraph()`       | Give a lorem paragraph      | "Ut velit enim vel. Unde aut sint possimus velit commodi numquam. Autem expedita dignissimos est qui consequatur et delectus. Et qui necessitatibus voluptas quam. Dicta temporibus animi optio tempora aperiam repudiandae beatae. Placeat quo voluptatibus neque repellendus dolorem."
 
-### date
+### Date & time
 Function                            | Description                 | Sample result
 ----------------------------------- | --------------------------- | -----------------------
 `fakerator.date.timezone()`         | Give a timezone                     | "Asia/Bangkok"
@@ -195,17 +195,17 @@ Function                            | Description                 | Sample resul
 `fakerator.date.between(from, to)`       | Generate a date between two dates   | Date
 `fakerator.date.recent(days)`       | Generate a date in recent few days  | Date
 `fakerator.date.age(min, max)`      | Generate an age number              | 26
-`fakerator.date.months()`           | Give a month name                   | "September"
-`fakerator.date.weekdays()`         | Give a weekday name                 | "Sunday"
-`fakerator.date.weekdaysShort()`    | Give a short weekday name           | "Fri"
-`fakerator.date.weekdaysMin()`      | Give a min weekday name             | "Su"
+`fakerator.date.month()`            | Give a month name                   | "September"
+`fakerator.date.weekday()`          | Give a weekday name                 | "Sunday"
+`fakerator.date.weekdayShort()`     | Give a short weekday name           | "Fri"
+`fakerator.date.weekdayMin()`       | Give a min weekday name             | "Su"
 
-### misc
+### Miscellaneous
 Function                            | Description                 | Sample result
 ----------------------------------- | --------------------------- | -----------------------
 `fakerator.misc.uuid()`             | Generate an [UUID](https://github.com/defunctzombie/node-uuid)           | "e26717ad-1513-43c5-b7de-2849521fa195"
 
-### entity
+### Entities
 You can generate complex entities
 
 #### User
@@ -315,7 +315,7 @@ Result:
 ## Times
 You can generate array of items with `times` and `utimes` (unique) functions. 
 First parameter is the generator function. Second is the length of array. 
-> You can pass further parameters, it will pass to the generator function.
+> You can pass further parameters, they will be passed to the generator function.
 
 ### Usage
 ```js
@@ -323,11 +323,11 @@ First parameter is the generator function. Second is the length of array.
 fakerator.times(fakerator.names.name, 3);
 // [ "Ross Hansen", "Thomas Pfeffer", "Alexis Hauck I" ]
 
-// Generator 5 username with populate where first name is 'John'
+// Generate 5 username with populate where first name must be 'John'
 fakerator.times(fakerator.populate, 5, "#{internet.userName}", "John");
 // [ 'john.langosh8341', 'john12', 'john.howe5075', 'john_jerde', 'john.grant9923' ]
 
-// Generator 5 number from 1 to 10
+// Generate 5 number from 1 to 10
 fakerator.times(fakerator.random.number, 5, 1, 10);
 // [ 10, 8, 1, 8, 5 ]
 // Note: 8 is twice!
