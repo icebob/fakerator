@@ -9,6 +9,8 @@
 [![devDependency Status](https://david-dm.org/icebob/fakerator/dev-status.svg)](https://david-dm.org/icebob/fakerator#info=devDependencies)
 [![Downloads](https://img.shields.io/npm/dt/fakerator.svg?maxAge=2592000)](https://www.npmjs.com/package/fakerator)
 
+fakerator was inspired by and has used data definitions from [Marak's faker.js library](https://github.com/Marak/faker.js)
+
 ## Demo
 [JSFiddle test page](https://jsfiddle.net/icebob/wngcbpkq/)
 

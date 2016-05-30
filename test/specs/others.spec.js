@@ -1,6 +1,6 @@
 import { expect } from "chai";
 
-import Fakerator from "lib/fakerator";
+import Fakerator from "lib";
 
 describe("Fakerator utils", () => {
 

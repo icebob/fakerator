@@ -6,7 +6,7 @@ var version = require("../package.json").version;
 var banner = "/**\n" + " * fakerator v" + version + "\n" + " * https://github.com/icebob/fakerator\n" + " * Released under the MIT License.\n" + " */\n";
 
 module.exports = {
-	entry: path.resolve('lib', 'fakerator.js'),
+	entry: path.resolve('lib', 'index.js'),
 	output: {
 		path: path.resolve('dist'),
 		filename: "fakerator.js",

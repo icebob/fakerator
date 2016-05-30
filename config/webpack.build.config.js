@@ -1,5 +1,6 @@
 var webpack = require("webpack");
-var version = require("../package.json").version;
+var path = require("path");
+var del = require("del");
 
 var merge = require("webpack-merge");
 var wpBaseConfig = require("./webpack.base.config");
@@ -19,6 +20,17 @@ module.exports = [
 					warnings: false
 				}
 			})
-		]       
+		]
+	}),
+	merge(wpBaseConfig, {
+		entry: path.resolve('lib', 'locales', 'locale-build.js'),
+		output: {
+			path: "./dist/locales",
+			filename: "hu-HU.js",
+			library: "Fakerator",
+			libraryTarget: "umd"
+		}
 	})
 ];
+
+del.sync(["./dist"]);
