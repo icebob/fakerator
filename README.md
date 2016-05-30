@@ -62,37 +62,94 @@ fakerator.seed(new Date().valueOf());
 ```
 
 ## Localization
-TODO
+The library supports localizations. You can set the locale code in contructor.
+
+### Usage
+```js
+  // Use default
+  var fakerator = new Fakerator();
+  console.log(fakerator.names.name());
+  // Floyd Corkery
+```
+
+```js
+  // Use german
+  var fakerator = new Fakerator("de-DE");
+  console.log(fakerator.names.name());
+  // Hassan vom Kumbernuss
+```
+
+```js
+  // Use russia
+  var fakerator = new Fakerator("ru-RU");
+  console.log(fakerator.names.name());
+  // Альберт Валентинович Архипов
+```
+
 ### Available localizations:
 Code      | Language/Country      | Usage                   | Creator/Source
 --------- | --------------------- | ----------------------- | --------------
-default   | English default       | new Fakerator();        | [faker.js](https://github.com/Marak/faker.js)
-de-DE     | German                | new Fakerator("de-DE"); | [faker.js](https://github.com/Marak/faker.js)
-es-ES     | Spanish               | new Fakerator("es-ES"); | [faker.js](https://github.com/Marak/faker.js)
-fr-FR     | French                | new Fakerator("fr-FR"); | [faker.js](https://github.com/Marak/faker.js)
-hu-HU     | Hungarian             | new Fakerator("hu-HU"); | [Icebob](https://github.com/icebob)
-it-IT     | Italic                | new Fakerator("it-IT"); | [faker.js](https://github.com/Marak/faker.js)
-pl-PL     | Polish                | new Fakerator("pl-PL"); | [faker.js](https://github.com/Marak/faker.js)
-ru-RU     | Russia                | new Fakerator("ru-RU"); | [faker.js](https://github.com/Marak/faker.js)
+default   | English (default)     | `new Fakerator();`        | [faker.js](https://github.com/Marak/faker.js)
+de-DE     | German                | `new Fakerator("de-DE");` | [faker.js](https://github.com/Marak/faker.js)
+es-ES     | Spanish               | `new Fakerator("es-ES");` | [faker.js](https://github.com/Marak/faker.js)
+fr-FR     | French                | `new Fakerator("fr-FR");` | [faker.js](https://github.com/Marak/faker.js)
+hu-HU     | Hungarian             | `new Fakerator("hu-HU");` | [Icebob](https://github.com/icebob)
+it-IT     | Italic                | `new Fakerator("it-IT");` | [faker.js](https://github.com/Marak/faker.js)
+pl-PL     | Polish                | `new Fakerator("pl-PL");` | [faker.js](https://github.com/Marak/faker.js)
+ru-RU     | Russia                | `new Fakerator("ru-RU");` | [faker.js](https://github.com/Marak/faker.js)
 
 ## Generators
 TODO
+
 ### names
-TODO
+Function                          | Description                     | Sample result
+--------------------------------- | ------------------------------- | -----------------------
+`fakerator.names.name()`          | Generate a full name            | "Dr. Sheryl Gleichner"
+`fakerator.names.nameM()`         | Generate a male full name (*)   | "Bruce Weber"
+`fakerator.names.nameF()`         | Generate a female full name (*) | "Juanita Daniel"
+`fakerator.names.firstName()`     | Generate a first name           | "Marco"
+`fakerator.names.firstNameM()`    | Generate a male first name (*)  | "Bruce"
+`fakerator.names.firstNameF()`    | Generate a female first name (*)| "Kelly"
+`fakerator.names.lastName()`      | Generate a last name            | "Reilly"
+`fakerator.names.lastNameM()`     | Generate a male last name (*)   | "Collier"
+`fakerator.names.lastNameF()`     | Generate a female last name (*) | "Moore"
+`fakerator.names.prefix()`        | Generate a name prefix name     | "Mr."
+`fakerator.names.suffix()`        | Generate a name suffix          | "MD"
+(*) - if localization supported
+ 
 ### address
-TODO
+### names
+Function                          | Description                     | Sample result
+--------------------------------- | ------------------------------- | -----------------------
+`fakerator.address.country()`         | Give a country name         | "Romania"
+`fakerator.address.countryCode()`     | Give a country code         | "RO"
+`fakerator.address.countryAndCode()`  | Give a country object       | `{ code: "RO", name: "Romania" }`
+`fakerator.address.city()`            | Generate a city name        | "Merlestad"
+`fakerator.address.street()`          | Generate a street address   | "96214 Annette Radial Apt. 543"
+`fakerator.address.streetName()`      | Generate a street name      | "Gabriel Islands"
+`fakerator.address.buildingNumber()`  | Generate a building number  | "196"
+`fakerator.address.postCode()`        | Generate a post code        | "54360-6405"
+`fakerator.address.geoLocation()`     | Generate a geolocation      | `{ latitude: 40.4233, longitude: -131.9741 }` 
+`fakerator.address.altitude()`        | Generate an altitude        | 1180
+
 ### phone
 TODO
+
 ### company
 TODO
+
 ### internet
 TODO
+
 ### lorem
 TODO
+
 ### date
 TODO
+
 ### misc
 TODO
+
 ### entity
 TODO
 
@@ -112,6 +169,13 @@ fakerator.populate("#{address.street}")
 ```js
 fakerator.populate("Hi, my name is #{names.name}. I was born in #{address.city}, #{address.country}. I am #{date.age} years old.")
 // Hi, my name is Mrs. Rufus Shanahan. I was born in Hilpertton, Denmark. I am 44 years old.
+```
+
+### Replace symbols
+The populate replace `#` symbol to a random number and `?` symbol to a random letter.
+```js
+fakerator.populate("#{names.firstName}-###-???")
+// Mandy-802-oqs
 ```
 
 
