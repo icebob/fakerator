@@ -15,7 +15,10 @@
     "changelog": "conventional-changelog -i CHANGELOG.md -s",
     "pretest": "npm run lint",
     "test": "karma start test/karma.conf.js",
-    "ci": "karma start test/karma.conf.js --auto-watch --no-single-run --reporters=dots"
+    "ci": "karma start test/karma.conf.js --auto-watch --no-single-run --reporters=dots",
+    "bump:patch": "mversion patch",
+    "bump:minor": "mversion minor",
+    "bump:major": "mversion major"
   },
   "repository": {
     "type": "git",
@@ -71,6 +74,7 @@
     "mocha": "2.4.5",
     "mocha-generators": "1.2.0",
     "mocha-loader": "0.7.1",
+    "mversion": "1.10.1",
     "password-generator": "2.0.2",
     "phantomjs-prebuilt": "2.1.3",
     "sinon": "1.17.4",
