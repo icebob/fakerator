@@ -15,9 +15,7 @@
     "changelog": "conventional-changelog -i CHANGELOG.md -s",
     "pretest": "npm run lint",
     "test": "karma start test/karma.conf.js",
-    "ci": "karma start test/karma.conf.js --auto-watch --no-single-run --reporters=dots",
-    "publish-please": "publish-please",
-    "prepublish": "publish-please guard"
+    "ci": "karma start test/karma.conf.js --auto-watch --no-single-run --reporters=dots"
   },
   "repository": {
     "type": "git",
