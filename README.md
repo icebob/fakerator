@@ -9,10 +9,123 @@
 [![devDependency Status](https://david-dm.org/icebob/fakerator/dev-status.svg)](https://david-dm.org/icebob/fakerator#info=devDependencies)
 [![Downloads](https://img.shields.io/github/downloads/icebob/fakerator/total.svg)](https://www.npmjs.com/package/fakerator)
 
-
 ## Demo
 [JSFiddle test page](https://jsfiddle.net/icebob/wngcbpkq/)
+
 [Tonic demo](https://tonicdev.com/icebob/574c36fc8e1b8e130072a138)
 
-# TODO
+## Install
+
+### Bower
+
+```bash
+$ bower install fakerator
+```
+
+### NodeJS
+
+```bash
+$ npm install fakerator
+```
+
+### Manual
+Download the package and use the `dist/fakerator.js` or the `dist/fakerator.min.js` file in your project.
+
+## Usage
+### Browser
+```html
+<script src="https://rawgit.com/icebob/fakerator/master/dist/fakerator.js"></script>
+
+<script>
+  var fakerator = new Fakerator();
+  var name = fakerator.names.name();
+  var user = fakerator.entity.user();
+</script>
+```
+
+### NodeJS
+```js
+var Fakerator = require("fakerator");
+var fakerator = new Fakerator("de-DE");
+var name = fakerator.names.name();
+// Result: 'Dr. Marcus Drechsler'
+```
+
+## Seeding
+The library uses the [Mersenne Twister](http://www.math.sci.hiroshima-u.ac.jp/~m-mat/MT/emt.html) random number generator, so you can set seed for random.
+```js
+fakerator.seed(5567832);
+```
+or
+```js
+fakerator.seed(new Date().valueOf());
+```
+
+## Localization
+TODO
+### Available localizations:
+Code      | Language/Country      | Usage                   | Creator/Source
+--------- | --------------------- | ----------------------- | --------------
+default   | English default       | new Fakerator();        | [faker.js](https://github.com/Marak/faker.js)
+de-DE     | German                | new Fakerator("de-DE"); | [faker.js](https://github.com/Marak/faker.js)
+es-ES     | Spanish               | new Fakerator("es-ES"); | [faker.js](https://github.com/Marak/faker.js)
+fr-FR     | French                | new Fakerator("fr-FR"); | [faker.js](https://github.com/Marak/faker.js)
+hu-HU     | Hungarian             | new Fakerator("hu-HU"); | [Icebob](https://github.com/icebob)
+it-IT     | Italic                | new Fakerator("it-IT"); | [faker.js](https://github.com/Marak/faker.js)
+pl-PL     | Polish                | new Fakerator("pl-PL"); | [faker.js](https://github.com/Marak/faker.js)
+ru-RU     | Russia                | new Fakerator("ru-RU"); | [faker.js](https://github.com/Marak/faker.js)
+
+## Generators
+TODO
+### names
+TODO
+### address
+TODO
+### phone
+TODO
+### company
+TODO
+### internet
+TODO
+### lorem
+TODO
+### date
+TODO
+### misc
+TODO
+### entity
+TODO
+
+## Templates
+You can also generate fake data with templates:
+
+```js
+fakerator.populate("#{names.name}")
+// Ross Hansen
+```
+
+```js
+fakerator.populate("#{address.street}")
+// 0662 Ferry Drive
+```
+
+```js
+fakerator.populate("Hi, my name is #{names.name}. I was born in #{address.city}, #{address.country}. I am #{date.age} years old.")
+// Hi, my name is Mrs. Rufus Shanahan. I was born in Hilpertton, Denmark. I am 44 years old.
+```
+
+
+## TODO
 - [ ] use localized country list
+
+## Contribution
+Please send pull requests improving the usage and fixing bugs, improving documentation and providing better examples, or providing some testing, because these things are important.
+
+## License
+fakerator is available under the [MIT license](https://tldrlegal.com/license/mit-license).
+
+## Contact
+
+Copyright (C) 2016 Icebob
+
+[![@icebob](https://img.shields.io/badge/github-icebob-green.svg)](https://github.com/icebob) [![@icebob](https://img.shields.io/badge/twitter-Icebobcsi-blue.svg)](https://twitter.com/Icebobcsi)
