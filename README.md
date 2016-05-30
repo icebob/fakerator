@@ -61,6 +61,24 @@ or
 fakerator.seed(new Date().valueOf());
 ```
 
+## Random
+Generate random values
+
+Function                           | Description                 | Sample result
+-----------------------------------| --------------------------- | -----------------------
+`fakerator.random.boolean()`                    | Generate a boolean value                              | true
+`fakerator.random.boolean(likelihoodPercent)`   | Generate a boolean value based a likelihood value.    | false
+`fakerator.random.number(max)`                  | Generate a number value between 0 and max value       |  87
+`fakerator.random.number(min, max)`             | Generate a number value between min and max           |  54
+`fakerator.random.digit()`                      | Generate a digit (0..9)                               | 5
+`fakerator.random.letter()`                     | Generate a letter (a..z)                              | "h"
+`fakerator.random.arrayElement(array)`          | Give a random element from the array                  |
+`fakerator.random.objectElement(array)`         | Give a random `{ key: value }` from the object
+`fakerator.random.masked()`                     | Generate a masked string                              |  "aaa-AAA_999:***+***"" ->"aqa-RPG_932:606+vv1"
+`fakerator.random.hex(length)`                  | Generate a hexadecimal number                         | "7950a0b9"
+`fakerator.random.string(length)`               | Generate a random string                              | "dulgecbhrsa"
+
+
 ## Localization
 The library supports localizations. You can set the locale code in contructor.
 
@@ -99,9 +117,9 @@ pl-PL     | Polish                | `new Fakerator("pl-PL");` | [faker.js](https
 ru-RU     | Russia                | `new Fakerator("ru-RU");` | [faker.js](https://github.com/Marak/faker.js)
 
 ## Generators
-TODO
+Use this functions to generate fake random data
 
-### names
+### Names
 Function                          | Description                     | Sample result
 --------------------------------- | ------------------------------- | -----------------------
 `fakerator.names.name()`          | Generate a full name            | "Dr. Sheryl Gleichner"
@@ -117,10 +135,9 @@ Function                          | Description                     | Sample res
 `fakerator.names.suffix()`        | Generate a name suffix          | "MD"
 (*) - if localization supported
  
-### address
-### names
-Function                          | Description                     | Sample result
---------------------------------- | ------------------------------- | -----------------------
+### Address
+Function                              | Description                 | Sample result
+------------------------------------- | --------------------------- | -----------------------
 `fakerator.address.country()`         | Give a country name         | "Romania"
 `fakerator.address.countryCode()`     | Give a country code         | "RO"
 `fakerator.address.countryAndCode()`  | Give a country object       | `{ code: "RO", name: "Romania" }`
@@ -132,26 +149,194 @@ Function                          | Description                     | Sample res
 `fakerator.address.geoLocation()`     | Generate a geolocation      | `{ latitude: 40.4233, longitude: -131.9741 }` 
 `fakerator.address.altitude()`        | Generate an altitude        | 1180
 
-### phone
-TODO
+### Phone
+Function                           | Description                 | Sample result
+-----------------------------------| --------------------------- | -----------------------
+`fakerator.phone.number()`         | Generate a phone number     | "(640) 552-0763"
 
-### company
-TODO
+### Company
+Function                           | Description                 | Sample result
+-----------------------------------| --------------------------- | -----------------------
+`fakerator.company.name()`         | Generate a company name     | "Weber, Gleichner and Kertzmann Inc."
+`fakerator.company.suffix()`       | Generate a company suffix   | "LLC"
 
-### internet
-TODO
+### Internet data
+Function                            | Description                 | Sample result
+----------------------------------- | --------------------------- | -----------------------
+`fakerator.internet.userName()`     | Generate a username             | "kelly.moore14"
+`fakerator.internet.userName(firstName, lastName)`     | Generate a username based an existing name | "johndoe19"
+`fakerator.internet.password(length)` | Generate a password             | 
+`fakerator.internet.domain()`       | Generate a domain name      | "merle-gleichner.net"
+`fakerator.internet.url()`       | Generate an url      | "http://ella-parisian.com"
+`fakerator.internet.email()`       | Generate an email address      | "kelly.moore@gmail.com"
+`fakerator.internet.email(firstName, lastName)`       | Generate an email address from an existing name      | "john.doe@hotmail.com"
+`fakerator.internet.image(width, height, category)`       | Generate a lorem image      | "http://lorempixel.com/640/480"
+`fakerator.internet.mac()`       | Generate a MAC address      | "65:a1:a6:18:94:0b"
+`fakerator.internet.ip()`       | Generate an IP v4 address      | "69.45.112.94"
+`fakerator.internet.ipv6()`       | Generate an IP v6 address      | "b2e9:4275:95a9:65a1:a618:940b:a6ce:adb6"
+`fakerator.internet.color()`       | Generate a color      | "b76f49"
+`fakerator.internet.avatar()`       | Give an avatar link (uifaces.com) | [Sample](https://s3.amazonaws.com/uifaces/faces/twitter/snowwrite/128.jpg)
+`fakerator.internet.gravatar()`       | Generate a gravatar link      | [Sample](https://www.gravatar.com/avatar/a91004b566f80271f0a3577f71d43cd4)
+`fakerator.internet.gravatar(email)`       | Generate a gravatar link from an email address      | [Sample](https://www.gravatar.com/avatar/e13743a7f1db7f4246badd6fd6ff54ff)
 
-### lorem
-TODO
+### Lorem
+Function                            | Description                 | Sample result
+----------------------------------- | --------------------------- | -----------------------
+`fakerator.lorem.word()`            | Give a lorem word           | "dolores"
+`fakerator.lorem.sentence()`        | Generate a sentence         | "Libero similique quam voluptas soluta."
+`fakerator.lorem.paragraph()`       | Give a lorem word           | "Ut velit enim vel. Unde aut sint possimus velit commodi numquam. Autem expedita dignissimos est qui consequatur et delectus. Et qui necessitatibus voluptas quam. Dicta temporibus animi optio tempora aperiam repudiandae beatae. Placeat quo voluptatibus neque repellendus dolorem."
 
 ### date
-TODO
+Function                            | Description                 | Sample result
+----------------------------------- | --------------------------- | -----------------------
+`fakerator.date.timezone()`         | Give a timezone                     | "Asia/Bangkok"
+`fakerator.date.past(years, refDate)`    | Generate a date in the past         | Date
+`fakerator.date.future(years, refDate)`  | Generate a date in the future       | Date
+`fakerator.date.between(from, to)`       | Generate a date between two dates   | Date
+`fakerator.date.recent(days)`       | Generate a date in recent few days  | Date
+`fakerator.date.age(min, max)`      | Generate an age number              | 26
+`fakerator.date.months()`           | Give a month name                   | "September"
+`fakerator.date.weekdays()`         | Give a weekday name                 | "Sunday"
+`fakerator.date.weekdaysShort()`    | Give a short weekday name           | "Fri"
+`fakerator.date.weekdaysMin()`      | Give a min weekday name             | "Su"
 
 ### misc
-TODO
+Function                            | Description                 | Sample result
+----------------------------------- | --------------------------- | -----------------------
+`fakerator.misc.uuid()`             | Generate an [UUID](https://github.com/defunctzombie/node-uuid)           | "e26717ad-1513-43c5-b7de-2849521fa195"
 
 ### entity
-TODO
+You can generate complex entities
+
+#### User
+```js
+fakerator.entity.user()
+```
+Result:
+```js
+{
+    "firstName": "Ashley",
+    "lastName": "Kautzer",
+    "userName": "ashley38",
+    "password": "yuzasimima",
+    "email": "ashleykautzer74@hotmail.com",
+    "phone": "1-485-841-6009",
+    "dob": "1939-11-22T01:15:16.735Z",
+    "website": "http://natalie-walker.info",
+    "ip": "202.26.104.4",
+    "avatar": "https://s3.amazonaws.com/uifaces/faces/twitter/jakemoore/128.jpg",
+    "gravatar": "https://www.gravatar.com/avatar/7875d665c96e5e388aa4074697cab0a0",
+    "address": {
+        "country": "Northern Mariana Islands",
+        "countryCode": "MP",
+        "state": "Michigan",
+        "city": "New Jamie",
+        "street": "1730 Abbott Views Apt. 460",
+        "zip": "77988",
+        "geo": {
+            "latitude": -41.5878,
+            "longitude": 34.266400000000004
+        }
+    },
+    "status": false
+}
+```
+You can set genre of user with first parameter.
+```js
+// F - female, M - male
+fakerator.entity.user("F");
+```
+
+#### Address
+```js
+fakerator.entity.address()
+```
+Result:
+```js
+{
+    "country": "Bulgaria",
+    "countryCode": "BG",
+    "state": "Indiana",
+    "city": "North Michele",
+    "street": "06169 Beer Villages Suite 302",
+    "zip": "20896",
+    "geo": {
+        "latitude": -9.275499999999994,
+        "longitude": 92.53280000000001
+    }
+}
+```
+
+#### Company
+```js
+fakerator.entity.company()
+```
+Result:
+```js
+{
+    "name": "Cormier, Murphy and Turcotte Ltd.",
+    "email": "cormier-murphy-and-turcotte-ltd.90@hotmail.com",
+    "phone": "044.708.8876 x834",
+    "website": "https://olgabeatty.info",
+    "ip": "54.65.201.35",
+    "address": {
+        "country": "Caribbean Netherlands",
+        "countryCode": "BQ",
+        "state": "Kansas",
+        "city": "East Ronnie",
+        "street": "81019 Cormier Mall",
+        "zip": "11474-0882",
+        "geo": {
+            "latitude": 1.6444000000000045,
+            "longitude": 107.97910000000002
+        }
+    }
+}
+```
+
+#### Blog post
+```js
+fakerator.entity.post()
+```
+Result:
+```js
+{
+    "title": "Esse excepturi eum id ab aut dolore veritatis et.",
+    "keywords": [
+        "commodi",
+        "odio",
+        "sit"
+    ],
+    "created": "2016-05-25T18:19:46.283Z",
+    "content": "Mollitia officiis quam nulla veritatis omnis eius enim quis. Dolorem est reiciendis adipisci. Laboriosam enim saepe sunt nisi. Autem tempora ullam non laborum. Qui dolorem fugiat amet. Eius consectetur ea et minus ipsam et qui unde doloremque.\r\nNihil minima aut. Voluptatibus neque at nulla ut expedita laboriosam. Veniam natus voluptates nulla voluptas impedit cumque qui nihil.\r\nMinus quos in autem facere dolorem quidem rem rerum. Animi quo eaque debitis nam non earum molestiae. Maxime vitae exercitationem doloremque."
+}
+```
+
+## Times
+You can generate array of items with `times` and `utimes` (unique) functions. 
+First parameter is the generator function. Second is the length of array. 
+> You can pass further parameters, it will pass to the generator function.
+
+### Usage
+```js
+// Generate 3 names
+fakerator.times(fakerator.names.name, 3);
+// [ "Ross Hansen", "Thomas Pfeffer", "Alexis Hauck I" ]
+
+// Generator 5 username with populate where first name is 'John'
+fakerator.times(fakerator.populate, 5, "#{internet.userName}", "John");
+// [ 'john.langosh8341', 'john12', 'john.howe5075', 'john_jerde', 'john.grant9923' ]
+
+// Generator 5 number from 1 to 10
+fakerator.times(fakerator.random.number, 5, 1, 10);
+// [ 10, 8, 1, 8, 5 ]
+// Note: 8 is twice!
+
+// Generator 5 UNIQUE number from 1 to 10
+fakerator.utimes(fakerator.random.number, 5, 1, 10);
+// [ 10, 2, 9, 6, 1 ]
+// Note: every number is unique!
+```
 
 ## Templates
 You can also generate fake data with templates:
