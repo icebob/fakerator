@@ -55,7 +55,7 @@ del.sync(["./dist/**"]);
 			var fallbackID = "default";
 
 			//console.log(localeID);
-			var fName = path.join(dir, "build-tmp.js");
+			var fName = path.join(dir, "build.js");
 
 			var content = wrapper.replace("%%LOCALEID%%", localeID).replace("%%FALLBACKID%%", fallbackID);
 
@@ -65,7 +65,7 @@ del.sync(["./dist/**"]);
 
 })();
 
-var buildFiles = glob.sync("./lib/locales/**/build-tmp.js");
+var buildFiles = glob.sync("./lib/locales/**/build.js");
 
 //console.log(buildFiles);
 
@@ -103,4 +103,3 @@ buildFiles.forEach(function(localeFile) {
 
 });
 
-//del.sync(["./lib/locales/**/build-tmp.js"]);
