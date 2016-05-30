@@ -1,0 +1,26 @@
+{
+  "name": "fakerator",
+  "description": "Random data generator with localization",
+  "main": "dist/fakerator.js",
+  "authors": [
+    "Icebob"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "fake",
+    "contextual",
+    "casual",
+    "random",
+    "generator",
+    "mocks",
+    "test"
+  ],
+  "homepage": "https://github.com/icebob/fakerator",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
