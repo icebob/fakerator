@@ -101,4 +101,4 @@ describe("Default internet", () => {
 		expect(fakerator.internet.ipv6()).to.be.equal("8807:58c0:6a36:4afe:b1ce:2347:2438:78be");
 	});
 
-})
+});

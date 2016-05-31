@@ -84,4 +84,4 @@ describe("Locale fr-FR", () => {
 
 	});	
 
-})
+});

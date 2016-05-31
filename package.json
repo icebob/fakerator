@@ -9,7 +9,7 @@
   "scripts": {
     "prebuild": "npm run test",
     "build": "webpack --config config/webpack.build.config.js",
-    "lint": "eslint --ext=.js lib",
+    "lint": "eslint --ext=.js lib test/specs",
     "coverall": "cat ./test/coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
     "coverage": "npm run test && npm run coverall",
     "changelog": "conventional-changelog -i CHANGELOG.md -s",

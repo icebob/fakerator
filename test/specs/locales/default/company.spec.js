@@ -21,4 +21,4 @@ describe("Default company", () => {
 		expect(fakerator.company.suffix()).to.be.equal("Ltd.");
 	});
 
-})
+});

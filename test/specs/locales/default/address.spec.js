@@ -22,7 +22,7 @@ describe("Default address", () => {
 	});
 
 	it("check address.countryAndCode", () => {
-		let res = fakerator.address.countryAndCode()
+		let res = fakerator.address.countryAndCode();
 		expect(res).to.be.an("Object");
 		expect(res).to.have.property("code").equal("RO");
 		expect(res).to.have.property("name").equal("Romania");
@@ -112,4 +112,4 @@ describe("Default address", () => {
 		expect(fakerator.address.altitude({ max: 500 })).to.be.below(500);
 	});
 
-})
+});

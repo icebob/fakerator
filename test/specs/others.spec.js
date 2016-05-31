@@ -35,4 +35,5 @@ describe("Fakerator utils", () => {
 			.to.be.deep.equal([ 6, 8, 3, 1, 2, 7, 4, 5, 9 ]);
 
 	});
-})
+	
+});

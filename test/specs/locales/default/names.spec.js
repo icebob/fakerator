@@ -61,4 +61,4 @@ describe("Default names", () => {
 		expect(fakerator.names.nameF()).to.be.equal("Juanita Daniel");
 	});
 
-})
+});

@@ -22,4 +22,4 @@ describe("Fakerator.seed", () => {
 		expect(fakerator.random.number(100)).to.be.equal(92);
 	});
 
-})
+});

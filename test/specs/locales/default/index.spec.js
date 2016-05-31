@@ -19,4 +19,5 @@ describe("Locale default", () => {
 		expect(fakerator.locale.lorem).to.be.an("Object");
 		expect(fakerator.locale.date).to.be.an("Object");
 	});
-})
+	
+});

@@ -26,4 +26,4 @@ describe("Default lorem", () => {
 		expect(fakerator.lorem.paragraph()).to.be.an("String");
 	});
 
-})
+});

@@ -82,4 +82,4 @@ describe("Locale pl-PL", () => {
 
 	});	
 
-})
+});

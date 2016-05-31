@@ -84,4 +84,4 @@ describe("Fakerator.random", () => {
 		expect(fakerator.random.string({ min: 5, max: 10 })).to.be.length(5);
 	});
 
-})
+});

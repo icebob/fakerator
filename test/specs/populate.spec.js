@@ -29,4 +29,4 @@ describe("Fakerator.populate", () => {
 		expect(fakerator.populate("#{abcd.xyz}")).to.be.equal("4{abcd.xyz}");
 	});
 
-})
+});

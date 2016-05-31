@@ -84,4 +84,4 @@ describe("Locale de-DE", () => {
 
 	});	
 
-})
+});

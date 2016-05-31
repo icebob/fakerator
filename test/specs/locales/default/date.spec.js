@@ -66,4 +66,4 @@ describe("Default date", () => {
 		expect(fakerator.date.weekdayMin()).to.be.equal("Su");
 	});	
 
-})
+});

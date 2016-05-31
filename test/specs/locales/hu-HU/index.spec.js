@@ -91,4 +91,4 @@ describe("Locale hu-HU", () => {
 
 	});	
 
-})
+});

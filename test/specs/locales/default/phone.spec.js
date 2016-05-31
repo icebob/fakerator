@@ -16,4 +16,4 @@ describe("Default phone", () => {
 		expect(fakerator.phone.number()).to.be.equal("(640) 552-0763");
 	});
 
-})
+});

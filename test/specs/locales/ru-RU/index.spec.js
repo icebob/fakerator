@@ -90,4 +90,4 @@ describe("Locale ru-RU", () => {
 
 	});	
 
-})
+});
