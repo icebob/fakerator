@@ -140,6 +140,9 @@ it-IT     | Italic                | `new Fakerator("it-IT");` | [faker.js](https
 pl-PL     | Polish                | `new Fakerator("pl-PL");` | [faker.js](https://github.com/Marak/faker.js)
 ru-RU     | Russia                | `new Fakerator("ru-RU");` | [faker.js](https://github.com/Marak/faker.js)
 
+### Custom locale
+Please read this [how to add a new locale](LOCALES.md)
+
 ## Generators
 Use this functions to generate fake random data
 
