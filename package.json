@@ -16,10 +16,7 @@
     "pretest": "npm run lint",
     "test": "karma start test/karma.conf.js",
     "ci": "karma start test/karma.conf.js --auto-watch --no-single-run --reporters=dots",
-    "bump:patch": "mversion patch",
-    "bump:minor": "mversion minor",
-    "bump:major": "mversion major",
-    "publish:patch": "npm version patch && git push --follow-tags && npm publish"
+    "publish": "git push --follow-tags && npm publish"
   },
   "repository": {
     "type": "git",
