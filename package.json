@@ -28,6 +28,7 @@
   "files": [
     "dist/fakerator.js",
     "dist/fakerator.min.js",
+    "dist/locales",
     "src",
     "vendor",
     "test"
