@@ -70,13 +70,9 @@ var name = fakerator.names.name();
 
 
 ## Seeding
-The library uses the [Mersenne Twister](http://www.math.sci.hiroshima-u.ac.jp/~m-mat/MT/emt.html) random number generator, so you can set seed value.
+The library uses the [Mersenne Twister](http://www.math.sci.hiroshima-u.ac.jp/~m-mat/MT/emt.html) pseudorandom number generator, so set seed value, if you want to get a repeatable random sequence:
 ```js
 fakerator.seed(5567832);
-```
-or
-```js
-fakerator.seed(new Date().valueOf());
 ```
 
 ## Random
