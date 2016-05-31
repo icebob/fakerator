@@ -44,6 +44,7 @@ describe("Locale fr-FR", () => {
 		expect(fakerator.address.buildingNumber()).to.be.equal("60");
 		expect(fakerator.address.postCode()).to.be.equal("40699");
 		expect(fakerator.address.state()).to.be.equal("Auvergne");
+		expect(fakerator.address.country()).to.be.equal("El Salvador");
 	});
 
 	it("check internet definitions", () => {

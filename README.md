@@ -392,7 +392,7 @@ fakerator.populate("#{names.firstName}-###-???")
 
 
 ## TODO
-- [ ] use localized country list
+
 
 ## Contribution
 Please send pull requests improving the usage and fixing bugs, improving documentation and providing better examples, or providing some testing, because these things are important.

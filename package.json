@@ -1,6 +1,6 @@
 {
   "name": "fakerator",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Random data generator with localization",
   "main": "dist/fakerator.js",
   "directories": {
@@ -53,6 +53,7 @@
     "babel-preset-es2015": "6.9.0",
     "babel-preset-stage-0": "6.5.0",
     "chai": "3.5.0",
+    "conventional-changelog-cli": "1.2.0",
     "coveralls": "2.11.9",
     "del": "2.2.0",
     "eslint": "2.11.1",

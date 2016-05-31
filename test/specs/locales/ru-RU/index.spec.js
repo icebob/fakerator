@@ -49,6 +49,7 @@ describe("Locale ru-RU", () => {
 		expect(fakerator.address.postCode()).to.be.equal("017769");
 
 		expect(fakerator.address.state()).to.be.equal("Таймырский (Долгано-Ненецкий) автономный округ");
+		expect(fakerator.address.country()).to.be.equal("Аруба");
 	});
 
 	it("check internet definitions", () => {

@@ -42,6 +42,7 @@ describe("Locale pl-PL", () => {
 		expect(fakerator.address.buildingNumber()).to.be.equal("064");
 		expect(fakerator.address.postCode()).to.be.equal("69-912");
 		expect(fakerator.address.state()).to.be.equal("Kujawsko-pomorskie");
+		expect(fakerator.address.country()).to.be.equal("Brazylia");
 	});
 
 	it("check internet definitions", () => {

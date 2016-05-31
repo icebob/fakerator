@@ -47,6 +47,9 @@ describe("Locale hu-HU", () => {
 		expect(fakerator.address.buildingNumber()).to.be.equal("8");
 		expect(fakerator.address.postCode()).to.be.equal("6564");
 
+		fakerator.random.string(5); // Placeholder to next random
+		expect(fakerator.address.country()).to.be.equal("Görögország");
+
 		expect(fakerator.address.state()).to.be.undefined;
 	});
 

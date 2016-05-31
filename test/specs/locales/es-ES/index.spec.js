@@ -42,6 +42,7 @@ describe("Locale es-ES", () => {
 		expect(fakerator.address.buildingNumber()).to.be.equal(" 4");
 		expect(fakerator.address.postCode()).to.be.equal("69912");
 		expect(fakerator.address.state()).to.be.equal("Aragón");
+		expect(fakerator.address.country()).to.be.equal("Brasil");
 	});
 
 	it("check internet definitions", () => {

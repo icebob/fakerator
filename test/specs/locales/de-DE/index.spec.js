@@ -44,6 +44,7 @@ describe("Locale de-DE", () => {
 		expect(fakerator.address.buildingNumber()).to.be.equal("18c");
 		expect(fakerator.address.postCode()).to.be.equal("27002");
 		expect(fakerator.address.state()).to.be.equal("Hamburg");
+		expect(fakerator.address.country()).to.be.equal("Tadschikistan");
 	});
 
 	it("check internet definitions", () => {

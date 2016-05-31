@@ -44,6 +44,7 @@ describe("Locale it-IT", () => {
 		expect(fakerator.address.buildingNumber()).to.be.equal("313");
 		expect(fakerator.address.postCode()).to.be.equal("91343");
 		expect(fakerator.address.state()).to.be.equal("Lucca");
+		expect(fakerator.address.country()).to.be.equal("Mauritius");
 	});
 
 	it("check internet definitions", () => {
