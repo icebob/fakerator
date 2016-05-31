@@ -39,7 +39,7 @@ Download the package and use the `dist/fakerator.js` or the `dist/fakerator.min.
 <script src="https://rawgit.com/icebob/fakerator/master/dist/fakerator.js"></script>
 
 <script>
-  var fakerator = new Fakerator();
+  var fakerator = Fakerator();
   var name = fakerator.names.name();
   var user = fakerator.entity.user();
 </script>
@@ -52,6 +52,22 @@ var fakerator = new Fakerator("de-DE");
 var name = fakerator.names.name();
 // Result: 'Dr. Marcus Drechsler'
 ```
+
+Shortly
+```js
+var fakerator = require("fakerator")("hu-HU");
+var name = fakerator.names.name();
+// Result: 'Fülöp Magdolna'
+```
+
+Or load a specific locale
+
+```js
+var fakerator = require("fakerator/locales/de-DE")();
+var name = fakerator.names.name();
+// Result: 'Dr. Marcus Drechsler'
+```
+
 
 ## Seeding
 The library uses the [Mersenne Twister](http://www.math.sci.hiroshima-u.ac.jp/~m-mat/MT/emt.html) random number generator, so you can set seed value.
@@ -105,6 +121,16 @@ The library supports localizations. You can set the locale code in constructor.
   console.log(fakerator.names.name());
   // Альберт Валентинович Архипов
 ```
+
+In production, you can load only a specific locale:
+
+```js
+  // Use french
+  var fakeratorFR = require("fakerator/locales/fr-FR")();
+  console.log(fakeratorFR.names.name());
+  // Dufour Camille
+```
+
 
 ### Available localizations:
 Code      | Language/Country      | Usage                     | Creator/Source
