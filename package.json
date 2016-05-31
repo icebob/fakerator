@@ -16,7 +16,7 @@
     "pretest": "npm run lint",
     "test": "karma start test/karma.conf.js",
     "ci": "karma start test/karma.conf.js --auto-watch --no-single-run --reporters=dots",
-    "publish": "git push --follow-tags && npm publish"
+    "release": "git push --follow-tags && npm publish"
   },
   "repository": {
     "type": "git",
