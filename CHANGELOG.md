@@ -1,6 +1,7 @@
 <a name="0.1.1"></a>
 ## 0.1.1 (2016-05-31)
 
+* :package: build: Build v0.1.1 ([785301e](https://github.com/icebob/fakerator/commit/785301e))
 * :star: new(locales): add localized country list ([6c152b6](https://github.com/icebob/fakerator/commit/6c152b6))
 * Create LOCALES.md ([ab673ae](https://github.com/icebob/fakerator/commit/ab673ae))
 * lin test specs files ([465bf79](https://github.com/icebob/fakerator/commit/465bf79))
@@ -10,6 +11,7 @@
 * Update karma-mocha and karma-coverage ([1661a77](https://github.com/icebob/fakerator/commit/1661a77))
 * Update README.md ([703c080](https://github.com/icebob/fakerator/commit/703c080))
 * Update README.md ([27317b8](https://github.com/icebob/fakerator/commit/27317b8))
+* docs(changelog): Create changelog ([7cc265b](https://github.com/icebob/fakerator/commit/7cc265b))
 * chore(package): update dependencies ([9fa601e](https://github.com/icebob/fakerator/commit/9fa601e))
 
 
