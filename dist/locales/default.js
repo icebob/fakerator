@@ -1,5 +1,5 @@
 /**
- * fakerator v0.0.1
+ * fakerator v0.1.0
  * https://github.com/icebob/fakerator
  * Released under the MIT License.
  */
@@ -89,8 +89,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	module.exports = function () {
-		var self = this;
-
 		var locale = __webpack_require__(166);
 		var fbLocale = __webpack_require__(166);
 
@@ -3951,10 +3949,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	var _isObject = __webpack_require__(4);
 
 	var _isObject2 = _interopRequireDefault(_isObject);
-
-	var _mergeWith = __webpack_require__(5);
-
-	var _mergeWith2 = _interopRequireDefault(_mergeWith);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
