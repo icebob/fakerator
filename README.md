@@ -48,7 +48,7 @@ Download the package and use the `dist/fakerator.js` or the `dist/fakerator.min.
 ### NodeJS
 ```js
 var Fakerator = require("fakerator");
-var fakerator = new Fakerator("de-DE");
+var fakerator = Fakerator("de-DE");
 var name = fakerator.names.name();
 // Result: 'Dr. Marcus Drechsler'
 ```
@@ -99,21 +99,21 @@ The library supports localizations. You can set the locale code in constructor.
 ### Usage
 ```js
   // Use default (English) localization
-  var fakerator = new Fakerator();
+  var fakerator = Fakerator();
   console.log(fakerator.names.name());
   // Floyd Corkery
 ```
 
 ```js
   // Use german
-  var fakerator = new Fakerator("de-DE");
+  var fakerator = Fakerator("de-DE");
   console.log(fakerator.names.name());
   // Hassan vom Kumbernuss
 ```
 
 ```js
   // Use russia
-  var fakerator = new Fakerator("ru-RU");
+  var fakerator = Fakerator("ru-RU");
   console.log(fakerator.names.name());
   // Альберт Валентинович Архипов
 ```
@@ -131,14 +131,14 @@ In production, you can load only a specific locale:
 ### Available localizations:
 Code      | Language/Country      | Usage                     | Creator/Source
 --------- | --------------------- | ------------------------- | --------------
-default   | English (default)     | `new Fakerator();`        | [faker.js](https://github.com/Marak/faker.js)
-de-DE     | German                | `new Fakerator("de-DE");` | [faker.js](https://github.com/Marak/faker.js)
-es-ES     | Spanish               | `new Fakerator("es-ES");` | [faker.js](https://github.com/Marak/faker.js)
-fr-FR     | French                | `new Fakerator("fr-FR");` | [faker.js](https://github.com/Marak/faker.js)
-hu-HU     | Hungarian             | `new Fakerator("hu-HU");` | [Icebob](https://github.com/icebob)
-it-IT     | Italic                | `new Fakerator("it-IT");` | [faker.js](https://github.com/Marak/faker.js)
-pl-PL     | Polish                | `new Fakerator("pl-PL");` | [faker.js](https://github.com/Marak/faker.js)
-ru-RU     | Russia                | `new Fakerator("ru-RU");` | [faker.js](https://github.com/Marak/faker.js)
+default   | English (default)     | `Fakerator();`        | [faker.js](https://github.com/Marak/faker.js)
+de-DE     | German                | `Fakerator("de-DE");` | [faker.js](https://github.com/Marak/faker.js)
+es-ES     | Spanish               | `Fakerator("es-ES");` | [faker.js](https://github.com/Marak/faker.js)
+fr-FR     | French                | `Fakerator("fr-FR");` | [faker.js](https://github.com/Marak/faker.js)
+hu-HU     | Hungarian             | `Fakerator("hu-HU");` | [Icebob](https://github.com/icebob)
+it-IT     | Italic                | `Fakerator("it-IT");` | [faker.js](https://github.com/Marak/faker.js)
+pl-PL     | Polish                | `Fakerator("pl-PL");` | [faker.js](https://github.com/Marak/faker.js)
+ru-RU     | Russia                | `Fakerator("ru-RU");` | [faker.js](https://github.com/Marak/faker.js)
 
 ### Custom locale
 Please read this [how to add a new locale](LOCALES.md)
