@@ -1,5 +1,5 @@
 /**
- * fakerator v0.1.1
+ * fakerator v0.2.0
  * https://github.com/icebob/fakerator
  * Released under the MIT License.
  */
