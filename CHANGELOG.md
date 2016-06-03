@@ -1,3 +1,21 @@
+<a name="0.2.0"></a>
+# 0.2.0 (2016-06-03)
+
+* :package: Build iwth new locales ([666e0fb](https://github.com/icebob/fakerator/commit/666e0fb))
+* :package: build: build v0.2.0 ([752fa55](https://github.com/icebob/fakerator/commit/752fa55))
+* :pencil: docs: update readme with new locales ([7f8c226](https://github.com/icebob/fakerator/commit/7f8c226))
+* Add en-AU locales ([a62f5c3](https://github.com/icebob/fakerator/commit/a62f5c3))
+* add local en-CA ([b076585](https://github.com/icebob/fakerator/commit/b076585))
+* Add norwegian files ([26b3d79](https://github.com/icebob/fakerator/commit/26b3d79))
+* Add sk locale ([83eb137](https://github.com/icebob/fakerator/commit/83eb137))
+* Add swedish locale ([13ba876](https://github.com/icebob/fakerator/commit/13ba876))
+* Modify npm script ([dc62c58](https://github.com/icebob/fakerator/commit/dc62c58))
+* Remove unused file ([a68756a](https://github.com/icebob/fakerator/commit/a68756a))
+* Update README.md ([92d8f37](https://github.com/icebob/fakerator/commit/92d8f37))
+* docs: remove new keywords from readme #3 ([6969491](https://github.com/icebob/fakerator/commit/6969491))
+
+
+
 <a name="0.1.1"></a>
 ## 0.1.1 (2016-05-31)
 
