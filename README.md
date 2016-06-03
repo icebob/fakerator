@@ -133,12 +133,17 @@ Code      | Language/Country      | Usage                     | Creator/Source
 --------- | --------------------- | ------------------------- | --------------
 default   | English (default)     | `Fakerator();`        | [faker.js](https://github.com/Marak/faker.js)
 de-DE     | German                | `Fakerator("de-DE");` | [faker.js](https://github.com/Marak/faker.js)
+en-AU     | English (Australia)   | `Fakerator("en-AU");` | [faker.js](https://github.com/Marak/faker.js)
+en-CA     | English (Canada)      | `Fakerator("en-CA");` | [faker.js](https://github.com/Marak/faker.js)
 es-ES     | Spanish               | `Fakerator("es-ES");` | [faker.js](https://github.com/Marak/faker.js)
 fr-FR     | French                | `Fakerator("fr-FR");` | [faker.js](https://github.com/Marak/faker.js)
 hu-HU     | Hungarian             | `Fakerator("hu-HU");` | [Icebob](https://github.com/icebob)
 it-IT     | Italic                | `Fakerator("it-IT");` | [faker.js](https://github.com/Marak/faker.js)
+nb-NO     | Norwegian             | `Fakerator("nb-NO");` | [faker.js](https://github.com/Marak/faker.js)
 pl-PL     | Polish                | `Fakerator("pl-PL");` | [faker.js](https://github.com/Marak/faker.js)
 ru-RU     | Russia                | `Fakerator("ru-RU");` | [faker.js](https://github.com/Marak/faker.js)
+sk-SK     | Slovakian             | `Fakerator("sk-SK");` | [faker.js](https://github.com/Marak/faker.js)
+sv-SE     | Swedish               | `Fakerator("sv-SE");` | [faker.js](https://github.com/Marak/faker.js)
 
 ### Custom locale
 Please read this [how to add a new locale](LOCALES.md)
