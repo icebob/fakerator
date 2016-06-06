@@ -1,3 +1,4 @@
+[![](https://raw.githubusercontent.com/icebob/fakerator/gh-pages/binary-1327501.jpg)]()
 # fakerator [![NPM version](https://img.shields.io/npm/v/fakerator.svg)](https://www.npmjs.com/package/fakerator)
 > Random fake data generator with localization
 
