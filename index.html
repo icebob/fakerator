@@ -1,0 +1,892 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>Fakerator by icebob</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+  </head>
+  <body>
+    <section class="page-header">
+      <h1 class="project-name">Fakerator</h1>
+      <h2 class="project-tagline">Random fake data generator with localization for Javascript in Node.js and browser</h2>
+      <a href="https://github.com/icebob/fakerator" class="btn">View on GitHub</a>
+      <a href="https://github.com/icebob/fakerator/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/icebob/fakerator/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
+
+    <section class="main-content">
+      <h1>
+<a id="fakerator-" class="anchor" href="#fakerator-" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>fakerator <a href="https://www.npmjs.com/package/fakerator"><img src="https://img.shields.io/npm/v/fakerator.svg" alt="NPM version"></a>
+</h1>
+
+<blockquote>
+<p>Random fake data generator with localization</p>
+</blockquote>
+
+<p><a href="https://www.codacy.com/app/mereg-norbert/fakerator?utm_source=github.com&amp;amp;utm_medium=referral&amp;amp;utm_content=icebob/fakerator&amp;amp;utm_campaign=Badge_Grade"><img src="https://api.codacy.com/project/badge/Grade/939fc8b138a64c65b9827543e30dab39" alt="Codacy Badge"></a>
+<a href="https://travis-ci.org/icebob/fakerator"><img src="https://travis-ci.org/icebob/fakerator.svg?branch=master" alt="Build Status"></a>
+<a href="https://coveralls.io/github/icebob/fakerator?branch=master"><img src="https://coveralls.io/repos/github/icebob/fakerator/badge.svg?branch=master" alt="Coverage Status"></a></p>
+
+<p><a href="https://david-dm.org/icebob/fakerator"><img src="https://david-dm.org/icebob/fakerator.svg" alt="Dependency Status"></a>
+<a href="https://david-dm.org/icebob/fakerator#info=devDependencies"><img src="https://david-dm.org/icebob/fakerator/dev-status.svg" alt="devDependency Status"></a>
+<a href="https://www.npmjs.com/package/fakerator"><img src="https://img.shields.io/npm/dt/fakerator.svg" alt="Downloads"></a></p>
+
+<p>fakerator was inspired by and has used data definitions from <a href="https://github.com/Marak/faker.js">Marak's faker.js library</a></p>
+
+<h2>
+<a id="demo" class="anchor" href="#demo" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Demo</h2>
+
+<p><a href="https://jsfiddle.net/icebob/wngcbpkq/">JSFiddle test page</a></p>
+
+<p><a href="https://tonicdev.com/icebob/574c36fc8e1b8e130072a138">Tonic demo</a></p>
+
+<h2>
+<a id="install" class="anchor" href="#install" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Install</h2>
+
+<h3>
+<a id="bower" class="anchor" href="#bower" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Bower</h3>
+
+<div class="highlight highlight-source-shell"><pre>$ bower install fakerator</pre></div>
+
+<h3>
+<a id="nodejs" class="anchor" href="#nodejs" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>NodeJS</h3>
+
+<div class="highlight highlight-source-shell"><pre>$ npm install fakerator</pre></div>
+
+<h3>
+<a id="manual" class="anchor" href="#manual" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Manual</h3>
+
+<p>Download the package and use the <code>dist/fakerator.js</code> or the <code>dist/fakerator.min.js</code> file in your project.</p>
+
+<h2>
+<a id="usage" class="anchor" href="#usage" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Usage</h2>
+
+<h3>
+<a id="browser" class="anchor" href="#browser" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Browser</h3>
+
+<div class="highlight highlight-text-html-basic"><pre>&lt;<span class="pl-ent">script</span> <span class="pl-e">src</span>=<span class="pl-s"><span class="pl-pds">"</span>https://rawgit.com/icebob/fakerator/master/dist/fakerator.js<span class="pl-pds">"</span></span>&gt;&lt;/<span class="pl-ent">script</span>&gt;
+
+<span class="pl-s1">&lt;<span class="pl-ent">script</span>&gt;</span>
+<span class="pl-s1">  <span class="pl-k">var</span> fakerator <span class="pl-k">=</span> <span class="pl-en">Fakerator</span>();</span>
+<span class="pl-s1">  <span class="pl-k">var</span> name <span class="pl-k">=</span> <span class="pl-smi">fakerator</span>.<span class="pl-smi">names</span>.<span class="pl-c1">name</span>();</span>
+<span class="pl-s1">  <span class="pl-k">var</span> user <span class="pl-k">=</span> <span class="pl-smi">fakerator</span>.<span class="pl-smi">entity</span>.<span class="pl-en">user</span>();</span>
+<span class="pl-s1">&lt;/<span class="pl-ent">script</span>&gt;</span></pre></div>
+
+<h3>
+<a id="nodejs-1" class="anchor" href="#nodejs-1" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>NodeJS</h3>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-k">var</span> Fakerator <span class="pl-k">=</span> <span class="pl-c1">require</span>(<span class="pl-s"><span class="pl-pds">"</span>fakerator<span class="pl-pds">"</span></span>);
+<span class="pl-k">var</span> fakerator <span class="pl-k">=</span> <span class="pl-en">Fakerator</span>(<span class="pl-s"><span class="pl-pds">"</span>de-DE<span class="pl-pds">"</span></span>);
+<span class="pl-k">var</span> name <span class="pl-k">=</span> <span class="pl-smi">fakerator</span>.<span class="pl-smi">names</span>.<span class="pl-c1">name</span>();
+<span class="pl-c">// Result: 'Dr. Marcus Drechsler'</span></pre></div>
+
+<p>Shortly</p>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-k">var</span> fakerator <span class="pl-k">=</span> <span class="pl-c1">require</span>(<span class="pl-s"><span class="pl-pds">"</span>fakerator<span class="pl-pds">"</span></span>)(<span class="pl-s"><span class="pl-pds">"</span>hu-HU<span class="pl-pds">"</span></span>);
+<span class="pl-k">var</span> name <span class="pl-k">=</span> <span class="pl-smi">fakerator</span>.<span class="pl-smi">names</span>.<span class="pl-c1">name</span>();
+<span class="pl-c">// Result: 'Fülöp Magdolna'</span></pre></div>
+
+<p>Or load a specific locale</p>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-k">var</span> fakerator <span class="pl-k">=</span> <span class="pl-c1">require</span>(<span class="pl-s"><span class="pl-pds">"</span>fakerator/locales/de-DE<span class="pl-pds">"</span></span>)();
+<span class="pl-k">var</span> name <span class="pl-k">=</span> <span class="pl-smi">fakerator</span>.<span class="pl-smi">names</span>.<span class="pl-c1">name</span>();
+<span class="pl-c">// Result: 'Dr. Marcus Drechsler'</span></pre></div>
+
+<h2>
+<a id="seeding" class="anchor" href="#seeding" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Seeding</h2>
+
+<p>The library uses the <a href="http://www.math.sci.hiroshima-u.ac.jp/%7Em-mat/MT/emt.html">Mersenne Twister</a> pseudorandom number generator, so set seed value, if you want to get a repeatable random sequence:</p>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-smi">fakerator</span>.<span class="pl-en">seed</span>(<span class="pl-c1">5567832</span>);</pre></div>
+
+<h2>
+<a id="random" class="anchor" href="#random" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Random</h2>
+
+<p>Generate random values or select a random element from array.</p>
+
+<table>
+<thead>
+<tr>
+<th>Function</th>
+<th>Description</th>
+<th>Sample result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>fakerator.random.boolean()</code></td>
+<td>Generate a boolean value</td>
+<td>true</td>
+</tr>
+<tr>
+<td><code>fakerator.random.boolean(likelihoodPercent)</code></td>
+<td>Generate a boolean value based a likelihood value.</td>
+<td>false</td>
+</tr>
+<tr>
+<td><code>fakerator.random.number(max)</code></td>
+<td>Generate a number value between 0 and max value</td>
+<td>87</td>
+</tr>
+<tr>
+<td><code>fakerator.random.number(min, max)</code></td>
+<td>Generate a number value between min and max</td>
+<td>54</td>
+</tr>
+<tr>
+<td><code>fakerator.random.digit()</code></td>
+<td>Generate a digit (0..9)</td>
+<td>5</td>
+</tr>
+<tr>
+<td><code>fakerator.random.letter()</code></td>
+<td>Generate a letter (a..z)</td>
+<td>"h"</td>
+</tr>
+<tr>
+<td><code>fakerator.random.arrayElement(array)</code></td>
+<td>Give a random element from the array</td>
+<td></td>
+</tr>
+<tr>
+<td><code>fakerator.random.objectElement(obj)</code></td>
+<td>Give a random <code>{ key: value }</code> from the object</td>
+<td></td>
+</tr>
+<tr>
+<td><code>fakerator.random.masked(mask)</code></td>
+<td>Generate a masked string ( a - lowercase letter, A - uppercase letter, 9 - digit, * - letter or digit</td>
+<td>"aaa-AAA_999:*" -&gt; "aqa-RPG_932:6"</td>
+</tr>
+<tr>
+<td><code>fakerator.random.hex(length)</code></td>
+<td>Generate a hexadecimal number</td>
+<td>"7950a0b9"</td>
+</tr>
+<tr>
+<td><code>fakerator.random.string(length)</code></td>
+<td>Generate a random string</td>
+<td>"dulgecbhrsa"</td>
+</tr>
+</tbody>
+</table>
+
+<h2>
+<a id="localization" class="anchor" href="#localization" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Localization</h2>
+
+<p>The library supports localizations. You can set the locale code in constructor.</p>
+
+<h3>
+<a id="usage-1" class="anchor" href="#usage-1" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Usage</h3>
+
+<div class="highlight highlight-source-js"><pre>  <span class="pl-c">// Use default (English) localization</span>
+  <span class="pl-k">var</span> fakerator <span class="pl-k">=</span> <span class="pl-en">Fakerator</span>();
+  <span class="pl-en">console</span>.<span class="pl-c1">log</span>(<span class="pl-smi">fakerator</span>.<span class="pl-smi">names</span>.<span class="pl-c1">name</span>());
+  <span class="pl-c">// Floyd Corkery</span></pre></div>
+
+<div class="highlight highlight-source-js"><pre>  <span class="pl-c">// Use german</span>
+  <span class="pl-k">var</span> fakerator <span class="pl-k">=</span> <span class="pl-en">Fakerator</span>(<span class="pl-s"><span class="pl-pds">"</span>de-DE<span class="pl-pds">"</span></span>);
+  <span class="pl-en">console</span>.<span class="pl-c1">log</span>(<span class="pl-smi">fakerator</span>.<span class="pl-smi">names</span>.<span class="pl-c1">name</span>());
+  <span class="pl-c">// Hassan vom Kumbernuss</span></pre></div>
+
+<div class="highlight highlight-source-js"><pre>  <span class="pl-c">// Use russia</span>
+  <span class="pl-k">var</span> fakerator <span class="pl-k">=</span> <span class="pl-en">Fakerator</span>(<span class="pl-s"><span class="pl-pds">"</span>ru-RU<span class="pl-pds">"</span></span>);
+  <span class="pl-en">console</span>.<span class="pl-c1">log</span>(<span class="pl-smi">fakerator</span>.<span class="pl-smi">names</span>.<span class="pl-c1">name</span>());
+  <span class="pl-c">// Альберт Валентинович Архипов</span></pre></div>
+
+<p>In production, you can load only a specific locale:</p>
+
+<div class="highlight highlight-source-js"><pre>  <span class="pl-c">// Use french</span>
+  <span class="pl-k">var</span> fakeratorFR <span class="pl-k">=</span> <span class="pl-c1">require</span>(<span class="pl-s"><span class="pl-pds">"</span>fakerator/locales/fr-FR<span class="pl-pds">"</span></span>)();
+  <span class="pl-en">console</span>.<span class="pl-c1">log</span>(<span class="pl-smi">fakeratorFR</span>.<span class="pl-smi">names</span>.<span class="pl-c1">name</span>());
+  <span class="pl-c">// Dufour Camille</span></pre></div>
+
+<h3>
+<a id="available-localizations" class="anchor" href="#available-localizations" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Available localizations:</h3>
+
+<table>
+<thead>
+<tr>
+<th>Code</th>
+<th>Language/Country</th>
+<th>Usage</th>
+<th>Creator/Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>default</td>
+<td>English (default)</td>
+<td><code>Fakerator();</code></td>
+<td><a href="https://github.com/Marak/faker.js">faker.js</a></td>
+</tr>
+<tr>
+<td>de-DE</td>
+<td>German</td>
+<td><code>Fakerator("de-DE");</code></td>
+<td><a href="https://github.com/Marak/faker.js">faker.js</a></td>
+</tr>
+<tr>
+<td>en-AU</td>
+<td>English (Australia)</td>
+<td><code>Fakerator("en-AU");</code></td>
+<td><a href="https://github.com/Marak/faker.js">faker.js</a></td>
+</tr>
+<tr>
+<td>en-CA</td>
+<td>English (Canada)</td>
+<td><code>Fakerator("en-CA");</code></td>
+<td><a href="https://github.com/Marak/faker.js">faker.js</a></td>
+</tr>
+<tr>
+<td>es-ES</td>
+<td>Spanish</td>
+<td><code>Fakerator("es-ES");</code></td>
+<td><a href="https://github.com/Marak/faker.js">faker.js</a></td>
+</tr>
+<tr>
+<td>fr-FR</td>
+<td>French</td>
+<td><code>Fakerator("fr-FR");</code></td>
+<td><a href="https://github.com/Marak/faker.js">faker.js</a></td>
+</tr>
+<tr>
+<td>hu-HU</td>
+<td>Hungarian</td>
+<td><code>Fakerator("hu-HU");</code></td>
+<td><a href="https://github.com/icebob">Icebob</a></td>
+</tr>
+<tr>
+<td>it-IT</td>
+<td>Italic</td>
+<td><code>Fakerator("it-IT");</code></td>
+<td><a href="https://github.com/Marak/faker.js">faker.js</a></td>
+</tr>
+<tr>
+<td>nb-NO</td>
+<td>Norwegian</td>
+<td><code>Fakerator("nb-NO");</code></td>
+<td><a href="https://github.com/Marak/faker.js">faker.js</a></td>
+</tr>
+<tr>
+<td>pl-PL</td>
+<td>Polish</td>
+<td><code>Fakerator("pl-PL");</code></td>
+<td><a href="https://github.com/Marak/faker.js">faker.js</a></td>
+</tr>
+<tr>
+<td>ru-RU</td>
+<td>Russia</td>
+<td><code>Fakerator("ru-RU");</code></td>
+<td><a href="https://github.com/Marak/faker.js">faker.js</a></td>
+</tr>
+<tr>
+<td>sk-SK</td>
+<td>Slovakian</td>
+<td><code>Fakerator("sk-SK");</code></td>
+<td><a href="https://github.com/Marak/faker.js">faker.js</a></td>
+</tr>
+<tr>
+<td>sv-SE</td>
+<td>Swedish</td>
+<td><code>Fakerator("sv-SE");</code></td>
+<td><a href="https://github.com/Marak/faker.js">faker.js</a></td>
+</tr>
+</tbody>
+</table>
+
+<h3>
+<a id="custom-locale" class="anchor" href="#custom-locale" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Custom locale</h3>
+
+<p>Please read this <a href="LOCALES.md">how to add a new locale</a></p>
+
+<h2>
+<a id="generators" class="anchor" href="#generators" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Generators</h2>
+
+<p>Use this functions to generate fake random data</p>
+
+<h3>
+<a id="names" class="anchor" href="#names" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Names</h3>
+
+<table>
+<thead>
+<tr>
+<th>Function</th>
+<th>Description</th>
+<th>Sample result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>fakerator.names.name()</code></td>
+<td>Generate a full name</td>
+<td>"Dr. Sheryl Gleichner"</td>
+</tr>
+<tr>
+<td><code>fakerator.names.nameM()</code></td>
+<td>Generate a male full name (*)</td>
+<td>"Bruce Weber"</td>
+</tr>
+<tr>
+<td><code>fakerator.names.nameF()</code></td>
+<td>Generate a female full name (*)</td>
+<td>"Juanita Daniel"</td>
+</tr>
+<tr>
+<td><code>fakerator.names.firstName()</code></td>
+<td>Generate a first name</td>
+<td>"Marco"</td>
+</tr>
+<tr>
+<td><code>fakerator.names.firstNameM()</code></td>
+<td>Generate a male first name (*)</td>
+<td>"Bruce"</td>
+</tr>
+<tr>
+<td><code>fakerator.names.firstNameF()</code></td>
+<td>Generate a female first name (*)</td>
+<td>"Kelly"</td>
+</tr>
+<tr>
+<td><code>fakerator.names.lastName()</code></td>
+<td>Generate a last name</td>
+<td>"Reilly"</td>
+</tr>
+<tr>
+<td><code>fakerator.names.lastNameM()</code></td>
+<td>Generate a male last name (*)</td>
+<td>"Collier"</td>
+</tr>
+<tr>
+<td><code>fakerator.names.lastNameF()</code></td>
+<td>Generate a female last name (*)</td>
+<td>"Moore"</td>
+</tr>
+<tr>
+<td><code>fakerator.names.prefix()</code></td>
+<td>Generate a name prefix name</td>
+<td>"Mr."</td>
+</tr>
+<tr>
+<td><code>fakerator.names.suffix()</code></td>
+<td>Generate a name suffix</td>
+<td>"MD"</td>
+</tr>
+</tbody>
+</table>
+
+<p>(*) - if localization support</p>
+
+<h3>
+<a id="address" class="anchor" href="#address" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Address</h3>
+
+<table>
+<thead>
+<tr>
+<th>Function</th>
+<th>Description</th>
+<th>Sample result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>fakerator.address.country()</code></td>
+<td>Give a country name</td>
+<td>"Romania"</td>
+</tr>
+<tr>
+<td><code>fakerator.address.countryCode()</code></td>
+<td>Give a country code</td>
+<td>"RO"</td>
+</tr>
+<tr>
+<td><code>fakerator.address.countryAndCode()</code></td>
+<td>Give a country object</td>
+<td><code>{ code: "RO", name: "Romania" }</code></td>
+</tr>
+<tr>
+<td><code>fakerator.address.city()</code></td>
+<td>Generate a city name</td>
+<td>"Merlestad"</td>
+</tr>
+<tr>
+<td><code>fakerator.address.street()</code></td>
+<td>Generate a street address</td>
+<td>"96214 Annette Radial Apt. 543"</td>
+</tr>
+<tr>
+<td><code>fakerator.address.streetName()</code></td>
+<td>Generate a street name</td>
+<td>"Gabriel Islands"</td>
+</tr>
+<tr>
+<td><code>fakerator.address.buildingNumber()</code></td>
+<td>Generate a building number</td>
+<td>"196"</td>
+</tr>
+<tr>
+<td><code>fakerator.address.postCode()</code></td>
+<td>Generate a post code</td>
+<td>"54360-6405"</td>
+</tr>
+<tr>
+<td><code>fakerator.address.geoLocation()</code></td>
+<td>Generate a geolocation</td>
+<td><code>{ latitude: 40.4233, longitude: -131.9741 }</code></td>
+</tr>
+<tr>
+<td><code>fakerator.address.altitude()</code></td>
+<td>Generate an altitude</td>
+<td>1180</td>
+</tr>
+</tbody>
+</table>
+
+<h3>
+<a id="phone" class="anchor" href="#phone" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Phone</h3>
+
+<table>
+<thead>
+<tr>
+<th>Function</th>
+<th>Description</th>
+<th>Sample result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>fakerator.phone.number()</code></td>
+<td>Generate a phone number</td>
+<td>"(640) 552-0763"</td>
+</tr>
+</tbody>
+</table>
+
+<h3>
+<a id="company" class="anchor" href="#company" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Company</h3>
+
+<table>
+<thead>
+<tr>
+<th>Function</th>
+<th>Description</th>
+<th>Sample result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>fakerator.company.name()</code></td>
+<td>Generate a company name</td>
+<td>"Weber, Gleichner and Kertzmann Inc."</td>
+</tr>
+<tr>
+<td><code>fakerator.company.suffix()</code></td>
+<td>Generate a company suffix</td>
+<td>"LLC"</td>
+</tr>
+</tbody>
+</table>
+
+<h3>
+<a id="internet-data" class="anchor" href="#internet-data" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Internet data</h3>
+
+<table>
+<thead>
+<tr>
+<th>Function</th>
+<th>Description</th>
+<th>Sample result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>fakerator.internet.userName()</code></td>
+<td>Generate a username</td>
+<td>"kelly.moore14"</td>
+</tr>
+<tr>
+<td><code>fakerator.internet.userName(firstName, lastName)</code></td>
+<td>Generate a username based an existing name</td>
+<td>"johndoe19"</td>
+</tr>
+<tr>
+<td><code>fakerator.internet.password(length)</code></td>
+<td>Generate a password</td>
+<td></td>
+</tr>
+<tr>
+<td><code>fakerator.internet.domain()</code></td>
+<td>Generate a domain name</td>
+<td>"merle-gleichner.net"</td>
+</tr>
+<tr>
+<td><code>fakerator.internet.url()</code></td>
+<td>Generate an url</td>
+<td>"<a href="http://ella-parisian.com">http://ella-parisian.com</a>"</td>
+</tr>
+<tr>
+<td><code>fakerator.internet.email()</code></td>
+<td>Generate an email address</td>
+<td>"<a href="mailto:kelly.moore@gmail.com">kelly.moore@gmail.com</a>"</td>
+</tr>
+<tr>
+<td><code>fakerator.internet.email(firstName, lastName)</code></td>
+<td>Generate an email address from an existing name</td>
+<td>"<a href="mailto:john.doe@hotmail.com">john.doe@hotmail.com</a>"</td>
+</tr>
+<tr>
+<td><code>fakerator.internet.image(width, height, category)</code></td>
+<td>Generate a lorem image</td>
+<td>"<a href="http://lorempixel.com/640/480">http://lorempixel.com/640/480</a>"</td>
+</tr>
+<tr>
+<td><code>fakerator.internet.mac()</code></td>
+<td>Generate a MAC address</td>
+<td>"65:a1:a6:18:94:0b"</td>
+</tr>
+<tr>
+<td><code>fakerator.internet.ip()</code></td>
+<td>Generate an IP v4 address</td>
+<td>"69.45.112.94"</td>
+</tr>
+<tr>
+<td><code>fakerator.internet.ipv6()</code></td>
+<td>Generate an IP v6 address</td>
+<td>"b2e9:4275:95a9:65a1:a618:940b:a6ce:adb6"</td>
+</tr>
+<tr>
+<td><code>fakerator.internet.color()</code></td>
+<td>Generate a color</td>
+<td>"b76f49"</td>
+</tr>
+<tr>
+<td><code>fakerator.internet.avatar()</code></td>
+<td>Give an avatar link (uifaces.com)</td>
+<td><a href="https://s3.amazonaws.com/uifaces/faces/twitter/snowwrite/128.jpg">Sample</a></td>
+</tr>
+<tr>
+<td><code>fakerator.internet.gravatar()</code></td>
+<td>Generate a gravatar link</td>
+<td><a href="https://www.gravatar.com/avatar/a91004b566f80271f0a3577f71d43cd4">Sample</a></td>
+</tr>
+<tr>
+<td><code>fakerator.internet.gravatar(email)</code></td>
+<td>Generate a gravatar link from an email address</td>
+<td><a href="https://www.gravatar.com/avatar/e13743a7f1db7f4246badd6fd6ff54ff">Sample</a></td>
+</tr>
+</tbody>
+</table>
+
+<h3>
+<a id="lorem" class="anchor" href="#lorem" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Lorem</h3>
+
+<table>
+<thead>
+<tr>
+<th>Function</th>
+<th>Description</th>
+<th>Sample result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>fakerator.lorem.word()</code></td>
+<td>Give a lorem word</td>
+<td>"dolores"</td>
+</tr>
+<tr>
+<td><code>fakerator.lorem.sentence()</code></td>
+<td>Generate a lorem sentence</td>
+<td>"Libero similique quam voluptas soluta."</td>
+</tr>
+<tr>
+<td><code>fakerator.lorem.paragraph()</code></td>
+<td>Give a lorem paragraph</td>
+<td>"Ut velit enim vel. Unde aut sint possimus velit commodi numquam. Autem expedita dignissimos est qui consequatur et delectus. Et qui necessitatibus voluptas quam. Dicta temporibus animi optio tempora aperiam repudiandae beatae. Placeat quo voluptatibus neque repellendus dolorem."</td>
+</tr>
+</tbody>
+</table>
+
+<h3>
+<a id="date--time" class="anchor" href="#date--time" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Date &amp; time</h3>
+
+<table>
+<thead>
+<tr>
+<th>Function</th>
+<th>Description</th>
+<th>Sample result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>fakerator.date.timezone()</code></td>
+<td>Give a timezone</td>
+<td>"Asia/Bangkok"</td>
+</tr>
+<tr>
+<td><code>fakerator.date.past(years, refDate)</code></td>
+<td>Generate a date in the past</td>
+<td>Date</td>
+</tr>
+<tr>
+<td><code>fakerator.date.future(years, refDate)</code></td>
+<td>Generate a date in the future</td>
+<td>Date</td>
+</tr>
+<tr>
+<td><code>fakerator.date.between(from, to)</code></td>
+<td>Generate a date between two dates</td>
+<td>Date</td>
+</tr>
+<tr>
+<td><code>fakerator.date.recent(days)</code></td>
+<td>Generate a date in recent few days</td>
+<td>Date</td>
+</tr>
+<tr>
+<td><code>fakerator.date.age(min, max)</code></td>
+<td>Generate an age number</td>
+<td>26</td>
+</tr>
+<tr>
+<td><code>fakerator.date.month()</code></td>
+<td>Give a month name</td>
+<td>"September"</td>
+</tr>
+<tr>
+<td><code>fakerator.date.weekday()</code></td>
+<td>Give a weekday name</td>
+<td>"Sunday"</td>
+</tr>
+<tr>
+<td><code>fakerator.date.weekdayShort()</code></td>
+<td>Give a short weekday name</td>
+<td>"Fri"</td>
+</tr>
+<tr>
+<td><code>fakerator.date.weekdayMin()</code></td>
+<td>Give a min weekday name</td>
+<td>"Su"</td>
+</tr>
+</tbody>
+</table>
+
+<h3>
+<a id="miscellaneous" class="anchor" href="#miscellaneous" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Miscellaneous</h3>
+
+<table>
+<thead>
+<tr>
+<th>Function</th>
+<th>Description</th>
+<th>Sample result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>fakerator.misc.uuid()</code></td>
+<td>Generate an <a href="https://github.com/defunctzombie/node-uuid">UUID</a>
+</td>
+<td>"e26717ad-1513-43c5-b7de-2849521fa195"</td>
+</tr>
+</tbody>
+</table>
+
+<h3>
+<a id="entities" class="anchor" href="#entities" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Entities</h3>
+
+<p>You can generate complex entities</p>
+
+<h4>
+<a id="user" class="anchor" href="#user" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>User</h4>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-smi">fakerator</span>.<span class="pl-smi">entity</span>.<span class="pl-en">user</span>()</pre></div>
+
+<p>Result:</p>
+
+<div class="highlight highlight-source-js"><pre>{
+    <span class="pl-s"><span class="pl-pds">"</span>firstName<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>Ashley<span class="pl-pds">"</span></span>,
+    <span class="pl-s"><span class="pl-pds">"</span>lastName<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>Kautzer<span class="pl-pds">"</span></span>,
+    <span class="pl-s"><span class="pl-pds">"</span>userName<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>ashley38<span class="pl-pds">"</span></span>,
+    <span class="pl-s"><span class="pl-pds">"</span>password<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>yuzasimima<span class="pl-pds">"</span></span>,
+    <span class="pl-s"><span class="pl-pds">"</span>email<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>ashleykautzer74@hotmail.com<span class="pl-pds">"</span></span>,
+    <span class="pl-s"><span class="pl-pds">"</span>phone<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>1-485-841-6009<span class="pl-pds">"</span></span>,
+    <span class="pl-s"><span class="pl-pds">"</span>dob<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>1939-11-22T01:15:16.735Z<span class="pl-pds">"</span></span>,
+    <span class="pl-s"><span class="pl-pds">"</span>website<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>http://natalie-walker.info<span class="pl-pds">"</span></span>,
+    <span class="pl-s"><span class="pl-pds">"</span>ip<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>202.26.104.4<span class="pl-pds">"</span></span>,
+    <span class="pl-s"><span class="pl-pds">"</span>avatar<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>https://s3.amazonaws.com/uifaces/faces/twitter/jakemoore/128.jpg<span class="pl-pds">"</span></span>,
+    <span class="pl-s"><span class="pl-pds">"</span>gravatar<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>https://www.gravatar.com/avatar/7875d665c96e5e388aa4074697cab0a0<span class="pl-pds">"</span></span>,
+    <span class="pl-s"><span class="pl-pds">"</span>address<span class="pl-pds">"</span></span><span class="pl-k">:</span> {
+        <span class="pl-s"><span class="pl-pds">"</span>country<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>Northern Mariana Islands<span class="pl-pds">"</span></span>,
+        <span class="pl-s"><span class="pl-pds">"</span>countryCode<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>MP<span class="pl-pds">"</span></span>,
+        <span class="pl-s"><span class="pl-pds">"</span>state<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>Michigan<span class="pl-pds">"</span></span>,
+        <span class="pl-s"><span class="pl-pds">"</span>city<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>New Jamie<span class="pl-pds">"</span></span>,
+        <span class="pl-s"><span class="pl-pds">"</span>street<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>1730 Abbott Views Apt. 460<span class="pl-pds">"</span></span>,
+        <span class="pl-s"><span class="pl-pds">"</span>zip<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>77988<span class="pl-pds">"</span></span>,
+        <span class="pl-s"><span class="pl-pds">"</span>geo<span class="pl-pds">"</span></span><span class="pl-k">:</span> {
+            <span class="pl-s"><span class="pl-pds">"</span>latitude<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-k">-</span><span class="pl-c1">41.5878</span>,
+            <span class="pl-s"><span class="pl-pds">"</span>longitude<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-c1">34.266400000000004</span>
+        }
+    },
+    <span class="pl-s"><span class="pl-pds">"</span>status<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-c1">false</span>
+}</pre></div>
+
+<p>You can set genre of user with first parameter.</p>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-c">// F - female, M - male</span>
+<span class="pl-smi">fakerator</span>.<span class="pl-smi">entity</span>.<span class="pl-en">user</span>(<span class="pl-s"><span class="pl-pds">"</span>F<span class="pl-pds">"</span></span>);</pre></div>
+
+<h4>
+<a id="address-1" class="anchor" href="#address-1" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Address</h4>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-smi">fakerator</span>.<span class="pl-smi">entity</span>.<span class="pl-en">address</span>()</pre></div>
+
+<p>Result:</p>
+
+<div class="highlight highlight-source-js"><pre>{
+    <span class="pl-s"><span class="pl-pds">"</span>country<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>Bulgaria<span class="pl-pds">"</span></span>,
+    <span class="pl-s"><span class="pl-pds">"</span>countryCode<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>BG<span class="pl-pds">"</span></span>,
+    <span class="pl-s"><span class="pl-pds">"</span>state<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>Indiana<span class="pl-pds">"</span></span>,
+    <span class="pl-s"><span class="pl-pds">"</span>city<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>North Michele<span class="pl-pds">"</span></span>,
+    <span class="pl-s"><span class="pl-pds">"</span>street<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>06169 Beer Villages Suite 302<span class="pl-pds">"</span></span>,
+    <span class="pl-s"><span class="pl-pds">"</span>zip<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>20896<span class="pl-pds">"</span></span>,
+    <span class="pl-s"><span class="pl-pds">"</span>geo<span class="pl-pds">"</span></span><span class="pl-k">:</span> {
+        <span class="pl-s"><span class="pl-pds">"</span>latitude<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-k">-</span><span class="pl-c1">9.275499999999994</span>,
+        <span class="pl-s"><span class="pl-pds">"</span>longitude<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-c1">92.53280000000001</span>
+    }
+}</pre></div>
+
+<h4>
+<a id="company-1" class="anchor" href="#company-1" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Company</h4>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-smi">fakerator</span>.<span class="pl-smi">entity</span>.<span class="pl-en">company</span>()</pre></div>
+
+<p>Result:</p>
+
+<div class="highlight highlight-source-js"><pre>{
+    <span class="pl-s"><span class="pl-pds">"</span>name<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>Cormier, Murphy and Turcotte Ltd.<span class="pl-pds">"</span></span>,
+    <span class="pl-s"><span class="pl-pds">"</span>email<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>cormier-murphy-and-turcotte-ltd.90@hotmail.com<span class="pl-pds">"</span></span>,
+    <span class="pl-s"><span class="pl-pds">"</span>phone<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>044.708.8876 x834<span class="pl-pds">"</span></span>,
+    <span class="pl-s"><span class="pl-pds">"</span>website<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>https://olgabeatty.info<span class="pl-pds">"</span></span>,
+    <span class="pl-s"><span class="pl-pds">"</span>ip<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>54.65.201.35<span class="pl-pds">"</span></span>,
+    <span class="pl-s"><span class="pl-pds">"</span>address<span class="pl-pds">"</span></span><span class="pl-k">:</span> {
+        <span class="pl-s"><span class="pl-pds">"</span>country<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>Caribbean Netherlands<span class="pl-pds">"</span></span>,
+        <span class="pl-s"><span class="pl-pds">"</span>countryCode<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>BQ<span class="pl-pds">"</span></span>,
+        <span class="pl-s"><span class="pl-pds">"</span>state<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>Kansas<span class="pl-pds">"</span></span>,
+        <span class="pl-s"><span class="pl-pds">"</span>city<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>East Ronnie<span class="pl-pds">"</span></span>,
+        <span class="pl-s"><span class="pl-pds">"</span>street<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>81019 Cormier Mall<span class="pl-pds">"</span></span>,
+        <span class="pl-s"><span class="pl-pds">"</span>zip<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>11474-0882<span class="pl-pds">"</span></span>,
+        <span class="pl-s"><span class="pl-pds">"</span>geo<span class="pl-pds">"</span></span><span class="pl-k">:</span> {
+            <span class="pl-s"><span class="pl-pds">"</span>latitude<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-c1">1.6444000000000045</span>,
+            <span class="pl-s"><span class="pl-pds">"</span>longitude<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-c1">107.97910000000002</span>
+        }
+    }
+}</pre></div>
+
+<h4>
+<a id="blog-post" class="anchor" href="#blog-post" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Blog post</h4>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-smi">fakerator</span>.<span class="pl-smi">entity</span>.<span class="pl-en">post</span>()</pre></div>
+
+<p>Result:</p>
+
+<div class="highlight highlight-source-js"><pre>{
+    <span class="pl-s"><span class="pl-pds">"</span>title<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>Esse excepturi eum id ab aut dolore veritatis et.<span class="pl-pds">"</span></span>,
+    <span class="pl-s"><span class="pl-pds">"</span>keywords<span class="pl-pds">"</span></span><span class="pl-k">:</span> [
+        <span class="pl-s"><span class="pl-pds">"</span>commodi<span class="pl-pds">"</span></span>,
+        <span class="pl-s"><span class="pl-pds">"</span>odio<span class="pl-pds">"</span></span>,
+        <span class="pl-s"><span class="pl-pds">"</span>sit<span class="pl-pds">"</span></span>
+    ],
+    <span class="pl-s"><span class="pl-pds">"</span>created<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>2016-05-25T18:19:46.283Z<span class="pl-pds">"</span></span>,
+    <span class="pl-s"><span class="pl-pds">"</span>content<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>Mollitia officiis quam nulla veritatis omnis eius enim quis. Dolorem est reiciendis adipisci. Laboriosam enim saepe sunt nisi. Autem tempora ullam non laborum. Qui dolorem fugiat amet. Eius consectetur ea et minus ipsam et qui unde doloremque.<span class="pl-cce">\r\n</span>Nihil minima aut. Voluptatibus neque at nulla ut expedita laboriosam. Veniam natus voluptates nulla voluptas impedit cumque qui nihil.<span class="pl-cce">\r\n</span>Minus quos in autem facere dolorem quidem rem rerum. Animi quo eaque debitis nam non earum molestiae. Maxime vitae exercitationem doloremque.<span class="pl-pds">"</span></span>
+}</pre></div>
+
+<h2>
+<a id="times" class="anchor" href="#times" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Times</h2>
+
+<p>You can generate array of items with <code>times</code> and <code>utimes</code> (unique) functions. 
+First parameter is the generator function. Second is the length of array. </p>
+
+<blockquote>
+<p>You can pass further parameters, they will be passed to the generator function.</p>
+</blockquote>
+
+<h3>
+<a id="usage-2" class="anchor" href="#usage-2" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Usage</h3>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-c">// Generate 3 names</span>
+<span class="pl-smi">fakerator</span>.<span class="pl-en">times</span>(<span class="pl-smi">fakerator</span>.<span class="pl-smi">names</span>.<span class="pl-c1">name</span>, <span class="pl-c1">3</span>);
+<span class="pl-c">// [ "Ross Hansen", "Thomas Pfeffer", "Alexis Hauck I" ]</span>
+
+<span class="pl-c">// Generate 5 username with populate where first name must be 'John'</span>
+<span class="pl-smi">fakerator</span>.<span class="pl-en">times</span>(<span class="pl-smi">fakerator</span>.<span class="pl-smi">populate</span>, <span class="pl-c1">5</span>, <span class="pl-s"><span class="pl-pds">"</span>#{internet.userName}<span class="pl-pds">"</span></span>, <span class="pl-s"><span class="pl-pds">"</span>John<span class="pl-pds">"</span></span>);
+<span class="pl-c">// [ 'john.langosh8341', 'john12', 'john.howe5075', 'john_jerde', 'john.grant9923' ]</span>
+
+<span class="pl-c">// Generate 5 number from 1 to 10</span>
+<span class="pl-smi">fakerator</span>.<span class="pl-en">times</span>(<span class="pl-smi">fakerator</span>.<span class="pl-smi">random</span>.<span class="pl-smi">number</span>, <span class="pl-c1">5</span>, <span class="pl-c1">1</span>, <span class="pl-c1">10</span>);
+<span class="pl-c">// [ 10, 8, 1, 8, 5 ]</span>
+<span class="pl-c">// Note: 8 is twice!</span>
+
+<span class="pl-c">// Generator 5 UNIQUE number from 1 to 10</span>
+<span class="pl-smi">fakerator</span>.<span class="pl-en">utimes</span>(<span class="pl-smi">fakerator</span>.<span class="pl-smi">random</span>.<span class="pl-smi">number</span>, <span class="pl-c1">5</span>, <span class="pl-c1">1</span>, <span class="pl-c1">10</span>);
+<span class="pl-c">// [ 10, 2, 9, 6, 1 ]</span>
+<span class="pl-c">// Note: every number is unique!</span></pre></div>
+
+<h2>
+<a id="templates" class="anchor" href="#templates" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Templates</h2>
+
+<p>You can also generate fake data with templates:</p>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-smi">fakerator</span>.<span class="pl-en">populate</span>(<span class="pl-s"><span class="pl-pds">"</span>#{names.name}<span class="pl-pds">"</span></span>)
+<span class="pl-c">// Ross Hansen</span></pre></div>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-smi">fakerator</span>.<span class="pl-en">populate</span>(<span class="pl-s"><span class="pl-pds">"</span>#{address.street}<span class="pl-pds">"</span></span>)
+<span class="pl-c">// 0662 Ferry Drive</span></pre></div>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-smi">fakerator</span>.<span class="pl-en">populate</span>(<span class="pl-s"><span class="pl-pds">"</span>Hi, my name is #{names.name}. I was born in #{address.city}, #{address.country}. I am #{date.age} years old.<span class="pl-pds">"</span></span>)
+<span class="pl-c">// Hi, my name is Mrs. Rufus Shanahan. I was born in Hilpertton, Denmark. I am 44 years old.</span></pre></div>
+
+<h3>
+<a id="replace-symbols" class="anchor" href="#replace-symbols" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Replace symbols</h3>
+
+<p>The populate replace <code>#</code> symbol to a random number and <code>?</code> symbol to a random letter.</p>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-smi">fakerator</span>.<span class="pl-en">populate</span>(<span class="pl-s"><span class="pl-pds">"</span>#{names.firstName}-###-???<span class="pl-pds">"</span></span>)
+<span class="pl-c">// Mandy-802-oqs</span></pre></div>
+
+<h2>
+<a id="todo" class="anchor" href="#todo" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>TODO</h2>
+
+<h2>
+<a id="contribution" class="anchor" href="#contribution" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Contribution</h2>
+
+<p>Please send pull requests improving the usage and fixing bugs, improving documentation and providing better examples, or providing some testing, because these things are important.</p>
+
+<h2>
+<a id="license" class="anchor" href="#license" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>License</h2>
+
+<p>fakerator is available under the <a href="https://tldrlegal.com/license/mit-license">MIT license</a>.</p>
+
+<h2>
+<a id="contact" class="anchor" href="#contact" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Contact</h2>
+
+<p>Copyright (C) 2016 Icebob</p>
+
+<p><a href="https://github.com/icebob"><img src="https://img.shields.io/badge/github-icebob-green.svg" alt="@icebob"></a> <a href="https://twitter.com/Icebobcsi"><img src="https://img.shields.io/badge/twitter-Icebobcsi-blue.svg" alt="@icebob"></a></p>
+
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/icebob/fakerator">Fakerator</a> is maintained by <a href="https://github.com/icebob">icebob</a>.</span>
+
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+      </footer>
+
+    </section>
+
+  
+  </body>
+</html>
