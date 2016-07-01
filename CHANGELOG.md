@@ -1,3 +1,22 @@
+<a name="0.3.0"></a>
+# 0.3.0 (2016-07-01)
+
+* :package: build: Bump version and build ([aa9c2d0](https://github.com/icebob/fakerator/commit/aa9c2d0))
+* :pencil: docs: update README ([908bc20](https://github.com/icebob/fakerator/commit/908bc20))
+* Add cs-CZ locale ([06a0c70](https://github.com/icebob/fakerator/commit/06a0c70))
+* Update README.md ([d087a9d](https://github.com/icebob/fakerator/commit/d087a9d))
+* Update README.md ([d057ed5](https://github.com/icebob/fakerator/commit/d057ed5))
+* chore(package): update del to version 2.2.1 ([4eb8d83](https://github.com/icebob/fakerator/commit/4eb8d83))
+* chore(package): update dependencies ([185e123](https://github.com/icebob/fakerator/commit/185e123))
+* chore(package): update eslint to version 2.12.0 ([83fbecd](https://github.com/icebob/fakerator/commit/83fbecd))
+* chore(package): update eslint to version 2.13.0 ([d9c6781](https://github.com/icebob/fakerator/commit/d9c6781))
+* chore(package): update eslint to version 2.13.1 ([38c1c5b](https://github.com/icebob/fakerator/commit/38c1c5b))
+* chore(package): update glob to version 7.0.4 ([57698f2](https://github.com/icebob/fakerator/commit/57698f2))
+* chore(package): update glob to version 7.0.5 ([4cff09a](https://github.com/icebob/fakerator/commit/4cff09a))
+* chore(package): update karma-sinon-chai to version 1.2.2 ([e6eaf8f](https://github.com/icebob/fakerator/commit/e6eaf8f))
+
+
+
 <a name="0.2.0"></a>
 # 0.2.0 (2016-06-03)
 
