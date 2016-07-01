@@ -133,6 +133,7 @@ In production, you can load only a specific locale:
 Code      | Language/Country      | Usage                     | Creator/Source
 --------- | --------------------- | ------------------------- | --------------
 default   | English (default)     | `Fakerator();`        | [faker.js](https://github.com/Marak/faker.js)
+cs-CZ     | Czech                 | `Fakerator("cs-CZ");` | [zipman](https://github.com/zpiman)
 de-DE     | German                | `Fakerator("de-DE");` | [faker.js](https://github.com/Marak/faker.js)
 en-AU     | English (Australia)   | `Fakerator("en-AU");` | [faker.js](https://github.com/Marak/faker.js)
 en-CA     | English (Canada)      | `Fakerator("en-CA");` | [faker.js](https://github.com/Marak/faker.js)
