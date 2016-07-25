@@ -57,7 +57,7 @@
     "coveralls": "2.11.11",
     "del": "2.2.1",
     "eslint": "3.0.1",
-    "eslint-friendly-formatter": "2.0.5",
+    "eslint-friendly-formatter": "2.0.6",
     "glob": "7.0.5",
     "inject-loader": "2.0.1",
     "karma": "0.13.22",
