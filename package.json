@@ -60,7 +60,7 @@
     "eslint-friendly-formatter": "2.0.5",
     "glob": "7.0.5",
     "inject-loader": "2.0.1",
-    "karma": "0.13.22",
+    "karma": "1.0.0",
     "karma-chai": "0.1.0",
     "karma-chrome-launcher": "1.0.1",
     "karma-coverage": "1.0.0",
