@@ -77,7 +77,7 @@
     "mocha-generators": "1.2.0",
     "mocha-loader": "0.7.1",
     "password-generator": "2.0.2",
-    "phantomjs-prebuilt": "2.1.7",
+    "phantomjs-prebuilt": "2.1.12",
     "sinon": "1.17.5",
     "sinon-chai": "2.8.0",
     "uuid": "2.0.2",
