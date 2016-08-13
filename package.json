@@ -55,7 +55,7 @@
     "chai": "3.5.0",
     "conventional-changelog-cli": "1.2.0",
     "coveralls": "2.11.12",
-    "del": "2.2.1",
+    "del": "2.2.2",
     "eslint": "3.3.0",
     "eslint-friendly-formatter": "2.0.6",
     "glob": "7.0.5",
