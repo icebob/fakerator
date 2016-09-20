@@ -58,7 +58,7 @@
     "del": "2.2.2",
     "eslint": "3.4.0",
     "eslint-friendly-formatter": "2.0.6",
-    "glob": "7.0.6",
+    "glob": "7.1.0",
     "inject-loader": "2.0.1",
     "karma": "1.2.0",
     "karma-chai": "0.1.0",
