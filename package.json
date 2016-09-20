@@ -80,7 +80,7 @@
     "phantomjs-prebuilt": "2.1.12",
     "sinon": "1.17.6",
     "sinon-chai": "2.8.0",
-    "uuid": "2.0.2",
+    "uuid": "2.0.3",
     "webpack": "1.13.2",
     "webpack-merge": "0.14.1"
   }
