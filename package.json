@@ -56,7 +56,7 @@
     "conventional-changelog-cli": "1.2.0",
     "coveralls": "2.11.14",
     "del": "2.2.2",
-    "eslint": "3.6.1",
+    "eslint": "3.8.0",
     "eslint-friendly-formatter": "2.0.6",
     "glob": "7.1.1",
     "inject-loader": "2.0.1",
