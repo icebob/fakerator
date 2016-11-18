@@ -82,6 +82,6 @@
     "sinon-chai": "2.8.0",
     "uuid": "3.0.0",
     "webpack": "1.13.2",
-    "webpack-merge": "0.15.0"
+    "webpack-merge": "0.17.0"
   }
 }
