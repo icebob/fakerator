@@ -46,7 +46,7 @@
   },
   "homepage": "https://github.com/icebob/fakerator#readme",
   "devDependencies": {
-    "babel-core": "6.17.0",
+    "babel-core": "6.18.1",
     "babel-istanbul-loader": "0.1.0",
     "babel-loader": "6.2.9",
     "babel-plugin-transform-runtime": "6.15.0",
