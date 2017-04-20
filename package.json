@@ -75,7 +75,7 @@
     "lolex": "1.5.2",
     "mocha": "2.5.3",
     "mocha-generators": "1.2.0",
-    "mocha-loader": "0.7.1",
+    "mocha-loader": "1.0.0",
     "password-generator": "2.0.2",
     "phantomjs-prebuilt": "2.1.14",
     "sinon": "1.17.7",
