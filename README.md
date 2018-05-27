@@ -113,7 +113,7 @@ The library supports localizations. You can set the locale code in constructor.
 ```
 
 ```js
-  // Use russia
+  // Use russian
   var fakerator = Fakerator("ru-RU");
   console.log(fakerator.names.name());
   // Альберт Валентинович Архипов
@@ -143,7 +143,7 @@ hu-HU     | Hungarian             | `Fakerator("hu-HU");` | [Icebob](https://git
 it-IT     | Italian               | `Fakerator("it-IT");` | [faker.js](https://github.com/Marak/faker.js)
 nb-NO     | Norwegian             | `Fakerator("nb-NO");` | [faker.js](https://github.com/Marak/faker.js)
 pl-PL     | Polish                | `Fakerator("pl-PL");` | [faker.js](https://github.com/Marak/faker.js)
-ru-RU     | Russia                | `Fakerator("ru-RU");` | [faker.js](https://github.com/Marak/faker.js)
+ru-RU     | Russian               | `Fakerator("ru-RU");` | [faker.js](https://github.com/Marak/faker.js)
 sk-SK     | Slovakian             | `Fakerator("sk-SK");` | [faker.js](https://github.com/Marak/faker.js)
 sv-SE     | Swedish               | `Fakerator("sv-SE");` | [faker.js](https://github.com/Marak/faker.js)
 
