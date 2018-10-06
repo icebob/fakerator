@@ -12,6 +12,8 @@
 
 fakerator was inspired by and has used data definitions from [Marak's faker.js library](https://github.com/Marak/faker.js)
 
+**If you like my work, please [donate](https://www.paypal.me/meregnorbert). Thank you!**
+
 ## Demo
 [JSFiddle test page](https://jsfiddle.net/icebob/wngcbpkq/)
 
