@@ -7662,9 +7662,9 @@ return /******/ (function(modules) { // webpackBootstrap
 			id: "default",
 			fallback: null,
 			mask: "\#\{([A-Za-z0-9_\.]+)\}",
-			language: "English",
-			country: "United Kingdom",
-			countryCode: "UK"
+			language: "English (United States)",
+			country: "United States",
+			countryCode: "US"
 		},
 
 		names: __webpack_require__(202),
@@ -9766,7 +9766,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      /* This will not work in older browsers.
 	       * See https://developer.mozilla.org/en-US/docs/Web/API/window.crypto.getRandomValues
 	       */
-	    
+
 	      _crypto.getRandomValues(bytes);
 	      return bytes;
 	    }
@@ -10833,7 +10833,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 224 */
 /***/ function(module, exports, __webpack_require__) {
 
-	
+
 	/**
 	 * A JavaScript implementation of the Secure Hash Algorithm, SHA-256, as defined
 	 * in FIPS 180-2

@@ -34,8 +34,8 @@ describe("Fakerator", () => {
 		expect(fakerator).to.be.exist;
 		expect(fakerator.locale).to.be.an("Object");
 		expect(fakerator.locale._meta.id).to.be.equal("default");
-		expect(fakerator.locale._meta.language).to.be.equal("English");
-		expect(fakerator.locale._meta.country).to.be.equal("United Kingdom");
+		expect(fakerator.locale._meta.language).to.be.equal("English (United States)");
+		expect(fakerator.locale._meta.country).to.be.equal("United States");
 
 	});
 
@@ -62,6 +62,6 @@ describe("Fakerator", () => {
 		expect(fakerator.locale._meta.id).to.be.equal("default");
 		expect(fakerator.locale.names).to.be.an("Object");
 		expect(fakerator.locale.lorem).to.be.an("Object");
-	});	
+	});
 
 });
