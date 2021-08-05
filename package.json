@@ -39,6 +39,7 @@
     "mocks",
     "test"
   ],
+  "types": "fakerator.d.ts",
   "author": "Icebob",
   "license": "MIT",
   "bugs": {
