@@ -3,12 +3,14 @@
   "version": "0.3.3",
   "description": "Random data generator with localization",
   "main": "dist/fakerator.js",
+  "types": "dist/fakerator.d.ts",
   "directories": {
     "test": "test"
   },
   "scripts": {
     "prebuild": "npm run test",
-    "build": "webpack --config config/webpack.build.config.js",
+    "copytype": "cp fakerator.d.ts dist/fakerator.d.ts",
+    "build": "webpack --config config/webpack.build.config.js && npm run copytype",
     "lint": "eslint --ext=.js lib test/specs",
     "coverall": "cat ./test/coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
     "coverage": "npm run test && npm run coverall",
