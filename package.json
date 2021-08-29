@@ -9,7 +9,7 @@
   },
   "scripts": {
     "prebuild": "npm run test",
-    "copytype": "cp fakerator.d.ts dist/fakerator.d.ts",
+    "copytype": "copyfiles fakerator.d.ts dist",
     "build": "webpack --config config/webpack.build.config.js && npm run copytype",
     "lint": "eslint --ext=.js lib test/specs",
     "coverall": "cat ./test/coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
@@ -57,6 +57,7 @@
     "babel-preset-stage-0": "6.5.0",
     "chai": "3.5.0",
     "conventional-changelog-cli": "1.2.0",
+    "copyfiles": "^2.4.1",
     "coveralls": "2.11.15",
     "del": "2.2.2",
     "eslint": "3.13.0",
