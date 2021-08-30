@@ -29,8 +29,7 @@
     "dist/fakerator.min.js",
     "dist/locales",
     "src",
-    "vendor",
-    "test"
+    "vendor"
   ],
   "keywords": [
     "fake",
