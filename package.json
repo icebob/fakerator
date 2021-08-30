@@ -3,12 +3,14 @@
   "version": "0.3.3",
   "description": "Random data generator with localization",
   "main": "dist/fakerator.js",
+  "types": "dist/fakerator.d.ts",
   "directories": {
     "test": "test"
   },
   "scripts": {
     "prebuild": "npm run test",
-    "build": "webpack --config config/webpack.build.config.js",
+    "copytype": "copyfiles fakerator.d.ts dist",
+    "build": "webpack --config config/webpack.build.config.js && npm run copytype",
     "lint": "eslint --ext=.js lib test/specs",
     "coverall": "cat ./test/coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
     "coverage": "npm run test && npm run coverall",
@@ -39,6 +41,7 @@
     "mocks",
     "test"
   ],
+  "types": "./fakerator.d.ts",
   "author": "Icebob",
   "license": "MIT",
   "bugs": {
@@ -54,6 +57,7 @@
     "babel-preset-stage-0": "6.5.0",
     "chai": "3.5.0",
     "conventional-changelog-cli": "1.2.0",
+    "copyfiles": "^2.4.1",
     "coveralls": "2.11.15",
     "del": "2.2.2",
     "eslint": "3.13.0",
