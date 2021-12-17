@@ -1,6 +1,6 @@
 {
   "name": "fakerator",
-  "version": "0.3.4",
+  "version": "0.3.5",
   "description": "Random data generator with localization",
   "main": "dist/fakerator.js",
   "types": "dist/fakerator.d.ts",
