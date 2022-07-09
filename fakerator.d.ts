@@ -31,7 +31,6 @@ declare module 'fakerator' {
         Sports = 'sports',
         Technics = 'technics',
         Transport = 'transport',
-        Technics = 'flickr',
         ColorImage = 'color',
         GrayImage = 'gray'
     }
@@ -104,7 +103,7 @@ declare module 'fakerator' {
          * @param precision Can generate floating number if you define this parameter. Note: Do not use 0
          * @returns number
          */
-        number(min: number, max: number, precision: number = 1): number;
+        number(min: number, max: number, precision: number): number;
     
     
         /**
@@ -120,7 +119,7 @@ declare module 'fakerator' {
          * @param likelyhood Returns true if selected random value between 0 and 100 below this parameter.
          * @returns boolean
          */
-        boolean(likelyhood: number = 50): boolean;
+        boolean(likelyhood: number): boolean;
     
     
         /**
@@ -142,7 +141,7 @@ declare module 'fakerator' {
          * @param length Length of the generated string
          * @returns string
          */
-        hex(length: number = 1): string;
+        hex(length: number): string;
     
         /**
          * Just one letter.
@@ -466,16 +465,16 @@ declare module 'fakerator' {
         post(): Post;
     }
     class Fakerator {
-        constructor(localeID: string = 'default');
+        constructor(localeID: string);
     
-        seed(newSeed: string = 'default');
+        seed(newSeed: string);
     
         capitalize(textWillBeCapitalized: string): string;
     
         slugify(textWillBeSlugified: string): string;
     
         replaceSymbols(format: string): string;
-        replaceSymbols(format: string, numberSymbol: string = "#", alphaSymbol: string = "\\?"): string;
+        replaceSymbols(format: string, numberSymbol: string, alphaSymbol: string): string;
     
         shuffle(textWillBeShuffled: string): string;
         shuffle<T>(arrayWillBeShuffled: Array<T>): Array<T>;
@@ -483,32 +482,33 @@ declare module 'fakerator' {
         populate(format: string, ...args: Array<any>): string;
     
         times(functionWillRepeat: Function, nTimes: number, ...args: Array<any>): Array<any>;
-        times(functionWillRepeat: Function, options: ITimesOptions, ...args: Array<any>): Array<any>;
+        times(functionWillRepeat: Function, options: TimesOptions, ...args: Array<any>): Array<any>;
     
         utimes(functionWillRepeat: Function, nTimes: number, ...args: Array<any>): Array<any>;
-        utimes(functionWillRepeat: Function, options: ITimesOptions, ...args: Array<any>): Array<any>;
+        utimes(functionWillRepeat: Function, options: TimesOptions, ...args: Array<any>): Array<any>;
     
         generate(functionWillBeUsedForGeneration: Function, ...args: Array<any>): string;
     
-        public random = new FakeratorRandom();
+        public random: FakeratorRandom;
     
-        public names = new FakeratorNames();
+        public names: FakeratorNames;
     
-        public address = new FakeratorAddress();
+        public address: FakeratorAddress;
     
-        public phone = new FakeratorPhone();
+        public phone: FakeratorPhone;
     
-        public company = new FakeratorCompany();
+        public company: FakeratorCompany;
     
-        public internet = new FakeratorInternet();
+        public internet: FakeratorInternet;
     
-        public lorem = new FakeratorLorem();
+        public lorem: FakeratorLorem;
     
-        public date = new FakeratorDate();
+        public date: FakeratorDate;
     
-        public misc = new FakeratorMisc();
+        public misc: FakeratorMisc;
     
-        public entity = new FakeratorEntity();
+        public entity: FakeratorEntity;
     }
-    export default (localeID = 'default') => new Fakerator(localeID);
+    const fn: (localeID: string) => Fakerator;
+    export default fn;
 }
