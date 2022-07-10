@@ -103,7 +103,7 @@ declare module 'fakerator' {
          * @param precision Can generate floating number if you define this parameter. Note: Do not use 0
          * @returns number
          */
-        number(min: number, max: number, precision: number): number;
+        number(min: number, max: number, precision?: number): number;
     
     
         /**
@@ -119,7 +119,7 @@ declare module 'fakerator' {
          * @param likelyhood Returns true if selected random value between 0 and 100 below this parameter.
          * @returns boolean
          */
-        boolean(likelyhood: number): boolean;
+        boolean(likelyhood?: number): boolean;
     
     
         /**
@@ -141,7 +141,7 @@ declare module 'fakerator' {
          * @param length Length of the generated string
          * @returns string
          */
-        hex(length: number): string;
+        hex(length?: number): string;
     
         /**
          * Just one letter.
@@ -465,16 +465,16 @@ declare module 'fakerator' {
         post(): Post;
     }
     class Fakerator {
-        constructor(localeID: string);
+        constructor(localeID?: string);
     
-        seed(newSeed: string);
+        seed(newSeed?: string);
     
         capitalize(textWillBeCapitalized: string): string;
     
         slugify(textWillBeSlugified: string): string;
     
         replaceSymbols(format: string): string;
-        replaceSymbols(format: string, numberSymbol: string, alphaSymbol: string): string;
+        replaceSymbols(format: string, numberSymbol?: string, alphaSymbol?: string): string;
     
         shuffle(textWillBeShuffled: string): string;
         shuffle<T>(arrayWillBeShuffled: Array<T>): Array<T>;
@@ -509,6 +509,6 @@ declare module 'fakerator' {
     
         public entity: FakeratorEntity;
     }
-    const fn: (localeID: string) => Fakerator;
+    const fn: (localeID?: string) => Fakerator;
     export default fn;
 }
