@@ -468,7 +468,7 @@ declare module 'fakerator' {
     class Fakerator {
         constructor(localeID: string = 'default');
     
-        seed(newSeed: string = 'default');
+        seed(newSeed: number | number[]);
     
         capitalize(textWillBeCapitalized: string): string;
     
