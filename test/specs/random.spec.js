@@ -84,4 +84,9 @@ describe("Fakerator.random", () => {
 		expect(fakerator.random.string({ min: 5, max: 10 })).to.be.length(5);
 	});
 
+	it("check random.stringDigit function", () => {
+		expect(fakerator.random.stringDigit(10)).to.be.length(10);
+		expect(fakerator.random.stringDigit(8)).to.be.a("String").length(8);
+	});
+
 });
